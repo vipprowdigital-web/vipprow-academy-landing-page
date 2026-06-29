@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================
+   Theme
+========================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-geist);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+/* ==========================================
+   Colors
+========================================== */
+
+:root {
+  --radius: 1rem;
+
+  /* Replace these with your brand colors */
+
+  --background: oklch(0.98 0.01 260);
+  --foreground: oklch(0.18 0.02 260);
+
+  --primary: oklch(0.64 0.22 275);
+  --primary-foreground: oklch(0.98 0 0);
+
+  --secondary: oklch(0.93 0.02 260);
+  --secondary-foreground: oklch(0.22 0.02 260);
+
+  --muted: oklch(0.95 0.01 260);
+  --muted-foreground: oklch(0.48 0.02 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 260);
+
+  --border: oklch(0.9 0.01 260);
+  --ring: oklch(0.7 0.12 275);
+}
+
+.dark {
+  --background: oklch(0.12 0.02 260);
+  --foreground: oklch(0.97 0.01 260);
+
+  --primary: oklch(0.72 0.18 275);
+  --primary-foreground: oklch(0.12 0.02 260);
+
+  --secondary: oklch(0.18 0.02 260);
+  --secondary-foreground: oklch(0.95 0.01 260);
+
+  --muted: oklch(0.2 0.02 260);
+  --muted-foreground: oklch(0.72 0.02 260);
+
+  --card: oklch(0.16 0.02 260);
+  --card-foreground: oklch(0.96 0.01 260);
+
+  --border: oklch(0.25 0.02 260);
+  --ring: oklch(0.72 0.18 275);
+}
+
+/* ==========================================
+   Base
+========================================== */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+/* ==========================================
+   Keyframes
+========================================== */
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
+
+/* ==========================================
+   Utilities
+========================================== */
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* ==========================================
+   Section theme overrides
+   Applied per-section to create half-dark / half-light contrast.
+   These override the global .dark CSS custom properties locally.
+========================================== */
+
+.section-light {
+  --background: oklch(0.98 0.01 260);
+  --foreground: oklch(0.18 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 260);
+  --border: oklch(0.9 0.01 260);
+  --muted: oklch(0.95 0.01 260);
+  --muted-foreground: oklch(0.48 0.02 260);
+  --primary: oklch(0.58 0.22 275);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.93 0.02 260);
+  --secondary-foreground: oklch(0.22 0.02 260);
+  --ring: oklch(0.58 0.22 275);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.section-light-alt {
+  --background: oklch(0.95 0.012 260);
+  --foreground: oklch(0.18 0.02 260);
+  --card: oklch(0.97 0.006 260);
+  --card-foreground: oklch(0.18 0.02 260);
+  --border: oklch(0.88 0.012 260);
+  --muted: oklch(0.92 0.01 260);
+  --muted-foreground: oklch(0.46 0.02 260);
+  --primary: oklch(0.58 0.22 275);
+  --primary-foreground: oklch(0.98 0 0);
+  --ring: oklch(0.58 0.22 275);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ==========================================
+   Accessibility
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

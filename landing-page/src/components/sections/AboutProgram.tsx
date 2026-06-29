@@ -1,0 +1,131 @@
+'use client';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { CheckCircle2, Layers, Zap, Users } from 'lucide-react';
+import { Badge } from '@/components/ui/Badge';
+import { fadeUp, stagger, clipReveal } from '@/lib/animations';
+
+const PILLARS = [
+  {
+    icon: Layers,
+    title: 'Industry-led Curriculum',
+    desc: 'Built with senior engineers from top product companies. Updated every quarter to reflect what actually gets hired.',
+  },
+  {
+    icon: Zap,
+    title: 'Learn by Doing',
+    desc: 'No death by slides. Every concept is applied immediately through projects that mirror real engineering challenges.',
+  },
+  {
+    icon: Users,
+    title: 'Cohort-based Learning',
+    desc: 'Work alongside high-intent peers. Build your network before you graduate. The cohort becomes your career advantage.',
+  },
+];
+
+export function AboutProgram() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
+
+  return (
+    <section
+      id="about"
+      ref={sectionRef}
+      className="section-light py-24 md:py-40 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+          {/* Left: editorial copy */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+          >
+            <motion.div variants={fadeUp} className="mb-6">
+              <Badge variant="default">About the Program</Badge>
+            </motion.div>
+
+            <motion.h2
+              variants={clipReveal}
+              className="font-heading font-bold leading-[1.05] tracking-tight mb-8"
+              style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
+            >
+              Not a course.
+              <br />
+              <span className="text-primary">An experience.</span>
+            </motion.h2>
+
+            <motion.p
+              variants={fadeUp}
+              className="text-muted-foreground text-lg leading-relaxed mb-10"
+            >
+              Vipprow Academy is built around the belief that the best way to
+              learn engineering is to engineer. We combine live instruction,
+              structured mentorship and real-world projects to give you a
+              complete, context-rich education — not just a certificate.
+            </motion.p>
+
+            <motion.ul variants={stagger} className="space-y-4">
+              {[
+                'Live sessions with senior engineers — not recorded lectures',
+                'Weekly 1:1 mentor check-ins on your actual code',
+                'Build 6+ portfolio projects before you graduate',
+                'Placement support until you land your first role',
+              ].map((item) => (
+                <motion.li
+                  key={item}
+                  variants={fadeUp}
+                  className="flex items-start gap-3 text-sm text-muted-foreground"
+                >
+                  <CheckCircle2
+                    size={16}
+                    className="text-primary mt-0.5 shrink-0"
+                  />
+                  <span>{item}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+
+          {/* Right: pillars grid with parallax */}
+          <motion.div style={{ y }} className="space-y-4">
+            {PILLARS.map((pillar, i) => (
+              <motion.div
+                key={pillar.title}
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: i * 0.15,
+                }}
+                whileHover={{ x: 6 }}
+                className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card/40 backdrop-blur-sm transition-colors duration-300 hover:border-primary/30 group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
+                  <pillar.icon size={18} className="text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-heading font-semibold text-foreground text-base mb-1">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
