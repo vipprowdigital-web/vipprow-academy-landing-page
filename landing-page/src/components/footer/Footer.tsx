@@ -6,19 +6,19 @@ import { fadeUp, stagger } from '@/lib/animations';
 
 const FOOTER_LINKS = {
   Programs: [
-    { label: 'Digital Marketing Mastery', href: '#' },
-    { label: 'AI & Machine Learning', href: '#' },
-    { label: 'Corporate Training', href: '#' },
+    { label: 'Digital Marketing Mastery', href: '/courses' },
+    { label: 'AI & Machine Learning', href: '/courses' },
+    { label: 'Corporate Training', href: '/courses' },
     { label: 'Free Webinars', href: '#' },
   ],
   Company: [
-    { label: 'About Us', href: '#' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Academy', href: '/academy' },
     { label: 'Careers', href: '#' },
     { label: 'Blog', href: '#' },
-    { label: 'Press Kit', href: '#' },
   ],
   Support: [
-    { label: 'Placement Guarantee', href: '#' },
+    { label: 'Placement Guarantee', href: '/#placement' },
     { label: 'Admissions', href: '#' },
     { label: 'EMI & Financing', href: '#' },
     { label: 'Contact Us', href: '#' },

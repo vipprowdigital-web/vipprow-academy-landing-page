@@ -1,34 +1,48 @@
-'use client';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import { CheckCircle2, Layers, Zap, Users } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
-import { fadeUp, stagger, clipReveal } from '@/lib/animations';
+"use client";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { CheckCircle2, Layers, Zap, Users } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
+import { fadeUp, stagger, clipReveal } from "@/lib/animations";
+import SectionTypography from "../SectionTypography";
+import ScrollReveal from "../animations/ScrollReveal";
+import Image from "next/image";
 
 const PILLARS = [
   {
     icon: Layers,
-    title: 'Industry-led Curriculum',
-    desc: 'Built with senior engineers from top product companies. Updated every quarter to reflect what actually gets hired.',
+    title: "Industry-led Curriculum",
+    desc: "Built with senior engineers from top product companies. Updated every quarter to reflect what actually gets hired.",
   },
   {
     icon: Zap,
-    title: 'Learn by Doing',
-    desc: 'No death by slides. Every concept is applied immediately through projects that mirror real engineering challenges.',
+    title: "Learn by Doing",
+    desc: "No death by slides. Every concept is applied immediately through projects that mirror real engineering challenges.",
   },
   {
     icon: Users,
-    title: 'Cohort-based Learning',
-    desc: 'Work alongside high-intent peers. Build your network before you graduate. The cohort becomes your career advantage.',
+    title: "Cohort-based Learning",
+    desc: "Work alongside high-intent peers. Build your network before you graduate. The cohort becomes your career advantage.",
   },
 ];
 
 export function AboutProgram() {
   const sectionRef = useRef<HTMLElement>(null);
 
+  // 1. Create a dedicated ref for the GSAP Pinned Section Container
+  // const pinContainerRef = useRef<HTMLElement>(null);
+  // 2. Keep a separate ref for Framer Motion's parallax viewport boundaries
+  // const motionTargetRef = useRef<HTMLDivElement>(null);
+  //
+  // const { scrollYProgress } = useScroll({
+  //   target: sectionRef,
+  //   offset: ["start end", "end start"],
+  // });
+
+  // const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
@@ -37,8 +51,36 @@ export function AboutProgram() {
     <section
       id="about"
       ref={sectionRef}
-      className="section-light py-24 md:py-40 overflow-hidden"
+      // ref={pinContainerRef}
+      className="section-light py-10 md:py-20 overflow-hidden relative"
     >
+      {/* <SectionTypography
+        // sectionRef={sectionRef}
+        sectionRef={pinContainerRef}
+        text="BUILDING"
+        pin={true}
+        colorClassName="text-primary/10"
+        initialPositionClassName="top-[8%] right-[4%] sm:right-[6%]"
+        bottomOffset={80}
+      /> */}
+      <ScrollReveal
+        scrollContainerRef={sectionRef} // Pass your section ref here
+        baseOpacity={1} // 0.1 or 0.2 works great for background/watermark text
+        enableBlur={true}
+        blurStrength={0}
+        startY={-50}
+        animationStart="top top"
+        animationEnd="bottom top"
+      >
+        <Image
+          src="/images/vipprow-brand-black-blue-gradient.png"
+          alt="Watermark decoration"
+          width={500}
+          height={200}
+          className="object-contain opacity-100"
+        />
+      </ScrollReveal>
+
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Left: editorial copy */}
@@ -46,7 +88,7 @@ export function AboutProgram() {
             variants={stagger}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
           >
             <motion.div variants={fadeUp} className="mb-6">
               <Badge variant="default">About the Program</Badge>
@@ -55,7 +97,7 @@ export function AboutProgram() {
             <motion.h2
               variants={clipReveal}
               className="font-heading font-bold leading-[1.05] tracking-tight mb-8"
-              style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
+              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
             >
               Not a course.
               <br />
@@ -74,10 +116,10 @@ export function AboutProgram() {
 
             <motion.ul variants={stagger} className="space-y-4">
               {[
-                'Live sessions with senior engineers — not recorded lectures',
-                'Weekly 1:1 mentor check-ins on your actual code',
-                'Build 6+ portfolio projects before you graduate',
-                'Placement support until you land your first role',
+                "Live sessions with senior engineers — not recorded lectures",
+                "Weekly 1:1 mentor check-ins on your actual code",
+                "Build 6+ portfolio projects before you graduate",
+                "Placement support until you land your first role",
               ].map((item) => (
                 <motion.li
                   key={item}
@@ -101,7 +143,7 @@ export function AboutProgram() {
                 key={pillar.title}
                 initial={{ opacity: 0, x: 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1],

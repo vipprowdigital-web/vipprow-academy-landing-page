@@ -1,17 +1,15 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/cn';
-import { Button } from '@/components/ui/Button';
+"use client";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/Button";
 
 const NAV_LINKS = [
-  { label: 'Programs', href: '#courses' },
-  { label: 'Roadmap', href: '#roadmap' },
-  { label: 'Placement', href: '#placement' },
-  { label: 'Mentors', href: '#instructor' },
-  { label: 'Reviews', href: '#testimonials' },
+  { label: "Academy", href: "/" },
+  { label: "Courses", href: "/courses" },
+  { label: "About", href: "/about" },
 ];
 
 export function Navbar() {
@@ -20,18 +18,18 @@ export function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 48);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
       <motion.header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
-            ? 'bg-background/80 backdrop-blur-xl border-b border-border/60'
-            : 'bg-transparent'
+            ? "bg-background/80 backdrop-blur-xl border-b border-border/60"
+            : "bg-transparent",
         )}
         initial={{ y: -72, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -43,7 +41,9 @@ export function Navbar() {
             className="font-heading font-bold text-lg tracking-tight text-foreground"
           >
             Vipprow<span className="text-primary">.</span>
-            <span className="text-muted-foreground font-medium text-sm ml-1">Academy</span>
+            <span className="text-muted-foreground font-medium text-sm ml-1">
+              Academy
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -85,7 +85,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed top-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border"
           >
             <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-1">

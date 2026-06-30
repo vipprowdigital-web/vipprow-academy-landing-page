@@ -1,25 +1,37 @@
-'use client';
-import { useRef, useEffect, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { fadeUp, stagger } from '@/lib/animations';
+"use client";
+import { useRef, useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { fadeUp, stagger } from "@/lib/animations";
 
 const COMPANIES = [
-  'Google', 'Microsoft', 'Amazon', 'Razorpay', 'Flipkart',
-  'Zomato', 'CRED', 'Swiggy', 'PhonePe', 'Meesho',
-  'Atlassian', 'Freshworks', 'Paytm', 'Byju\'s', 'Ola',
+  "Google",
+  "Microsoft",
+  "Amazon",
+  "Razorpay",
+  "Flipkart",
+  "Zomato",
+  "CRED",
+  "Swiggy",
+  "PhonePe",
+  "Meesho",
+  "Atlassian",
+  "Freshworks",
+  "Paytm",
+  "Byju's",
+  "Ola",
 ];
 
 const METRICS = [
-  { value: 2400, suffix: '+', label: 'Successful Placements' },
-  { value: 18.5, suffix: 'L', prefix: '₹', label: 'Avg. Annual Package' },
-  { value: 96, suffix: '%', label: 'Placement Rate' },
-  { value: 50, suffix: '+', label: 'Partner Companies' },
+  { value: 2400, suffix: "+", label: "Successful Placements" },
+  { value: 18.5, suffix: "L", prefix: "₹", label: "Avg. Annual Package" },
+  { value: 96, suffix: "%", label: "Placement Rate" },
+  { value: 50, suffix: "+", label: "Partner Companies" },
 ];
 
 function AnimatedNumber({
   value,
-  prefix = '',
-  suffix = '',
+  prefix = "",
+  suffix = "",
   decimals = 0,
 }: {
   value: number;
@@ -29,7 +41,7 @@ function AnimatedNumber({
 }) {
   const [display, setDisplay] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   useEffect(() => {
     if (!inView) return;
@@ -56,31 +68,30 @@ function AnimatedNumber({
 
 export function TrustedBy() {
   return (
-    <section id="trusted" className="section-light py-24 md:py-32 overflow-hidden">
+    <section
+      id="trusted"
+      className="section-light py-10 overflow-hidden relative"
+    >
       <div className="max-w-7xl mx-auto px-6">
         {/* Metrics */}
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24"
         >
           {METRICS.map((m) => (
-            <motion.div
-              key={m.label}
-              variants={fadeUp}
-              className="text-center"
-            >
+            <motion.div key={m.label} variants={fadeUp} className="text-center">
               <p
                 className="font-heading font-bold text-foreground tabular-nums"
-                style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
+                style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
               >
                 <AnimatedNumber
                   value={m.value}
                   prefix={m.prefix}
                   suffix={m.suffix}
-                  decimals={m.suffix === 'L' ? 1 : 0}
+                  decimals={m.suffix === "L" ? 1 : 0}
                 />
               </p>
               <p className="text-sm text-muted-foreground mt-2 font-medium">
@@ -108,14 +119,14 @@ export function TrustedBy() {
             className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
             style={{
               background:
-                'linear-gradient(to right, var(--background), transparent)',
+                "linear-gradient(to right, var(--background), transparent)",
             }}
           />
           <div
             className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
             style={{
               background:
-                'linear-gradient(to left, var(--background), transparent)',
+                "linear-gradient(to left, var(--background), transparent)",
             }}
           />
 

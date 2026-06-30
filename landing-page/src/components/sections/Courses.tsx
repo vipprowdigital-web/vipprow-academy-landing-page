@@ -415,6 +415,8 @@ import {
   useMotionValue,
   animate,
 } from "framer-motion";
+import ScrollReveal from "../animations/ScrollReveal";
+import Image from "next/image";
 import {
   ArrowRight,
   Clock,
@@ -847,9 +849,30 @@ function CourseDetails({
 
 export function Courses() {
   const { rotateY, index, goTo } = useCardCycle();
+  const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <section id="courses" className="section-light py-24 md:py-36">
+    <section
+      id="courses"
+      ref={sectionRef}
+      className="section-light py-10 md:py-20 overflow-hidden relative w-full"
+    >
+      <ScrollReveal
+        scrollContainerRef={sectionRef}
+        baseOpacity={1}
+        enableBlur={true}
+        blurStrength={0.6}
+        animationStart="top top"
+        animationEnd="bottom center"
+      >
+        <Image
+          src="/images/cute-robot-without-bg.png"
+          alt="Decorative robot"
+          width={200}
+          height={200}
+          className="object-contain opacity-100"
+        />
+      </ScrollReveal>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={stagger}

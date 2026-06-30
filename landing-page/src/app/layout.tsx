@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import PageLoadShutter from "@/components/PageLoadShutter";
 
 const geist = Geist({
   variable: "--font-geist",
