@@ -46,6 +46,7 @@ export default function RootLayout({
       className={`${geist.variable} ${inter.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <PageLoadShutter />
         <Providers>{children}</Providers>
       </body>
     </html>

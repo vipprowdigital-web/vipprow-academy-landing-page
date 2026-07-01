@@ -52,8 +52,24 @@ export function AboutProgram() {
       id="about"
       ref={sectionRef}
       // ref={pinContainerRef}
-      className="section-light py-10 md:py-20 overflow-hidden relative"
+      className="section-light bg-white! w-full py-10 md:py-32 overflow-hidden relative"
     >
+      <ScrollReveal
+        scrollContainerRef={sectionRef}
+        baseOpacity={1}
+        enableBlur={true}
+        blurStrength={0.6}
+        animationStart="top top"
+        animationEnd="bottom center"
+      >
+        <Image
+          src="/images/cute-robot.gif"
+          alt="Decorative robot"
+          width={400}
+          height={400}
+          className="object-contain opacity-100 z-50"
+        />
+      </ScrollReveal>
       {/* <SectionTypography
         // sectionRef={sectionRef}
         sectionRef={pinContainerRef}
@@ -63,23 +79,32 @@ export function AboutProgram() {
         initialPositionClassName="top-[8%] right-[4%] sm:right-[6%]"
         bottomOffset={80}
       /> */}
-      <ScrollReveal
-        scrollContainerRef={sectionRef} // Pass your section ref here
-        baseOpacity={1} // 0.1 or 0.2 works great for background/watermark text
-        enableBlur={true}
+      {/* <ScrollReveal
+        scrollContainerRef={sectionRef}
+        baseOpacity={1} 
+        enableBlur={false}
         blurStrength={0}
-        startY={-50}
-        animationStart="top top"
-        animationEnd="bottom top"
+        startY={-90}
+        bottomOffset={0}
       >
         <Image
           src="/images/vipprow-brand-black-blue-gradient.png"
           alt="Watermark decoration"
-          width={500}
-          height={200}
+          width={600}
+          height={100}
           className="object-contain opacity-100"
         />
-      </ScrollReveal>
+      </ScrollReveal> */}
+      {/* <ScrollReveal
+        scrollContainerRef={sectionRef}
+        baseOpacity={1} // Subtle background watermark opacity
+        enableBlur={false}
+        blurStrength={1} // Slightly stronger blur for the entry splash
+        animationEnd="bottom center" // Completes its path right as the Hero leaves the screen
+        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-wider text-right will-change-transform text-[6rem]" // Using your utility styling color match
+      >
+        WITH
+      </ScrollReveal> */}
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">

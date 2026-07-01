@@ -12,6 +12,8 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/footer/Footer";
 import Hero from "@/components/hero/Hero";
 import { ScrollSection } from "@/components/ScrollSection";
+import CourseSection from "@/components/sections/CourseSection";
+import { Marquee3D } from "@/components/ui/marquee-3d";
 
 export default function Home() {
   return (
@@ -20,19 +22,34 @@ export default function Home() {
       <main>
         <Hero />
         {/* <TrustedBy /> */}
+        {/* <Placement /> */}
+        <ScrollSection id="section-2" bgColor="section-light">
+          <AboutProgram />
+        </ScrollSection>
         <ScrollSection id="section-1" bgColor="section-light">
           <Courses />
         </ScrollSection>
-        <AboutProgram />
-        <Features />
+        <ScrollSection bgColor="section-light">
+          <Features />
+        </ScrollSection>
+        <Testimonials />
+        {/* <CourseSection
+          imageSrc="/images/image-1.jpg"
+          imageAlt="Learner working through a Vipprow Academy course"
+          eyebrow="Vipprow Academy"
+          heading="Learn skills that move as fast as the internet does"
+          description="Practical digital marketing and AI courses built for the Indian market — taught by people who ship, not just teach."
+          ctaLabel="Explore courses"
+          ctaHref="/courses"
+        /> */}
         {/* <Roadmap /> */}
         {/* <Placement />
         <Instructor />
-        <Testimonials />
+        
         <FAQ />
         <FinalCTA /> */}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

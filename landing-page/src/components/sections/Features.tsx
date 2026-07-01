@@ -1,59 +1,90 @@
-'use client';
-import { motion } from 'framer-motion';
+"use client";
+import { useRef } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import {
-  Code2, BrainCircuit, Users2, Trophy, Briefcase, Rocket
-} from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
-import { fadeUp, stagger } from '@/lib/animations';
+  Code2,
+  BrainCircuit,
+  Users2,
+  Trophy,
+  Briefcase,
+  Rocket,
+} from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
+import { fadeUp, stagger } from "@/lib/animations";
+import ScrollReveal from "../animations/ScrollReveal";
 
 const FEATURES = [
   {
     icon: Code2,
-    title: 'Real-World Projects',
-    desc: 'Work on production-grade codebases that solve actual problems — not contrived exercises.',
-    accent: '#7c3aed',
+    title: "Real-World Projects",
+    desc: "Work on production-grade codebases that solve actual problems — not contrived exercises.",
+    accent: "#7c3aed",
   },
   {
     icon: BrainCircuit,
-    title: 'AI-Augmented Learning',
-    desc: 'Leverage AI tools the way industry does. Learn to build with AI, not just understand it.',
-    accent: '#4f46e5',
+    title: "AI-Augmented Learning",
+    desc: "Leverage AI tools the way industry does. Learn to build with AI, not just understand it.",
+    accent: "#4f46e5",
   },
   {
     icon: Users2,
-    title: 'Elite Mentorship',
-    desc: 'Weekly live sessions and code reviews with senior engineers from Google, Amazon and Razorpay.',
-    accent: '#0ea5e9',
+    title: "Elite Mentorship",
+    desc: "Weekly live sessions and code reviews with senior engineers from Google, Amazon and Razorpay.",
+    accent: "#0ea5e9",
   },
   {
     icon: Trophy,
-    title: 'Industry Recognition',
-    desc: 'Our certification is recognised by 50+ companies. Hiring partners who trust our graduates.',
-    accent: '#d97706',
+    title: "Industry Recognition",
+    desc: "Our certification is recognised by 50+ companies. Hiring partners who trust our graduates.",
+    accent: "#d97706",
   },
   {
     icon: Briefcase,
-    title: 'Placement Guarantee',
-    desc: 'Get placed or get a full refund. We are financially committed to your career outcome.',
-    accent: '#16a34a',
+    title: "Placement Guarantee",
+    desc: "Get placed or get a full refund. We are financially committed to your career outcome.",
+    accent: "#16a34a",
   },
   {
     icon: Rocket,
-    title: 'Lifetime Access',
-    desc: 'Curriculum evolves — so does your access. Stay current long after your batch graduates.',
-    accent: '#dc2626',
+    title: "Lifetime Access",
+    desc: "Curriculum evolves — so does your access. Stay current long after your batch graduates.",
+    accent: "#dc2626",
   },
 ];
 
 export function Features() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
-    <section id="features" className="section-light-alt py-24 md:py-36">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      ref={sectionRef}
+      id="features"
+      className="w-full section-light-alt py-10 md:py-20"
+    >
+      <ScrollReveal
+        scrollContainerRef={sectionRef}
+        baseOpacity={1}
+        enableBlur={false}
+        blurStrength={0}
+        startY={10}
+        animationStart="top top"
+        animationEnd="bottom center"
+      >
+        <Image
+          src="/images/vipprow-brand-black-blue-gradient-2.png"
+          alt="Watermark decoration"
+          width={450}
+          height={50}
+          className="object-contain opacity-100"
+        />
+      </ScrollReveal>
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-16"
         >
           <motion.div variants={fadeUp} className="mb-4 flex justify-center">
@@ -62,7 +93,7 @@ export function Features() {
           <motion.h2
             variants={fadeUp}
             className="font-heading font-bold leading-tight tracking-tight mb-4"
-            style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
+            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
           >
             Six reasons we&apos;re different
           </motion.h2>
@@ -80,7 +111,7 @@ export function Features() {
               key={f.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: true, margin: "-60px" }}
               transition={{
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1],

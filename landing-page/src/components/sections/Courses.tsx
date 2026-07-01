@@ -590,7 +590,7 @@ function CourseStage({
       ref={stageRef}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative w-full h-[420px] md:h-[520px] rounded-3xl overflow-hidden border border-white/10"
+      className="relative w-full h-105 md:h-130 rounded-3xl overflow-hidden border border-white/10"
       style={{
         background:
           "linear-gradient(160deg, oklch(0.2 0.04 280), oklch(0.13 0.03 270))",
@@ -855,9 +855,9 @@ export function Courses() {
     <section
       id="courses"
       ref={sectionRef}
-      className="section-light py-10 md:py-20 overflow-hidden relative w-full"
+      className="section-light bg-white! py-10 md:py-20 overflow-hidden relative w-full"
     >
-      <ScrollReveal
+      {/* <ScrollReveal
         scrollContainerRef={sectionRef}
         baseOpacity={1}
         enableBlur={true}
@@ -866,12 +866,22 @@ export function Courses() {
         animationEnd="bottom center"
       >
         <Image
-          src="/images/cute-robot-without-bg.png"
+          src="/images/cute-robot.gif"
           alt="Decorative robot"
-          width={200}
-          height={200}
-          className="object-contain opacity-100"
+          width={400}
+          height={400}
+          className="object-contain opacity-100 z-50"
         />
+      </ScrollReveal> */}
+      <ScrollReveal
+        scrollContainerRef={sectionRef}
+        baseOpacity={1} // Subtle background watermark opacity
+        enableBlur={false}
+        blurStrength={1} // Slightly stronger blur for the entry splash
+        animationEnd="bottom center" // Completes its path right as the Hero leaves the screen
+        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-wider text-right will-change-transform text-[6rem]" // Using your utility styling color match
+      >
+        WITH
       </ScrollReveal>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
@@ -903,6 +913,15 @@ export function Courses() {
           className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center"
         >
           <CourseDetails activeIndex={index} onSelect={goTo} />
+          <div className="absolute top-43 right-40">
+            <Image
+              src="/images/robot-peeking.png"
+              alt="Robot cute peeking"
+              width={500}
+              height={200}
+              className="w-40"
+            />
+          </div>
           <CourseStage activeIndex={index} rotateY={rotateY} />
         </motion.div>
       </div>

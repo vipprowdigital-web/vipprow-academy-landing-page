@@ -47,7 +47,9 @@
   --background: oklch(0.98 0.01 260);
   --foreground: oklch(0.18 0.02 260);
 
-  --primary: oklch(0.64 0.22 275);
+  /* --primary: oklch(0.64 0.22 275); */
+  --primary: oklch(0.48 0.18 255);
+
   --primary-foreground: oklch(0.98 0 0);
 
   --secondary: oklch(0.93 0.02 260);
@@ -60,14 +62,16 @@
   --card-foreground: oklch(0.18 0.02 260);
 
   --border: oklch(0.9 0.01 260);
-  --ring: oklch(0.7 0.12 275);
+  /* --ring: oklch(0.7 0.12 275); */
+  --ring: oklch(0.55 0.16 255);
 }
 
 .dark {
   --background: oklch(0.12 0.02 260);
   --foreground: oklch(0.97 0.01 260);
 
-  --primary: oklch(0.72 0.18 275);
+  /* --primary: oklch(0.72 0.18 275); */
+  --primary: oklch(0.18 0.08 280);
   --primary-foreground: oklch(0.12 0.02 260);
 
   --secondary: oklch(0.18 0.02 260);
@@ -80,7 +84,8 @@
   --card-foreground: oklch(0.96 0.01 260);
 
   --border: oklch(0.25 0.02 260);
-  --ring: oklch(0.72 0.18 275);
+  /* --ring: oklch(0.72 0.18 275); */
+  --ring: oklch(0.18 0.08 280);
 }
 
 /* ==========================================
@@ -113,12 +118,26 @@
    Keyframes
 ========================================== */
 
+@theme {
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
   }
 }
 
@@ -138,7 +157,12 @@
 
 @layer utilities {
   .animate-marquee {
-    animation: marquee 28s linear infinite;
+    animation: marquee var(--duration, 28s) linear infinite;
+    will-change: transform;
+  }
+
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration, 20s) linear infinite;
     will-change: transform;
   }
 
@@ -170,11 +194,11 @@
   --border: oklch(0.9 0.01 260);
   --muted: oklch(0.95 0.01 260);
   --muted-foreground: oklch(0.48 0.02 260);
-  --primary: oklch(0.58 0.22 275);
+  --primary: oklch(24.147% 0.0977 266.968);
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.93 0.02 260);
   --secondary-foreground: oklch(0.22 0.02 260);
-  --ring: oklch(0.58 0.22 275);
+  --ring: oklch(0.18 0.08 280);
   background-color: var(--background);
   color: var(--foreground);
 }
@@ -187,9 +211,9 @@
   --border: oklch(0.88 0.012 260);
   --muted: oklch(0.92 0.01 260);
   --muted-foreground: oklch(0.46 0.02 260);
-  --primary: oklch(0.58 0.22 275);
+  --primary: oklch(0.18 0.08 280);
   --primary-foreground: oklch(0.98 0 0);
-  --ring: oklch(0.58 0.22 275);
+  --ring: oklch(0.18 0.08 280);
   background-color: var(--background);
   color: var(--foreground);
 }
@@ -231,24 +255,25 @@
 @keyframes borderGlow {
   0% {
     background-position: 0% 50%;
-    opacity: 0.3;
-    box-shadow: 0 0 0px rgba(59, 130, 246, 0);
+    opacity: 0.4;
+    box-shadow: 0 0 0px rgba(30, 64, 175, 0);
   }
   50% {
     background-position: 100% 50%;
     opacity: 1;
-    /* Adds a neon neon glow underneath the border line */
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.6);
+    box-shadow:
+      0 0 32px -8px rgba(30, 64, 175, 0.7),
+      0 0 80px -16px rgba(12, 37, 99, 0.331);
   }
   100% {
     background-position: 0% 50%;
     opacity: 0.8;
-    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 16px 4px rgba(30, 64, 175, 0.74);
   }
 }
 
 .animate-border-flash {
-  background: linear-gradient(90deg, #05070d, #0b1736, #1e40af);
+  background: linear-gradient(90deg, #143bb386, #0a215c76, #1e40af);
   background-size: 300% 300%;
   animation: borderGlow 1.5s ease-in-out infinite;
 }
