@@ -16,8 +16,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Navbar />
-      <main>
+      <main className="bg-white">
         <section className="section-light pt-32 pb-16 md:pt-40 md:pb-24">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary font-heading font-semibold mb-4">
@@ -43,7 +42,6 @@ export default function AboutPage() {
         <Placement />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

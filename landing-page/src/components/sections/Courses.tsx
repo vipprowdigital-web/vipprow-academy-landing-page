@@ -879,7 +879,7 @@ export function Courses() {
         enableBlur={false}
         blurStrength={1} // Slightly stronger blur for the entry splash
         animationEnd="bottom center" // Completes its path right as the Hero leaves the screen
-        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-[6rem]" // Using your utility styling color match
+        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-4xl sm:text-6xl lg:text-[6rem]" // Using your utility styling color match
       >
         WITH
       </ScrollReveal>
@@ -913,7 +913,7 @@ export function Courses() {
           className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center"
         >
           <CourseDetails activeIndex={index} onSelect={goTo} />
-          <div className="absolute top-43 right-40">
+          <div className="hidden sm:absolute top-43 right-40">
             <Image
               src="/images/robot-peeking.png"
               alt="Robot cute peeking"

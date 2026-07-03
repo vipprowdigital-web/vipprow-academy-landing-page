@@ -63,6 +63,21 @@ export default function PageLoadShutter() {
           />
 
           {/* Robot gif */}
+          {/* <motion.div
+            initial={{ scale: 0.82, opacity: 0, y: 18 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            className="relative z-10 w-44 h-44 sm:w-56 sm:h-56"
+          >
+            <video
+              src="/images/cute-robot-video.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-contain drop-shadow-[0_0_32px_rgba(99,102,241,0.5)]"
+            />
+          </motion.div> */}
           <motion.div
             initial={{ scale: 0.82, opacity: 0, y: 18 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { stagger, fadeUp } from "@/lib/animations";
+import { useRouter } from "next/navigation";
 
 export function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -15,17 +16,18 @@ export function FinalCTA() {
 
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.94, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0.4, 1]);
+  const router = useRouter();
 
   return (
     <section
       ref={sectionRef}
       id="cta"
-      className="py-10 md:py-20 overflow-hidden"
+      className="py-0 md:py-20 overflow-hidden w-full"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="w-full sm:max-w-7xl sm:mx-auto sm:px-6">
         <motion.div
           style={{ scale, opacity }}
-          className="relative rounded-3xl overflow-hidden border border-border"
+          className="relative sm:rounded-3xl overflow-hidden border border-border"
         >
           {/* Gradient background */}
           <div
@@ -80,7 +82,7 @@ export function FinalCTA() {
             className="relative z-10 text-center px-6 py-20 md:py-28"
           >
             <motion.div variants={fadeUp} className="mb-6 flex justify-center">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-heading font-semibold bg-primary/80 text-secondary border border-primary/30">
+              <span className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-heading font-semibold bg-primary/80 text-white border border-primary/30">
                 <Sparkles size={12} />
                 Limited seats · Batch 2026
               </span>
@@ -89,7 +91,7 @@ export function FinalCTA() {
             <motion.h2
               variants={fadeUp}
               className="font-heading font-bold leading-[1.02] tracking-tight text-white mb-6"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+              style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
             >
               Ready to transform
               <br />
@@ -108,11 +110,16 @@ export function FinalCTA() {
               variants={fadeUp}
               className="flex flex-wrap items-center justify-center gap-4"
             >
-              <Button variant="primary" size="lg" className="min-w-48">
-                Apply Now — It&apos;s Free
+              <Button
+                variant="primary"
+                size="lg"
+                className="min-w-48"
+                onClick={() => router.push("/enroll")}
+              >
+                Enroll Now
                 <ArrowRight size={18} />
               </Button>
-              <Button variant="secondary" size="lg">
+              <Button variant="secondary" size="lg" onClick={() => {}}>
                 Talk to an Advisor
               </Button>
             </motion.div>

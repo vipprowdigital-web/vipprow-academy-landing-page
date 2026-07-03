@@ -308,6 +308,7 @@ import { useRef, useState } from "react";
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { TypingAnimation } from "../ui/typing-animation";
 import Image from "next/image";
+import RobotHeroVisual from "./RobotHeroVisual";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -339,7 +340,7 @@ export default function Hero() {
         <TypingAnimation loop>Academy</TypingAnimation>
       </div> */}
       <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-10 text-white">
-        <div className="space-y-3">
+        {/* <div className="space-y-3">
           <h1 className="text-4xl sm:text-3xl lg:text-5xl font-bold tracking-tight mb-6">
             Master Digital Marketing Skills with{" "}
             <span className="font-bold">Vipprow Digital Marketing Academy</span>
@@ -352,22 +353,36 @@ export default function Hero() {
           <button className="bg-linear-to-r from-primary to-button px-5 py-2 text-md text-white font-bold rounded-xl">
             Get Started
           </button>
-        </div>
-        <Image
-          src="/images/hero-image.png"
-          alt="Vipprow Brand Outline"
-          width={700}
-          height={300}
-        />
+        </div> */}
+        {/* <div className="pointer-events-auto">
+          <RobotHeroVisual />
+        </div> */}
       </div>
 
-      <div className="absolute bottom-0 left-10 flex justify-center pointer-events-none z-10">
-        <Image
+      <div className="absolute bottom-10 left-10 flex justify-center pointer-events-none z-10">
+        <div className="pointer-events-auto">
+          <RobotHeroVisual />
+        </div>
+        {/* <Image
           src="/logos/brand_outline.svg"
           alt="Vipprow Brand Outline"
           width={500}
           height={100}
-        />
+        /> */}
+        {/* <div className="space-y-3"> */}
+          {/* <h1 className="text-4xl sm:text-3xl lg:text-3xl font-bold tracking-tight mb-6">
+            Master Digital Marketing Skills with{" "}
+            <span className="font-bold">Vipprow Digital Marketing Academy</span>
+          </h1> */}
+          {/* <p className="">
+            A 12-week, hands-on program covering SEO, Social Media, Content,
+            Email and Analytics — everything you need to launch and scale
+            campaigns with real ROI.
+          </p> */}
+          {/* <button className="bg-linear-to-r from-primary to-button px-5 py-2 text-md text-white font-bold rounded-xl">
+            Get Started
+          </button> */}
+        {/* </div> */}
       </div>
 
       {/* 2. Call ScrollReveal here instead of or alongside SectionTypography */}
@@ -375,10 +390,10 @@ export default function Hero() {
         scrollContainerRef={heroRef}
         baseOpacity={1} // Subtle background watermark opacity
         enableBlur={false}
-        startY={60}
+        startY={80}
         blurStrength={1} // Slightly stronger blur for the entry splash
         animationEnd="bottom center" // Completes its path right as the Hero leaves the screen
-        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-[6rem]" // Using your utility styling color match
+        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-4xl sm:text-6xl lg:text-[6rem]" // Using your utility styling color match
       >
         LEARNING
       </ScrollReveal>

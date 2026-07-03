@@ -67,7 +67,7 @@ export function AboutProgram() {
           alt="Decorative robot"
           width={350}
           height={350}
-          className="object-contain opacity-100 z-50"
+          className="object-contain opacity-100 z-50 w-40 sm:w-87.5"
         />
       </ScrollReveal>
       {/* <SectionTypography

@@ -77,7 +77,7 @@ export function Features() {
           alt="Watermark decoration"
           width={450}
           height={50}
-          className="object-contain opacity-100 w-auto h-auto"
+          className="object-contain opacity-100 w-40 sm:w-auto h-auto"
         />
       </ScrollReveal>
       <div className="max-w-6xl mx-auto px-6">

@@ -3,6 +3,8 @@ import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import PageLoadShutter from "@/components/PageLoadShutter";
+import { Navbar } from "@/components/navbar/Navbar";
+import { Footer } from "@/components/footer/Footer";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -36,9 +38,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bricolage.variable} dark h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-background">
         <PageLoadShutter />
-        <Providers>{children}</Providers>
+
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
