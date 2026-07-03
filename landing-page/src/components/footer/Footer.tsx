@@ -1,53 +1,53 @@
-'use client';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Link2, AtSign, Code2, Play, Camera } from 'lucide-react';
-import { fadeUp, stagger } from '@/lib/animations';
+"use client";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Link2, AtSign, Code2, Play, Camera } from "lucide-react";
+import { fadeUp, stagger } from "@/lib/animations";
 
 const FOOTER_LINKS = {
   Programs: [
-    { label: 'Digital Marketing Mastery', href: '/courses' },
-    { label: 'AI & Machine Learning', href: '/courses' },
-    { label: 'Corporate Training', href: '/courses' },
-    { label: 'Free Webinars', href: '#' },
+    { label: "Digital Marketing Mastery", href: "/courses" },
+    { label: "AI & Machine Learning", href: "/courses" },
+    { label: "Corporate Training", href: "/courses" },
+    { label: "Free Webinars", href: "#" },
   ],
   Company: [
-    { label: 'About Us', href: '/about' },
-    { label: 'Academy', href: '/academy' },
-    { label: 'Careers', href: '#' },
-    { label: 'Blog', href: '#' },
+    { label: "About Us", href: "/about" },
+    { label: "Academy", href: "/academy" },
+    { label: "Careers", href: "#" },
+    { label: "Blog", href: "#" },
   ],
   Support: [
-    { label: 'Placement Guarantee', href: '/#placement' },
-    { label: 'Admissions', href: '#' },
-    { label: 'EMI & Financing', href: '#' },
-    { label: 'Contact Us', href: '#' },
+    { label: "Placement Guarantee", href: "/#placement" },
+    { label: "Admissions", href: "#" },
+    { label: "EMI & Financing", href: "#" },
+    { label: "Contact Us", href: "#" },
   ],
   Legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
-    { label: 'Refund Policy', href: '#' },
-    { label: 'Cookie Policy', href: '#' },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+    { label: "Refund Policy", href: "#" },
+    { label: "Cookie Policy", href: "#" },
   ],
 };
 
 const SOCIALS = [
-  { icon: Link2, href: '#', label: 'LinkedIn' },
-  { icon: AtSign, href: '#', label: 'Twitter / X' },
-  { icon: Code2, href: '#', label: 'GitHub' },
-  { icon: Play, href: '#', label: 'YouTube' },
-  { icon: Camera, href: '#', label: 'Instagram' },
+  { icon: Link2, href: "#", label: "LinkedIn" },
+  { icon: AtSign, href: "#", label: "Twitter / X" },
+  { icon: Code2, href: "#", label: "GitHub" },
+  { icon: Play, href: "#", label: "YouTube" },
+  { icon: Camera, href: "#", label: "Instagram" },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-linear-to-tr from-black to-primary">
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
         <motion.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10 mb-16"
         >
           {/* Brand column */}

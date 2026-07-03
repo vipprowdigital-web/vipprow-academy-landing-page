@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 
 const COURSE_DROPDOWN = [
   { label: "Digital Marketing", href: "/courses/digital-marketing" },
@@ -60,10 +61,16 @@ export function Navbar() {
             href="/"
             className="font-heading font-bold text-lg tracking-tight text-foreground"
           >
-            Vipprow<span className="text-primary">.</span>
+            {/* Vipprow<span className="text-primary">.</span>
             <span className="text-muted-foreground font-medium text-sm ml-1">
               Academy
-            </span>
+            </span> */}
+            <Image
+              src="/logos/vipprow_logo.svg"
+              alt=""
+              width={150}
+              height={20}
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">

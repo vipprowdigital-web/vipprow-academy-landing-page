@@ -68,15 +68,16 @@ export function Features() {
         enableBlur={false}
         blurStrength={0}
         startY={10}
-        animationStart="top top"
+        // animationStart="top top"
         animationEnd="bottom center"
+        bottomOffset={0}
       >
         <Image
           src="/images/vipprow-brand-black-blue-gradient-2.png"
           alt="Watermark decoration"
           width={450}
           height={50}
-          className="object-contain opacity-100"
+          className="object-contain opacity-100 w-auto h-auto"
         />
       </ScrollReveal>
       <div className="max-w-6xl mx-auto px-6">

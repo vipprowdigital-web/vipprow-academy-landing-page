@@ -181,8 +181,7 @@ export default function DigitalMarketingPage() {
                 {OUTCOMES.map((o) => (
                   <li key={o} className="flex items-start gap-3">
                     <span
-                      className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-xs font-bold"
-                      style={{ background: "#7c3aed" }}
+                      className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-xs font-bold bg-primary"
                     >
                       ✓
                     </span>

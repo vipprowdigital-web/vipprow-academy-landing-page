@@ -32,6 +32,7 @@ export default function Home() {
         <ScrollSection bgColor="section-light">
           <Features />
         </ScrollSection>
+        <Placement />
         <Testimonials />
         {/* <CourseSection
           imageSrc="/images/image-1.jpg"

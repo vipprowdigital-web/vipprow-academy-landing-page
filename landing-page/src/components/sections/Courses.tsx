@@ -448,7 +448,7 @@ const COURSES = [
     duration: "12 weeks",
     level: "Beginner → Expert",
     modules: 10,
-    accentColor: "#7c3aed",
+    accentColor: "#0059bf",
     chipGrad: ["oklch(0.55 0.18 290)", "oklch(0.42 0.2 275)"],
     blobColors: [
       "oklch(0.55 0.18 290)",
@@ -478,7 +478,7 @@ const COURSES = [
     duration: "16 weeks",
     level: "Beginner → Advanced",
     modules: 14,
-    accentColor: "#4f46e5",
+    accentColor: "#0059bf",
     chipGrad: ["oklch(0.5 0.2 265)", "oklch(0.4 0.22 255)"],
     blobColors: [
       "oklch(0.5 0.2 265)",
@@ -879,7 +879,7 @@ export function Courses() {
         enableBlur={false}
         blurStrength={1} // Slightly stronger blur for the entry splash
         animationEnd="bottom center" // Completes its path right as the Hero leaves the screen
-        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-wider text-right will-change-transform text-[6rem]" // Using your utility styling color match
+        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-[6rem]" // Using your utility styling color match
       >
         WITH
       </ScrollReveal>

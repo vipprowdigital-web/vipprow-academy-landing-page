@@ -59,14 +59,14 @@ export function AboutProgram() {
         baseOpacity={1}
         enableBlur={true}
         blurStrength={0.6}
-        animationStart="top top"
+        // animationStart="top top"
         animationEnd="bottom center"
       >
         <Image
           src="/images/cute-robot.gif"
           alt="Decorative robot"
-          width={400}
-          height={400}
+          width={350}
+          height={350}
           className="object-contain opacity-100 z-50"
         />
       </ScrollReveal>

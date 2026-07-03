@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Inter } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import PageLoadShutter from "@/components/PageLoadShutter";
 
-const geist = Geist({
-  variable: "--font-geist",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
   display: "swap",
 });
@@ -19,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Vipprow Academy — Where Futures Are Built",
   description:
-    "Master in-demand tech skills with India's most immersive learning experience. Real projects, elite mentors, guaranteed placement.",
+    "Master in-demand digital marketing skills with India's most immersive learning experience. Real projects, elite mentors, guaranteed placement assistance.",
   keywords: [
     "coding bootcamp",
     "tech education",
@@ -29,7 +23,7 @@ export const metadata: Metadata = {
     "India",
   ],
   openGraph: {
-    title: "Vipprow Academy",
+    title: "Vipprow Digital Marketing Academy",
     description: "Where Futures Are Built.",
     type: "website",
   },
@@ -41,10 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geist.variable} ${inter.variable} dark h-full antialiased`}
-    >
+    <html lang="en" className={`${bricolage.variable} dark h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <PageLoadShutter />
         <Providers>{children}</Providers>

@@ -159,7 +159,7 @@ export default function PerformanceMarketingPage() {
         {/* Outcomes */}
         <section className="py-16 md:py-24 border-t border-border/60">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-15 items-center">
               <div>
                 <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary font-heading font-semibold mb-3">
                   Outcomes
@@ -179,10 +179,7 @@ export default function PerformanceMarketingPage() {
               <ul className="space-y-3">
                 {OUTCOMES.map((o) => (
                   <li key={o} className="flex items-start gap-3">
-                    <span
-                      className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-xs font-bold"
-                      style={{ background: "#4f46e5" }}
-                    >
+                    <span className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white text-xs font-bold bg-primary">
                       ✓
                     </span>
                     <span className="text-sm text-muted-foreground leading-relaxed">
