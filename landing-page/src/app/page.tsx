@@ -9,7 +9,6 @@ import { Instructor } from "@/components/sections/Instructor";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { Footer } from "@/components/footer/Footer";
 import Hero from "@/components/hero/Hero";
 import { ScrollSection } from "@/components/ScrollSection";
 import CourseSection from "@/components/sections/CourseSection";
@@ -50,7 +49,6 @@ export default function Home() {
         <FAQ />
         <FinalCTA /> */}
       </main>
-      <Footer />
     </>
   );
 }

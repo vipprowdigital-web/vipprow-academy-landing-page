@@ -3,7 +3,6 @@ import { Navbar } from "@/components/navbar/Navbar";
 import { Courses } from "@/components/sections/Courses";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { Footer } from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Courses | Vipprow Academy",
@@ -39,7 +38,6 @@ export default function CoursesPage() {
         <Testimonials />
         <FinalCTA />
       </main>
-      <Footer />
     </>
   );
 }

@@ -5,6 +5,7 @@ import { Providers } from "@/components/Providers";
 import PageLoadShutter from "@/components/PageLoadShutter";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
+import { getAppConfig } from "@/lib/appConfig";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -31,11 +32,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const appConfig = await getAppConfig();
+
   return (
     <html lang="en" className={`${bricolage.variable} dark h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background">
@@ -44,7 +47,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
-          <Footer />
+          <Footer appConfig={appConfig} />
         </Providers>
       </body>
     </html>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/navbar/Navbar";
-import { Footer } from "@/components/footer/Footer";
 import { EnrollForm } from "@/components/sections/EnrollForm";
 
 export const metadata: Metadata = {
@@ -35,7 +34,6 @@ export default function EnrollPage() {
         </section>
         <EnrollForm />
       </main>
-      <Footer />
     </>
   );
 }

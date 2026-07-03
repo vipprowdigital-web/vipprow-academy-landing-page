@@ -140,7 +140,11 @@ export function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             <Link href="/enroll">
-              <Button variant="primary" size="sm">
+              <Button
+                variant="primary"
+                size="sm"
+                className="bg-linear-to-r from-primary to-button"
+              >
                 Enroll Now
               </Button>
             </Link>
@@ -243,7 +247,11 @@ export function Navbar() {
 
               <div className="pt-4">
                 <Link href="/enroll" onClick={() => setMenuOpen(false)}>
-                  <Button variant="primary" size="md" className="w-full">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    className="w-full bg-linear-to-r from-primary to-button"
+                  >
                     Enroll Now
                   </Button>
                 </Link>

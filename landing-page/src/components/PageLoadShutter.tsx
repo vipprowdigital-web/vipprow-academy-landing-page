@@ -102,10 +102,12 @@ export default function PageLoadShutter() {
             className="relative z-10 mt-8 flex flex-col items-center gap-2"
           >
             <p className="font-heading font-bold text-xl tracking-tight text-white">
-              Vipprow
-              <span className="text-white/60 font-medium text-base ml-1">
-                Academy
-              </span>
+              <Image
+                src="/logos/vipprow_logo.svg"
+                alt=""
+                width={150}
+                height={20}
+              />
             </p>
             <p className="text-white/40 text-xs tracking-[0.18em] uppercase">
               Where Futures Are Built

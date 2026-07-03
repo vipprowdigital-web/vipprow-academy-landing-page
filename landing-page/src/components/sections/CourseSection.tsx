@@ -4,6 +4,8 @@ import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DigitalMarketingAnimation from "../animations/DigitalMarketingAnimation";
+import PerformanceMarketingAnimation from "../animations/PerformanceMarketingAnimation";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -17,6 +19,7 @@ interface HeroScrollSplitProps {
   description: string;
   ctaLabel: string;
   ctaHref: string;
+  variant: "digital-marketing" | "performance-marketing";
 }
 
 /**
@@ -54,6 +57,7 @@ export default function CourseSection({
   description,
   ctaLabel,
   ctaHref,
+  variant,
 }: HeroScrollSplitProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const imageWrapRef = useRef<HTMLDivElement>(null);
@@ -144,7 +148,7 @@ export default function CourseSection({
       ref={sectionRef}
       className="relative h-screen w-full overflow-hidden bg-[#05070d] md:flex"
     >
-      <div
+      {/* <div
         ref={imageWrapRef}
         className="relative h-full w-full shrink-0"
         style={{ willChange: "width" }}
@@ -157,6 +161,17 @@ export default function CourseSection({
           className="object-cover"
           sizes="100vw"
         />
+      </div> */}
+      <div
+        ref={imageWrapRef}
+        className="relative h-full w-full shrink-0"
+        style={{ willChange: "width" }}
+      >
+        {variant === "digital-marketing" ? (
+          <DigitalMarketingAnimation className="absolute inset-0" />
+        ) : (
+          <PerformanceMarketingAnimation className="absolute inset-0" />
+        )}
       </div>
 
       <div
@@ -185,7 +200,7 @@ export default function CourseSection({
         <a
           ref={ctaRef}
           href={ctaHref}
-          className="group mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-3 text-md font-semibold text-white transition-transform duration-20 hover:-translate-y-0.5"
+          className="group mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-primary px-6 py-3 text-md font-semibold text-white transition-transform duration-20 hover:-translate-y-0.5 bg-linear-to-r from-primary to-button"
         >
           {ctaLabel}
           {/* <span className="transition-transform duration-200 group-hover:translate-x-1">

@@ -834,7 +834,7 @@ function CourseDetails({
           <Button
             variant="primary"
             size="lg"
-            style={{ background: COURSES[activeIndex].accentColor }}
+            className="bg-linear-to-r from-primary to-button"
           >
             View curriculum
             <ArrowRight size={16} />
