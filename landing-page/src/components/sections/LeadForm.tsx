@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
@@ -19,36 +19,26 @@ const QUALIFICATIONS = [
   { value: "working_professional", label: "Working Professional" },
 ];
 
-const MAX_FILE_SIZE_MB = 5;
-const ACCEPTED_FILE_TYPES = [
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "application/pdf",
-];
-
 type Field = {
-  studentName: string;
+  name: string;
   email: string;
-  mobile: string;
-  dateOfBirth: string;
-  address: string;
+  phone: string;
+  course: string;
+  qualification: string;
   city: string;
   state: string;
-  respondentType: string;
-  courseName: string;
+  message: string;
 };
 
 const INITIAL: Field = {
-  studentName: "",
+  name: "",
   email: "",
-  mobile: "",
-  dateOfBirth: "",
-  address: "",
+  phone: "",
+  course: "",
+  qualification: "",
   city: "",
   state: "",
-  respondentType: "",
-  courseName: "",
+  message: "",
 };
 
 function inputClass(hasError: boolean) {
@@ -62,13 +52,9 @@ function inputClass(hasError: boolean) {
   ].join(" ");
 }
 
-export function EnrollForm() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
+export function LeadForm() {
   const [fields, setFields] = useState<Field>(INITIAL);
-  const [documentFile, setDocumentFile] = useState<File | null>(null);
-  const [errors, setErrors] = useState<
-    Partial<Record<keyof Field | "document", string>>
-  >({});
+  const [errors, setErrors] = useState<Partial<Field>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
@@ -79,65 +65,24 @@ export function EnrollForm() {
     if (apiError) setApiError(null);
   }
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0] ?? null;
-    if (apiError) setApiError(null);
-
-    if (!file) {
-      setDocumentFile(null);
-      return;
-    }
-
-    if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
-      setErrors((prev) => ({
-        ...prev,
-        document: "Only JPG, PNG, or PDF files are allowed.",
-      }));
-      setDocumentFile(null);
-      e.target.value = "";
-      return;
-    }
-
-    if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-      setErrors((prev) => ({
-        ...prev,
-        document: `File must be under ${MAX_FILE_SIZE_MB}MB.`,
-      }));
-      setDocumentFile(null);
-      e.target.value = "";
-      return;
-    }
-
-    setErrors((prev) => ({ ...prev, document: "" }));
-    setDocumentFile(file);
-  }
-
-  function removeDocument() {
-    setDocumentFile(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  }
-
   function validate(): boolean {
-    const next: Partial<Record<keyof Field | "document", string>> = {};
-    if (!fields.studentName.trim()) next.studentName = "Full name is required.";
-    if (
-      fields.email.trim() &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)
-    ) {
+    const next: Partial<Field> = {};
+    if (!fields.name.trim()) next.name = "Full name is required.";
+    if (!fields.email.trim()) {
+      next.email = "Email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
       next.email = "Enter a valid email address.";
     }
-    if (!fields.mobile.trim()) {
-      next.mobile = "Phone number is required.";
-    } else if (!/^[6-9]\d{9}$/.test(fields.mobile.replace(/\s+/g, ""))) {
-      next.mobile = "Enter a valid 10-digit Indian mobile number.";
+    if (!fields.phone.trim()) {
+      next.phone = "Phone number is required.";
+    } else if (!/^[6-9]\d{9}$/.test(fields.phone.replace(/\s+/g, ""))) {
+      next.phone = "Enter a valid 10-digit Indian mobile number.";
     }
-    if (!fields.dateOfBirth) next.dateOfBirth = "Date of birth is required.";
-    if (!fields.courseName) next.courseName = "Please select a course.";
-    if (!fields.respondentType)
-      next.respondentType = "Please select your qualification.";
+    if (!fields.course) next.course = "Please select a course.";
+    if (!fields.qualification)
+      next.qualification = "Please select your qualification.";
     if (!fields.city.trim()) next.city = "City is required.";
     if (!fields.state.trim()) next.state = "State is required.";
-    if (!documentFile) next.document = "Please upload a valid ID document.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -150,26 +95,22 @@ export function EnrollForm() {
     setApiError(null);
 
     try {
-      const formData = new FormData();
-      formData.append("name", fields.studentName.trim());
-      formData.append("mobile", fields.mobile.trim());
-      if (fields.email.trim()) formData.append("email", fields.email.trim());
-      formData.append("dateOfBirth", fields.dateOfBirth);
-      if (fields.address.trim())
-        formData.append("address", fields.address.trim());
-      formData.append("city", fields.city.trim());
-      formData.append("state", fields.state.trim());
-      formData.append("respondentType", fields.respondentType);
-      formData.append(
-        "courseName",
-        COURSES.find((c) => c.value === fields.courseName)?.label ??
-          fields.courseName,
-      );
-      if (documentFile) formData.append("document", documentFile);
-
-      const res = await fetch(`${API_URL}/admissions/enroll`, {
+      const res = await fetch(`${API_URL}/leads/demo-class`, {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fields.name.trim(),
+          mobile: fields.phone.trim(),
+          email: fields.email.trim() || undefined,
+          city: fields.city.trim() || undefined,
+          state: fields.state.trim() || undefined,
+          courseInterested:
+            COURSES.find((c) => c.value === fields.course)?.label ??
+            fields.course,
+          respondentType: fields.qualification || undefined,
+          source: "demo_class",
+          remarks: fields.message.trim() || undefined,
+        }),
       });
 
       const data = await res.json();
@@ -215,15 +156,16 @@ export function EnrollForm() {
             </svg>
           </div>
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-3">
-            Application Received!
+            Demo Class Requested!
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             Thank you,{" "}
             <span className="text-foreground font-medium">
-              {fields.studentName.split(" ")[0]}
+              {fields.name.split(" ")[0]}
             </span>
-            . Our admissions team will review your documents and reach out to
-            you at <span className="text-primary">{fields.mobile}</span> soon.
+            . Our team will reach out to you at{" "}
+            <span className="text-primary">{fields.email}</span>{" "}
+            shortly to confirm your free demo class slot.
           </p>
         </motion.div>
       </section>
@@ -247,14 +189,12 @@ export function EnrollForm() {
             <input
               type="text"
               placeholder="e.g. Arjun Sharma"
-              value={fields.studentName}
-              onChange={(e) => set("studentName", e.target.value)}
-              className={inputClass(!!errors.studentName)}
+              value={fields.name}
+              onChange={(e) => set("name", e.target.value)}
+              className={inputClass(!!errors.name)}
             />
-            {errors.studentName && (
-              <p className="mt-1.5 text-xs text-red-500">
-                {errors.studentName}
-              </p>
+            {errors.name && (
+              <p className="mt-1.5 text-xs text-red-500">{errors.name}</p>
             )}
           </div>
 
@@ -262,10 +202,7 @@ export function EnrollForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-foreground mb-1.5">
-                Email Address{" "}
-                <span className="text-muted-foreground font-normal">
-                  (optional)
-                </span>
+                Email Address <span className="text-primary">*</span>
               </label>
               <input
                 type="email"
@@ -286,38 +223,16 @@ export function EnrollForm() {
                 type="tel"
                 placeholder="10-digit mobile number"
                 maxLength={10}
-                value={fields.mobile}
+                value={fields.phone}
                 onChange={(e) =>
-                  set("mobile", e.target.value.replace(/\D/g, ""))
+                  set("phone", e.target.value.replace(/\D/g, ""))
                 }
-                className={inputClass(!!errors.mobile)}
+                className={inputClass(!!errors.phone)}
               />
-              {errors.mobile && (
-                <p className="mt-1.5 text-xs text-red-500">{errors.mobile}</p>
+              {errors.phone && (
+                <p className="mt-1.5 text-xs text-red-500">{errors.phone}</p>
               )}
             </div>
-          </div>
-
-          {/* Date of Birth */}
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-1.5">
-              Date of Birth <span className="text-primary">*</span>
-            </label>
-            <input
-              type="date"
-              value={fields.dateOfBirth}
-              max={new Date().toISOString().split("T")[0]}
-              onChange={(e) => set("dateOfBirth", e.target.value)}
-              className={[
-                inputClass(!!errors.dateOfBirth),
-                "cursor-pointer",
-              ].join(" ")}
-            />
-            {errors.dateOfBirth && (
-              <p className="mt-1.5 text-xs text-red-500">
-                {errors.dateOfBirth}
-              </p>
-            )}
           </div>
 
           {/* Course Interest */}
@@ -330,13 +245,13 @@ export function EnrollForm() {
                 <button
                   key={c.value}
                   type="button"
-                  onClick={() => set("courseName", c.value)}
+                  onClick={() => set("course", c.value)}
                   className={[
                     "rounded-xl border px-4 py-3.5 text-sm text-left transition-all duration-200 cursor-pointer",
-                    fields.courseName === c.value
+                    fields.course === c.value
                       ? "border-primary bg-primary/8 text-foreground font-medium"
                       : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
-                    errors.courseName && fields.courseName !== c.value
+                    errors.course && fields.course !== c.value
                       ? "border-red-400"
                       : "",
                   ].join(" ")}
@@ -347,8 +262,8 @@ export function EnrollForm() {
                 </button>
               ))}
             </div>
-            {errors.courseName && (
-              <p className="mt-1.5 text-xs text-red-500">{errors.courseName}</p>
+            {errors.course && (
+              <p className="mt-1.5 text-xs text-red-500">{errors.course}</p>
             )}
           </div>
 
@@ -358,10 +273,10 @@ export function EnrollForm() {
               Current Qualification <span className="text-primary">*</span>
             </label>
             <select
-              value={fields.respondentType}
-              onChange={(e) => set("respondentType", e.target.value)}
+              value={fields.qualification}
+              onChange={(e) => set("qualification", e.target.value)}
               className={[
-                inputClass(!!errors.respondentType),
+                inputClass(!!errors.qualification),
                 "appearance-none cursor-pointer",
               ].join(" ")}
             >
@@ -374,9 +289,9 @@ export function EnrollForm() {
                 </option>
               ))}
             </select>
-            {errors.respondentType && (
+            {errors.qualification && (
               <p className="mt-1.5 text-xs text-red-500">
-                {errors.respondentType}
+                {errors.qualification}
               </p>
             )}
           </div>
@@ -415,76 +330,21 @@ export function EnrollForm() {
             </div>
           </div>
 
-          {/* Address */}
+          {/* Message */}
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">
-              Address{" "}
+              Tell us about yourself{" "}
               <span className="text-muted-foreground font-normal">
                 (optional)
               </span>
             </label>
             <textarea
-              rows={3}
-              placeholder="House no., street, locality..."
-              value={fields.address}
-              onChange={(e) => set("address", e.target.value)}
+              rows={4}
+              placeholder="Your goals, background, or anything you'd like us to know..."
+              value={fields.message}
+              onChange={(e) => set("message", e.target.value)}
               className={[inputClass(false), "resize-none"].join(" ")}
             />
-          </div>
-
-          {/* Document Upload */}
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-1.5">
-              ID Document (Aadhar Card, etc.){" "}
-              <span className="text-primary">*</span>
-            </label>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept={ACCEPTED_FILE_TYPES.join(",")}
-              onChange={handleFileChange}
-              className="hidden"
-              id="document-upload"
-            />
-            {documentFile ? (
-              <div
-                className={[
-                  "flex items-center justify-between gap-3 rounded-xl border px-4 py-3",
-                  errors.document ? "border-red-400" : "border-border",
-                ].join(" ")}
-              >
-                <span className="text-sm text-foreground truncate">
-                  {documentFile.name}
-                </span>
-                <button
-                  type="button"
-                  onClick={removeDocument}
-                  className="text-xs font-medium text-red-500 hover:text-red-600 cursor-pointer shrink-0"
-                >
-                  Remove
-                </button>
-              </div>
-            ) : (
-              <label
-                htmlFor="document-upload"
-                className={[
-                  "flex flex-col items-center justify-center gap-1.5 rounded-xl border border-dashed px-4 py-6 text-center cursor-pointer transition-all duration-200",
-                  errors.document
-                    ? "border-red-400"
-                    : "border-border hover:border-primary/40",
-                ].join(" ")}
-              >
-                <span className="text-sm text-foreground font-medium">
-                  Click to upload your document
-                </span>
-                <span className="text-xs text-muted-foreground">
-                  JPG, PNG, or PDF — up to {MAX_FILE_SIZE_MB}MB
-                </span>
-              </label>
-            )}
-            {errors.document && (
-              <p className="mt-1.5 text-xs text-red-500">{errors.document}</p>
-            )}
           </div>
 
           {/* API-level error */}
@@ -522,16 +382,16 @@ export function EnrollForm() {
                     d="M4 12a8 8 0 018-8v8H4z"
                   />
                 </svg>
-                Submitting…
+                Booking…
               </span>
             ) : (
-              "Submit Application →"
+              "Book My Demo Class →"
             )}
           </Button>
 
           <p className="text-center text-xs text-muted-foreground">
             By submitting, you agree to be contacted by the Vipprow Academy
-            admissions team.
+            team to schedule your demo class.
           </p>
         </form>
       </motion.div>

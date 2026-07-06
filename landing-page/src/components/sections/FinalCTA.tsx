@@ -114,9 +114,9 @@ export function FinalCTA() {
                 variant="primary"
                 size="lg"
                 className="min-w-48"
-                onClick={() => router.push("/enroll")}
+                onClick={() => router.push("/demo-class")}
               >
-                Enroll Now
+                Book a Demo Class
                 <ArrowRight size={18} />
               </Button>
               <Button variant="secondary" size="lg" onClick={() => {}}>

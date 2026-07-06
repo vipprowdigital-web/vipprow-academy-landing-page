@@ -139,6 +139,15 @@ export function Navbar() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
+            <Link href="/demo-class">
+              <Button
+                variant="primary"
+                size="sm"
+                className="bg-linear-to-r from-primary to-button"
+              >
+                Book a Demo Class
+              </Button>
+            </Link>
             <Link href="/enroll">
               <Button
                 variant="primary"
@@ -246,6 +255,15 @@ export function Navbar() {
               </motion.div>
 
               <div className="pt-4">
+                <Link href="/demo-class" onClick={() => setMenuOpen(false)}>
+                  <Button
+                    variant="primary"
+                    size="md"
+                    className="w-full bg-linear-to-r from-primary to-button"
+                  >
+                    Book a Demo Class
+                  </Button>
+                </Link>
                 <Link href="/enroll" onClick={() => setMenuOpen(false)}>
                   <Button
                     variant="primary"
