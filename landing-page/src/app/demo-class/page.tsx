@@ -7,7 +7,21 @@ export const metadata: Metadata = {
     "Experience Vipprow Academy firsthand. Book a free, no-obligation demo class for Digital Marketing Mastery or Performance Marketing.",
 };
 
-export default function DemoClassPage() {
+function firstValue(value: string | string[] | undefined): string | undefined {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function DemoClassPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
+  const branchId = firstValue(params.branchId);
+  const leadId = firstValue(params.leadId);
+  const name = firstValue(params.name);
+  const mobile = firstValue(params.mobile);
+
   return (
     <>
       <main className="section-light min-h-screen">
@@ -30,7 +44,12 @@ export default function DemoClassPage() {
             </p>
           </div>
         </section>
-        <LeadForm />
+        <LeadForm
+          branchId={branchId}
+          leadId={leadId}
+          urlName={name}
+          urlMobile={mobile}
+        />
       </main>
     </>
   );

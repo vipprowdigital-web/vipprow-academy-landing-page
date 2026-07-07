@@ -7,7 +7,21 @@ export const metadata: Metadata = {
     "Take the first step toward your future. Apply for Digital Marketing Mastery or Performance Marketing at Vipprow Academy.",
 };
 
-export default function EnrollPage() {
+function firstValue(value: string | string[] | undefined): string | undefined {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function EnrollPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
+  const branchId = firstValue(params.branchId);
+  const leadId = firstValue(params.leadId);
+  const name = firstValue(params.name);
+  const mobile = firstValue(params.mobile);
+
   return (
     <>
       <main className="section-light min-h-screen">
@@ -30,7 +44,12 @@ export default function EnrollPage() {
             </p>
           </div>
         </section>
-        <EnrollForm />
+        <EnrollForm
+          branchId={branchId}
+          leadId={leadId}
+          urlName={name}
+          urlMobile={mobile}
+        />
       </main>
     </>
   );

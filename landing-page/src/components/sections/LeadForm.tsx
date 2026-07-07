@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
@@ -41,6 +41,13 @@ const INITIAL: Field = {
   message: "",
 };
 
+type DemoClassContext = {
+  branchName: string;
+  city: string | null;
+  businessName: string | null;
+  leadFound: boolean;
+};
+
 function inputClass(hasError: boolean) {
   return [
     "w-full rounded-xl border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground",
@@ -52,12 +59,89 @@ function inputClass(hasError: boolean) {
   ].join(" ");
 }
 
-export function LeadForm() {
-  const [fields, setFields] = useState<Field>(INITIAL);
+export function LeadForm({
+  branchId,
+  leadId,
+  urlName,
+  urlMobile,
+}: {
+  branchId?: string;
+  leadId?: string;
+  urlName?: string;
+  urlMobile?: string;
+} = {}) {
+  const [fields, setFields] = useState<Field>(() => ({
+    ...INITIAL,
+    name: urlName ?? "",
+    phone: urlMobile ? urlMobile.replace(/\D/g, "") : "",
+  }));
   const [errors, setErrors] = useState<Partial<Field>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
+
+  const [demoContext, setDemoContext] = useState<DemoClassContext | null>(null);
+  const [contextLoading, setContextLoading] = useState(!!leadId);
+  const [contextError, setContextError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!leadId) return;
+
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const params = new URLSearchParams({ leadId });
+        if (branchId) params.set("branchId", branchId);
+
+        const res = await fetch(
+          `${API_URL}/leads/demo-class/context?${params.toString()}`,
+        );
+        const json = await res.json();
+        if (cancelled) return;
+
+        if (!res.ok || !json?.success) {
+          setContextError(
+            json?.message ?? "We couldn't load your demo class details.",
+          );
+          return;
+        }
+
+        const { data } = json;
+        setDemoContext({
+          branchName: data.branchName,
+          city: data.city ?? null,
+          businessName: data.businessName ?? null,
+          leadFound: !!data.lead,
+        });
+
+        if (data.lead) {
+          setFields((prev) => ({
+            ...prev,
+            name: data.lead.name || prev.name,
+            email: data.lead.email || prev.email,
+            phone: data.lead.mobile || prev.phone,
+            course:
+              COURSES.find(
+                (c) =>
+                  c.label.toLowerCase() ===
+                  String(data.lead.courseInterested ?? "").toLowerCase(),
+              )?.value ?? prev.course,
+          }));
+        }
+      } catch {
+        if (!cancelled) {
+          setContextError("We couldn't load your demo class details.");
+        }
+      } finally {
+        if (!cancelled) setContextLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [leadId, branchId]);
 
   function set(key: keyof Field, value: string) {
     setFields((prev) => ({ ...prev, [key]: value }));
@@ -110,6 +194,8 @@ export function LeadForm() {
           respondentType: fields.qualification || undefined,
           source: "demo_class",
           remarks: fields.message.trim() || undefined,
+          branchId: branchId || undefined,
+          leadId: leadId || undefined,
         }),
       });
 
@@ -180,6 +266,32 @@ export function LeadForm() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         className="max-w-2xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm"
       >
+        {leadId && contextLoading && (
+          <div className="mb-6 rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
+            Loading your demo class details…
+          </div>
+        )}
+
+        {contextError && (
+          <div className="mb-6 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+            {contextError}
+          </div>
+        )}
+
+        {demoContext && (
+          <div className="mb-6 rounded-xl border border-primary/30 bg-primary/8 px-4 py-3 text-sm text-foreground">
+            You&apos;re booking a free demo class with{" "}
+            <span className="font-medium">
+              {demoContext.businessName ?? demoContext.branchName}
+            </span>{" "}
+            — {demoContext.branchName}
+            {demoContext.city ? `, ${demoContext.city}` : ""}.
+            {demoContext.leadFound && (
+              <span> We&apos;ve pre-filled your details below.</span>
+            )}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} noValidate className="space-y-6">
           {/* Full Name */}
           <div>
@@ -206,7 +318,7 @@ export function LeadForm() {
               </label>
               <input
                 type="email"
-                placeholder="you@example.com"
+                placeholder="you@gmail.com"
                 value={fields.email}
                 onChange={(e) => set("email", e.target.value)}
                 className={inputClass(!!errors.email)}
