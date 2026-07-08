@@ -22,7 +22,7 @@ export function Testimonials() {
           <motion.h2
             variants={fadeUp}
             className="font-heading font-bold leading-tight tracking-tight mb-4"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
           >
             Hear it from those
             <br />

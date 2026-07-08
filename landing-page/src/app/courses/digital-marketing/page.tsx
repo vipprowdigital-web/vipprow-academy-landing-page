@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Footer } from "@/components/footer/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import InsightsSection from "@/components/sections/InsightsSection";
 import type { CardData } from "@/components/sections/InsightsSection";
 import CourseSection from "@/components/sections/CourseSection";
 import Image from "next/image";
+import { getAppConfig } from "@/lib/appConfig";
 
 export const metadata: Metadata = {
   title: "Digital Marketing | Vipprow Academy",
@@ -17,64 +15,84 @@ export const metadata: Metadata = {
 const DM_CARDS: CardData[] = [
   {
     category: "Module 01",
-    title: "Foundations of Digital Marketing",
+    title: "Digital Marketing Fundamentals",
     description:
-      "Understand the full digital ecosystem — marketing funnels, consumer psychology and how every channel works together to drive results.",
+      "Understand digital marketing, customer journeys, sales funnels, branding, and the complete digital ecosystem.",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
   },
   {
     category: "Module 02",
-    title: "SEO & Content Marketing",
+    title: "SEO & Local SEO",
     description:
-      "Drive consistent organic traffic through keyword research, on-page optimisation, link building and a content strategy that ranks.",
+      "Learn keyword research, on-page SEO, technical SEO, Google Search Console, local SEO, and ranking strategies.",
     imageUrl:
       "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=600",
   },
   {
     category: "Module 03",
-    title: "Social Media Marketing",
+    title: "Performance Marketing",
     description:
-      "Build and grow an audience on Instagram, Facebook and LinkedIn with platform-native content, Reels and a consistent brand voice.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600",
-  },
-  {
-    category: "Module 04",
-    title: "Email & Marketing Automation",
-    description:
-      "Build high-converting email campaigns, grow your list and automate your entire nurture flow so leads convert while you sleep.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?q=80&w=600",
-  },
-  {
-    category: "Module 05",
-    title: "Analytics & Reporting",
-    description:
-      "Turn raw GA4 data into clear decisions — track campaigns, attribute conversions and build dashboards stakeholders actually read.",
+      "Create and optimize Google Ads and Meta Ads campaigns, understand conversion tracking, ROAS, and audience targeting.",
     imageUrl:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
   },
   {
-    category: "Module 06",
-    title: "Brand Building & Strategy",
+    category: "Module 04",
+    title: "Social Media & Content Marketing",
     description:
-      "Craft a brand identity that earns trust — from positioning and messaging to integrated campaigns that drive long-term growth.",
+      "Plan content calendars, create engaging posts and Reels, build communities, and grow brands across major social platforms.",
     imageUrl:
-      "https://images.unsplash.com/photo-1493421419110-74f4e85ba126?q=80&w=600",
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600",
+  },
+  {
+    category: "Module 05",
+    title: "AI Tools for Marketers",
+    description:
+      "Master ChatGPT, Gemini, Canva AI, AI automation, prompt engineering, and productivity tools used by modern marketers.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600",
+  },
+  {
+    category: "Module 06",
+    title: "Analytics & Conversion Tracking",
+    description:
+      "Use GA4, Google Tag Manager, Looker Studio, and reporting dashboards to measure campaign performance.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
+  },
+  {
+    category: "Module 07",
+    title: "WordPress & Landing Pages",
+    description:
+      "Build professional websites and high-converting landing pages without coding using WordPress and modern tools.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600",
+  },
+  {
+    category: "Module 08",
+    title: "Career, Freelancing & Portfolio",
+    description:
+      "Build your portfolio, optimize LinkedIn, prepare for interviews, find freelance clients, and launch your digital marketing career.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600",
   },
 ];
 
 const OUTCOMES = [
-  "Run end-to-end digital campaigns from strategy to execution",
-  "Grow organic traffic with proven SEO techniques",
-  "Build and manage a brand across all social platforms",
-  "Make data-driven decisions using analytics tools",
-  "Create compelling content that converts",
-  "Launch email campaigns with high open and click rates",
+  "Plan and execute complete digital marketing campaigns",
+  "Run Google Ads and Meta Ads with confidence",
+  "Improve website rankings using SEO & Local SEO",
+  "Create engaging social media and content strategies",
+  "Use AI tools to automate marketing workflows",
+  "Track campaign performance with GA4 & Tag Manager",
+  "Build websites and high-converting landing pages",
+  "Develop a professional portfolio with live projects",
+  "Prepare for interviews, freelancing, or agency growth",
 ];
 
-export default function DigitalMarketingPage() {
+export default async function DigitalMarketingPage() {
+  const appConfig = await getAppConfig();
   return (
     <div className="section-light min-h-screen relative">
       {/* Hero */}
@@ -119,12 +137,12 @@ export default function DigitalMarketingPage() {
 
       <CourseSection
         imageSrc="/images/image-1.jpg"
-        imageAlt="Learner working through a Vipprow Academy course"
-        eyebrow="Vipprow Academy"
-        heading="Learn skills that move as fast as the internet does"
-        description="Practical digital marketing and AI courses built for the Indian market — taught by people who ship, not just teach."
-        ctaLabel="Explore courses"
-        ctaHref="/courses"
+        imageAlt="Learner working through Vipprow Academy's Digital Marketing course"
+        eyebrow="Digital Marketing"
+        heading="Master digital marketing, from strategy to execution."
+        description="A practical, industry-focused program covering Digital Marketing, Performance Marketing, SEO, Google Ads, Meta Ads, AI tools, Analytics, and real-world projects to prepare you for jobs, freelancing, or building your own agency."
+        ctaLabel="Enroll in this Course"
+        ctaHref="/enroll"
         variant="digital-marketing"
       />
 
@@ -171,9 +189,11 @@ export default function DigitalMarketingPage() {
                 What you&apos;ll be able to do
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                By the end of this program, you won&apos;t just understand
-                digital marketing — you&apos;ll be executing it at a
-                professional level across every major channel.
+                By the end of this program, you&apos;ll have the practical
+                skills, portfolio, and confidence to work as a Digital Marketing
+                Professional, Performance Marketer, SEO Specialist, Freelancer,
+                or even launch your own agency using the latest AI-powered
+                marketing tools.
               </p>
             </div>
             <ul className="space-y-3">
@@ -192,7 +212,7 @@ export default function DigitalMarketingPage() {
         </div>
       </section>
 
-      <FinalCTA />
+      <FinalCTA appConfig={appConfig} />
     </div>
   );
 }

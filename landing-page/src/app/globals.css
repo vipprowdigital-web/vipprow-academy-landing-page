@@ -26,6 +26,7 @@
   --color-ring: var(--ring);
 
   --color-button: var(--button);
+  --color-scene-background: var(--scene-background);
 
   --font-sans: var(--font-bricolage);
   --font-heading: var(--font-bricolage);
@@ -44,53 +45,63 @@
 :root {
   --radius: 1rem;
 
-  /* Replace these with your brand colors */
+  /* Brand color: #06002e -> oklch(0.145 0.09 276.35). All hues below
+     are locked to 276.35 (the brand hue) so neutrals and accents share
+     one family; chroma is scaled down for neutrals and kept high for
+     primary/ring so the brand color reads as the accent, not the gray. */
 
-  --background: oklch(0.98 0.01 260);
-  --foreground: oklch(0.18 0.02 260);
+  --background: oklch(0.98 0.012 276.35);
+  --foreground: oklch(0.16 0.03 276.35);
 
-  /* --primary: oklch(0.64 0.22 275); */
-  --primary: oklch(0.48 0.18 255);
-  /* --primary: #0059bf; */
+  --primary: oklch(0.145 0.09 276.35);
+  /* --primary: #06002e; */
 
   --primary-foreground: oklch(0.98 0 0);
 
-  --secondary: oklch(0.93 0.02 260);
-  --secondary-foreground: oklch(0.22 0.02 260);
+  --secondary: oklch(0.93 0.02 276.35);
+  --secondary-foreground: oklch(0.2 0.03 276.35);
 
-  --muted: oklch(0.95 0.01 260);
-  --muted-foreground: oklch(0.48 0.02 260);
+  --muted: oklch(0.95 0.012 276.35);
+  --muted-foreground: oklch(0.48 0.03 276.35);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 260);
+  --card-foreground: oklch(0.16 0.03 276.35);
 
   --button: #40a1ff;
-  --border: oklch(0.9 0.01 260);
-  /* --ring: oklch(0.7 0.12 275); */
-  --ring: oklch(0.55 0.16 255);
+  --border: oklch(0.9 0.012 276.35);
+  --ring: oklch(0.55 0.09 276.35);
+
+  /* Fixed-dark scene surfaces (hero/course backdrops) — intentionally
+     not re-themed in .dark or .section-light, since these panels stay
+     dark regardless of the surrounding section's theme. */
+  --scene-background: oklch(0.13 0.015 276.35);
+  --gradient-scene: radial-gradient(
+    ellipse at 60% 40%,
+    #1a1c4c 0%,
+    #090b24 45%,
+    #000000 100%
+  );
 }
 
 .dark {
-  --background: oklch(0.12 0.02 260);
-  --foreground: oklch(0.97 0.01 260);
+  --background: oklch(0.1 0.02 276.35);
+  --foreground: oklch(0.97 0.01 276.35);
 
-  /* --primary: oklch(0.72 0.18 275); */
-  --primary: oklch(0.18 0.08 280);
-  --primary-foreground: oklch(0.12 0.02 260);
+  --primary: oklch(0.2 0.09 276.35);
+  --primary-foreground: oklch(0.98 0 0);
 
-  --secondary: oklch(0.18 0.02 260);
-  --secondary-foreground: oklch(0.95 0.01 260);
+  --secondary: oklch(0.18 0.03 276.35);
+  --secondary-foreground: oklch(0.95 0.01 276.35);
 
-  --muted: oklch(0.2 0.02 260);
-  --muted-foreground: oklch(0.72 0.02 260);
+  --muted: oklch(0.2 0.03 276.35);
+  --muted-foreground: oklch(0.72 0.02 276.35);
 
-  --card: oklch(0.16 0.02 260);
-  --card-foreground: oklch(0.96 0.01 260);
+  --card: oklch(0.16 0.03 276.35);
+  --card-foreground: oklch(0.96 0.01 276.35);
 
   --button: #40a1ff;
-  --border: oklch(0.25 0.02 260);
-  /* --ring: oklch(0.72 0.18 275); */
-  --ring: oklch(0.18 0.08 280);
+  --border: oklch(0.25 0.03 276.35);
+  --ring: oklch(0.2 0.09 276.35);
 }
 
 /* ==========================================
@@ -188,33 +199,33 @@
 ========================================== */
 
 .section-light {
-  --background: oklch(0.98 0.01 260);
-  --foreground: oklch(0.18 0.02 260);
+  --background: oklch(0.98 0.012 276.35);
+  --foreground: oklch(0.16 0.03 276.35);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 260);
-  --border: oklch(0.9 0.01 260);
-  --muted: oklch(0.95 0.01 260);
-  --muted-foreground: oklch(0.48 0.02 260);
-  --primary: oklch(24.147% 0.0977 266.968);
+  --card-foreground: oklch(0.16 0.03 276.35);
+  --border: oklch(0.9 0.012 276.35);
+  --muted: oklch(0.95 0.012 276.35);
+  --muted-foreground: oklch(0.48 0.03 276.35);
+  --primary: oklch(0.145 0.09 276.35);
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.93 0.02 260);
-  --secondary-foreground: oklch(0.22 0.02 260);
-  --ring: oklch(0.18 0.08 280);
+  --secondary: oklch(0.93 0.02 276.35);
+  --secondary-foreground: oklch(0.2 0.03 276.35);
+  --ring: oklch(0.55 0.09 276.35);
   background-color: var(--background);
   color: var(--foreground);
 }
 
 .section-light-alt {
-  --background: oklch(0.95 0.012 260);
-  --foreground: oklch(0.18 0.02 260);
-  --card: oklch(0.97 0.006 260);
-  --card-foreground: oklch(0.18 0.02 260);
-  --border: oklch(0.88 0.012 260);
-  --muted: oklch(0.92 0.01 260);
-  --muted-foreground: oklch(0.46 0.02 260);
-  --primary: oklch(0.18 0.08 280);
+  --background: oklch(0.95 0.014 276.35);
+  --foreground: oklch(0.16 0.03 276.35);
+  --card: oklch(0.97 0.008 276.35);
+  --card-foreground: oklch(0.16 0.03 276.35);
+  --border: oklch(0.88 0.014 276.35);
+  --muted: oklch(0.92 0.012 276.35);
+  --muted-foreground: oklch(0.46 0.03 276.35);
+  --primary: oklch(0.145 0.09 276.35);
   --primary-foreground: oklch(0.98 0 0);
-  --ring: oklch(0.18 0.08 280);
+  --ring: oklch(0.55 0.09 276.35);
   background-color: var(--background);
   color: var(--foreground);
 }

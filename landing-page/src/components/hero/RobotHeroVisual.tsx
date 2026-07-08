@@ -84,28 +84,31 @@ export default function RobotHeroVisual() {
       />
 
       {/* Orbiting sparkle particles */}
-      {!prefersReducedMotion &&
-        particles.map((p, i) => (
-          <motion.span
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: p.size,
-              height: p.size,
-              top: p.top,
-              left: p.left,
-              backgroundColor: "var(--button)",
-              boxShadow: "0 0 12px 3px var(--button)",
-            }}
-            animate={{ y: [0, -18, 0], opacity: [0.2, 1, 0.2] }}
-            transition={{
-              duration: p.duration,
-              repeat: Infinity,
-              delay: p.delay,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+      {particles.map((p, i) => (
+        <motion.span
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: p.size,
+            height: p.size,
+            top: p.top,
+            left: p.left,
+            backgroundColor: "var(--button)",
+            boxShadow: "0 0 12px 3px var(--button)",
+          }}
+          animate={
+            prefersReducedMotion
+              ? undefined
+              : { y: [0, -18, 0], opacity: [0.2, 1, 0.2] }
+          }
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
 
       {/* Robot — entrance + idle float + parallax tilt */}
       <motion.div
@@ -146,25 +149,28 @@ export default function RobotHeroVisual() {
           />
 
           {/* Attention ping near the waving hand */}
-          {!prefersReducedMotion && (
-            <motion.span
-              className="absolute rounded-full border-2"
-              style={{
-                top: "36%",
-                right: "45%",
-                width: 40,
-                height: 40,
-                borderColor: "var(--button)",
-              }}
-              animate={{ scale: [0.6, 1.8], opacity: [0.7, 0] }}
-              transition={{
-                duration: 1.8,
-                repeat: Infinity,
-                repeatDelay: 1.2,
-                ease: "easeOut",
-              }}
-            />
-          )}
+          <motion.span
+            className="absolute rounded-full border-2"
+            style={{
+              top: "36%",
+              right: "45%",
+              width: 40,
+              height: 40,
+              borderColor: "var(--button)",
+              opacity: prefersReducedMotion ? 0 : undefined,
+            }}
+            animate={
+              prefersReducedMotion
+                ? undefined
+                : { scale: [0.6, 1.8], opacity: [0.7, 0] }
+            }
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              repeatDelay: 1.2,
+              ease: "easeOut",
+            }}
+          />
         </motion.div>
       </motion.div>
 

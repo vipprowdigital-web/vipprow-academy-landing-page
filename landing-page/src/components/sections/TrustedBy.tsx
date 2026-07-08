@@ -3,29 +3,45 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { fadeUp, stagger } from "@/lib/animations";
 
-const COMPANIES = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Razorpay",
-  "Flipkart",
-  "Zomato",
-  "CRED",
-  "Swiggy",
-  "PhonePe",
-  "Meesho",
-  "Atlassian",
-  "Freshworks",
-  "Paytm",
-  "Byju's",
-  "Ola",
+const TOOLS = [
+  "Google Ads",
+  "Meta Ads",
+  "Google Analytics 4",
+  "Google Tag Manager",
+  "Google Search Console",
+  "ChatGPT",
+  "Gemini",
+  "Canva AI",
+  "WordPress",
+  "Shopify",
+  "Looker Studio",
+  "Semrush",
+  "Ahrefs",
+  "HubSpot",
+  "Mailchimp",
 ];
 
 const METRICS = [
-  { value: 2400, suffix: "+", label: "Successful Placements" },
-  { value: 18.5, suffix: "L", prefix: "₹", label: "Avg. Annual Package" },
-  { value: 96, suffix: "%", label: "Placement Rate" },
-  { value: 50, suffix: "+", label: "Partner Companies" },
+  {
+    value: 100,
+    suffix: "%",
+    label: "Placement Assistance",
+  },
+  {
+    value: 15,
+    suffix: "+",
+    label: "Live Projects",
+  },
+  {
+    value: 1,
+    suffix: ":1",
+    label: "Expert Mentorship",
+  },
+  {
+    value: 10,
+    suffix: "+",
+    label: "Industry Tools Covered",
+  },
 ];
 
 function AnimatedNumber({
@@ -89,7 +105,7 @@ export function TrustedBy() {
               >
                 <AnimatedNumber
                   value={m.value}
-                  prefix={m.prefix}
+                  // prefix={m.prefix}
                   suffix={m.suffix}
                   decimals={m.suffix === "L" ? 1 : 0}
                 />
@@ -109,7 +125,7 @@ export function TrustedBy() {
           transition={{ duration: 0.6 }}
           className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground font-heading font-semibold mb-10"
         >
-          Vipprow alumni work at
+          Learn the Tools Used by Top Digital Marketers
         </motion.p>
 
         {/* Marquee */}
@@ -131,8 +147,8 @@ export function TrustedBy() {
           />
 
           <div className="overflow-hidden">
-            <div className="flex items-center gap-16 animate-marquee whitespace-nowrap">
-              {[...COMPANIES, ...COMPANIES].map((company, i) => (
+            <div className="flex items-center gap-16 animate-marquee whitespace-nowrap [--gap:4rem]">
+              {[...TOOLS, ...TOOLS].map((company, i) => (
                 <span
                   key={`${company}-${i}`}
                   className="text-base font-heading font-semibold text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-200 shrink-0"

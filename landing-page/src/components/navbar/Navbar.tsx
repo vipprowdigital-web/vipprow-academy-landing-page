@@ -56,24 +56,24 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-16 grid grid-cols-3 items-center">
           <Link
             href="/"
-            className="font-heading font-bold text-lg tracking-tight text-foreground"
+            className="justify-self-start font-heading font-bold text-lg tracking-tight text-foreground"
           >
             {/* Vipprow<span className="text-primary">.</span>
             <span className="text-muted-foreground font-medium text-sm ml-1">
               Academy
             </span> */}
             <Image
-              src="/logos/vipprow_logo.svg"
+              src="/logos/vipprow-academy-logo-2.png"
               alt=""
               width={150}
               height={20}
             />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center justify-center justify-self-center gap-8">
             <Link
               href="/"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
@@ -138,34 +138,36 @@ export function Navbar() {
             </Link>
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/demo-class">
-              <Button
-                variant="primary"
-                size="sm"
-                className="bg-linear-to-r from-primary to-button"
-              >
-                Book a Demo Class
-              </Button>
-            </Link>
-            <Link href="/enroll">
-              <Button
-                variant="primary"
-                size="sm"
-                className="bg-linear-to-r from-primary to-button"
-              >
-                Enroll Now
-              </Button>
-            </Link>
-          </div>
+          <div className="justify-self-end flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-3">
+              <Link href="/demo-class">
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="bg-linear-to-r from-primary to-button"
+                >
+                  Book a Demo Class
+                </Button>
+              </Link>
+              <Link href="/enroll">
+                <Button
+                  variant="primary"
+                  size="sm"
+                  className="bg-linear-to-r from-primary to-button"
+                >
+                  Enroll Now
+                </Button>
+              </Link>
+            </div>
 
-          <button
-            className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-border text-foreground hover:bg-muted/40 transition-colors"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            {menuOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+            <button
+              className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-border text-foreground hover:bg-muted/40 transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -254,7 +256,7 @@ export function Navbar() {
                 </Link>
               </motion.div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex flex-col gap-3">
                 <Link href="/demo-class" onClick={() => setMenuOpen(false)}>
                   <Button
                     variant="primary"

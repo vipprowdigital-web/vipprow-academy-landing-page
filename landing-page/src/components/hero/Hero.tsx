@@ -309,6 +309,7 @@ import ScrollReveal from "@/components/animations/ScrollReveal";
 import { TypingAnimation } from "../ui/typing-animation";
 import Image from "next/image";
 import RobotHeroVisual from "./RobotHeroVisual";
+import { Button } from "../ui/Button";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -319,8 +320,7 @@ export default function Hero() {
       ref={heroRef}
       className="relative overflow-hidden min-h-screen"
       style={{
-        background:
-          "radial-gradient(ellipse at 60% 40%, #0d1f4d 0%, #040d24 45%, #000000 100%)",
+        background: "var(--gradient-scene)",
       }}
     >
       {/* Paints in, then stays as the Hero's background — bounded to this section */}
@@ -339,7 +339,7 @@ export default function Hero() {
         <TypingAnimation loop>Digital Marketing </TypingAnimation>
         <TypingAnimation loop>Academy</TypingAnimation>
       </div> */}
-      <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none px-10 text-white">
+      <div className="absolute inset-0 flex flex-col items-end justify-center z-20 pointer-events-none px-10 text-white text-right">
         {/* <div className="space-y-3">
           <h1 className="text-4xl sm:text-3xl lg:text-5xl font-bold tracking-tight mb-6">
             Master Digital Marketing Skills with{" "}
@@ -357,6 +357,9 @@ export default function Hero() {
         {/* <div className="pointer-events-auto">
           <RobotHeroVisual />
         </div> */}
+        {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/20 border border-primary/40 text-sm mb-5">
+          🚀 Admissions Open
+        </span> */}
       </div>
 
       <div className="absolute bottom-10 left-10 flex justify-center pointer-events-none z-10">
@@ -370,16 +373,16 @@ export default function Hero() {
           height={100}
         /> */}
         {/* <div className="space-y-3"> */}
-          {/* <h1 className="text-4xl sm:text-3xl lg:text-3xl font-bold tracking-tight mb-6">
+        {/* <h1 className="text-4xl sm:text-3xl lg:text-3xl font-bold tracking-tight mb-6">
             Master Digital Marketing Skills with{" "}
             <span className="font-bold">Vipprow Digital Marketing Academy</span>
           </h1> */}
-          {/* <p className="">
+        {/* <p className="">
             A 12-week, hands-on program covering SEO, Social Media, Content,
             Email and Analytics — everything you need to launch and scale
             campaigns with real ROI.
           </p> */}
-          {/* <button className="bg-linear-to-r from-primary to-button px-5 py-2 text-md text-white font-bold rounded-xl">
+        {/* <button className="bg-linear-to-r from-primary to-button px-5 py-2 text-md text-white font-bold rounded-xl">
             Get Started
           </button> */}
         {/* </div> */}

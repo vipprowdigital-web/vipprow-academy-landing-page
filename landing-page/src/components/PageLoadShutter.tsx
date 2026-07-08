@@ -36,8 +36,7 @@ export default function PageLoadShutter() {
           aria-hidden="true"
           className="fixed inset-0 z-9999 flex flex-col items-center justify-center overflow-hidden"
           style={{
-            background:
-              "radial-gradient(ellipse at 60% 40%, #0d1f4d 0%, #040d24 45%, #000000 100%)",
+            background: "var(--gradient-scene)",
           }}
         >
           {/* Subtle star-dust noise layer */}

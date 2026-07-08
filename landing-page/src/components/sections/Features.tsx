@@ -16,40 +16,40 @@ import ScrollReveal from "../animations/ScrollReveal";
 
 const FEATURES = [
   {
-    icon: Code2,
-    title: "Real-World Projects",
-    desc: "Work on production-grade codebases that solve actual problems — not contrived exercises.",
-    accent: "#7c3aed",
-  },
-  {
     icon: BrainCircuit,
-    title: "AI-Augmented Learning",
-    desc: "Leverage AI tools the way industry does. Learn to build with AI, not just understand it.",
-    accent: "#4f46e5",
-  },
-  {
-    icon: Users2,
-    title: "Elite Mentorship",
-    desc: "Weekly live sessions and code reviews with senior engineers from Google, Amazon and Razorpay.",
-    accent: "#0ea5e9",
-  },
-  {
-    icon: Trophy,
-    title: "Industry Recognition",
-    desc: "Our certification is recognised by 50+ companies. Hiring partners who trust our graduates.",
-    accent: "#d97706",
-  },
-  {
-    icon: Briefcase,
-    title: "Placement Guarantee",
-    desc: "Get placed or get a full refund. We are financially committed to your career outcome.",
-    accent: "#16a34a",
+    title: "AI-Powered Learning",
+    desc: "Master ChatGPT, Gemini, Canva AI, automation tools, and AI workflows to work smarter and stay ahead in the marketing industry.",
+    accent: "#0b0738",
   },
   {
     icon: Rocket,
-    title: "Lifetime Access",
-    desc: "Curriculum evolves — so does your access. Stay current long after your batch graduates.",
-    accent: "#dc2626",
+    title: "Live Campaign Experience",
+    desc: "Run real Google Ads and Meta Ads campaigns, analyze performance, optimize budgets, and learn exactly how agencies work.",
+    accent: "#1c1f51",
+  },
+  {
+    icon: Users2,
+    title: "Learn from Industry Experts",
+    desc: "Get mentored by experienced digital marketers who have managed campaigns across multiple industries and brands.",
+    accent: "#31376b",
+  },
+  {
+    icon: Trophy,
+    title: "Industry-Ready Certification",
+    desc: "Earn a professional certification after completing practical projects that demonstrate real marketing skills—not just theory.",
+    accent: "#485087",
+  },
+  {
+    icon: Briefcase,
+    title: "Placement & Freelancing Support",
+    desc: "Receive career guidance, interview preparation, resume building, freelancing mentorship, and job placement assistance.",
+    accent: "#616aa3",
+  },
+  {
+    icon: Code2,
+    title: "Portfolio with Real Projects",
+    desc: "Build live websites, marketing campaigns, landing pages, SEO case studies, and AI-powered workflows that showcase your expertise.",
+    accent: "#7b84bf",
   },
 ];
 
@@ -88,21 +88,25 @@ export function Features() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-16"
         >
-          <motion.div variants={fadeUp} className="mb-4 flex justify-center">
+          {/* <motion.div variants={fadeUp} className="mb-4 flex justify-center">
             <Badge variant="subtle">Why Vipprow</Badge>
-          </motion.div>
+          </motion.div> */}
           <motion.h2
             variants={fadeUp}
             className="font-heading font-bold leading-tight tracking-tight mb-4"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
           >
-            Six reasons we&apos;re different
+            Why choose <br />
+            <span className="text-primary"> Vipprow Academy?</span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="text-muted-foreground text-lg max-w-xl mx-auto"
           >
-            Most courses sell you content. We sell you outcomes.
+            Learn from industry professionals through live projects, real
+            marketing campaigns, and AI-powered workflows designed to prepare
+            you for high-paying jobs, freelancing, or building your own digital
+            agency.
           </motion.p>
         </motion.div>
 

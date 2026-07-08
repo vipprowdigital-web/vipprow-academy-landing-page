@@ -106,8 +106,7 @@ export default function DigitalMarketingAnimation({
     <div
       className={`relative w-full h-full overflow-hidden  ${className}`}
       style={{
-        background:
-          "radial-gradient(ellipse at 60% 40%, #0d1f4d 0%, #040d24 45%, #000000 100%)",
+        background: "var(--gradient-scene)",
       }}
     >
       {/* Heading text, sits behind the animation */}
@@ -239,21 +238,24 @@ export default function DigitalMarketingAnimation({
       </div>
 
       {/* Rising "engagement" particles */}
-      {!prefersReducedMotion &&
-        [10, 30, 55, 75, 90].map((left, i) => (
-          <motion.span
-            key={i}
-            className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-button"
-            style={{ left: `${left}%` }}
-            animate={{ y: ["0%", "-320%"], opacity: [0, 0.9, 0] }}
-            transition={{
-              duration: 4 + i * 0.4,
-              repeat: Infinity,
-              delay: i * 0.7,
-              ease: "easeOut",
-            }}
-          />
-        ))}
+      {[10, 30, 55, 75, 90].map((left, i) => (
+        <motion.span
+          key={i}
+          className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-button"
+          style={{ left: `${left}%` }}
+          animate={
+            prefersReducedMotion
+              ? undefined
+              : { y: ["0%", "-320%"], opacity: [0, 0.9, 0] }
+          }
+          transition={{
+            duration: 4 + i * 0.4,
+            repeat: Infinity,
+            delay: i * 0.7,
+            ease: "easeOut",
+          }}
+        />
+      ))}
     </div>
   );
 }

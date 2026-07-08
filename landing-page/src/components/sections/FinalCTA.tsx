@@ -5,9 +5,13 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { stagger, fadeUp } from "@/lib/animations";
 import { useRouter } from "next/navigation";
+import type { AppConfig } from "@/lib/appConfig";
 
-export function FinalCTA() {
+const DEFAULT_PHONE = "9669932121";
+
+export function FinalCTA({ appConfig }: { appConfig?: AppConfig | null }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const phone = appConfig?.phoneNumber || DEFAULT_PHONE;
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -84,26 +88,28 @@ export function FinalCTA() {
             <motion.div variants={fadeUp} className="mb-6 flex justify-center">
               <span className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-heading font-semibold bg-primary/80 text-white border border-primary/30">
                 <Sparkles size={12} />
-                Limited seats · Batch 2026
+                Admissions Open • Enroll Now
               </span>
             </motion.div>
 
             <motion.h2
               variants={fadeUp}
               className="font-heading font-bold leading-[1.02] tracking-tight text-white mb-6"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
+              style={{ fontSize: "clamp(2.5rem, 6vw, 3rem)" }}
             >
-              Ready to transform
+              Ready to build
               <br />
-              your career?
+              your digital marketing career?
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               className="text-muted-foreground text-lg max-w-lg mx-auto mb-10"
             >
-              Join 2,400+ engineers who took the leap. Applications for Batch
-              2026 close when seats fill — they always do.
+              Learn Digital Marketing, Performance Marketing, and AI tools
+              through live training, real-world projects, and expert mentorship.
+              Get 100% placement assistance and become industry-ready with
+              Vipprow Academy.
             </motion.p>
 
             <motion.div
@@ -116,11 +122,17 @@ export function FinalCTA() {
                 className="min-w-48"
                 onClick={() => router.push("/demo-class")}
               >
-                Book a Demo Class
+                Book a Free Demo Class
                 <ArrowRight size={18} />
               </Button>
-              <Button variant="secondary" size="lg" onClick={() => {}}>
-                Talk to an Advisor
+              <Button
+                variant="secondary"
+                size="lg"
+                onClick={() => {
+                  window.location.href = `tel:+91${phone}`;
+                }}
+              >
+                Talk to a Counselor
               </Button>
             </motion.div>
 
@@ -128,7 +140,8 @@ export function FinalCTA() {
               variants={fadeUp}
               className="mt-8 text-xs text-muted-foreground"
             >
-              No commitment. No credit card. Application takes 4 minutes.
+              ✔ Free career counseling • ✔ No prior experience required • ✔ 100%
+              Placement Assistance
             </motion.p>
           </motion.div>
         </motion.div>

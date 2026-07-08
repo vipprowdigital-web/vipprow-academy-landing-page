@@ -1,20 +1,35 @@
-'use client';
-import { motion } from 'framer-motion';
-import { Link2, AtSign, ExternalLink, MapPin } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
-import { fadeUp, stagger, clipReveal, slideLeft } from '@/lib/animations';
+"use client";
+import { motion } from "framer-motion";
+import { Link2, AtSign, ExternalLink, MapPin } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
+import { fadeUp, stagger, clipReveal, slideLeft } from "@/lib/animations";
 
 const CREDENTIALS = [
-  { label: 'Experience', value: '8+ years in Digital Marketing' },
-  { label: 'Specialisation', value: 'SEO · Paid Ads · AI Tools · Branding' },
-  { label: 'Based in', value: 'Jabalpur, Madhya Pradesh' },
-  { label: 'Certifications', value: 'Google · Meta · HubSpot Certified' },
-  { label: 'Students Trained', value: '1,200+ across Central India' },
+  {
+    label: "Experience",
+    value: "7+ Years in Digital Marketing & Brand Growth",
+  },
+  {
+    label: "Expertise",
+    value: "SEO • Google Ads • Meta Ads • Performance Marketing • AI Tools",
+  },
+  {
+    label: "Founder",
+    value: "Vipprow Digital Solutions & Vipprow Academy",
+  },
+  {
+    label: "Mentorship",
+    value: "Live Projects, Career Guidance & Industry Training",
+  },
+  {
+    label: "Mission",
+    value: "Building Job-Ready Digital Marketing Professionals",
+  },
 ];
 
 const SOCIALS = [
-  { icon: Link2, href: '#', label: 'LinkedIn' },
-  { icon: AtSign, href: '#', label: 'Twitter / X' },
+  { icon: Link2, href: "#", label: "LinkedIn" },
+  { icon: AtSign, href: "#", label: "Twitter / X" },
 ];
 
 export function Instructor() {
@@ -27,7 +42,7 @@ export function Instructor() {
             variants={slideLeft}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
             className="relative"
           >
             <div className="relative w-full max-w-sm mx-auto md:mx-0">
@@ -36,7 +51,7 @@ export function Instructor() {
                 className="absolute inset-0 rounded-3xl blur-3xl opacity-20"
                 style={{
                   background:
-                    'radial-gradient(ellipse, var(--color-primary) 0%, transparent 70%)',
+                    "radial-gradient(ellipse, var(--color-primary) 0%, transparent 70%)",
                 }}
               />
 
@@ -47,7 +62,7 @@ export function Instructor() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      'linear-gradient(145deg, oklch(0.92 0.04 275) 0%, oklch(0.85 0.08 270) 100%)',
+                      "linear-gradient(145deg, oklch(0.92 0.04 275) 0%, oklch(0.85 0.08 270) 100%)",
                   }}
                 />
 
@@ -57,7 +72,7 @@ export function Instructor() {
                     className="w-52 h-72 rounded-t-full"
                     style={{
                       background:
-                        'linear-gradient(180deg, oklch(0.7 0.12 275) 0%, oklch(0.6 0.16 268) 100%)',
+                        "linear-gradient(180deg, oklch(0.7 0.12 275) 0%, oklch(0.6 0.16 268) 100%)",
                     }}
                   />
                 </div>
@@ -66,10 +81,11 @@ export function Instructor() {
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="rounded-xl border border-border/40 bg-white/80 backdrop-blur-sm p-4 shadow-sm">
                     <p className="font-heading font-bold text-foreground text-lg">
-                      Arjun Verma
+                      Rewa Prasad Tiwari
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      Digital Marketing Expert &amp; Educator
+                      Founder, Vipprow Academy Digital Marketing Strategist & AI
+                      Mentor
                     </p>
                     <div className="flex items-center gap-1.5 mt-1.5 text-muted-foreground">
                       <MapPin size={10} />
@@ -95,13 +111,16 @@ export function Instructor() {
             {/* Floating rating badge */}
             <motion.div
               animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -top-4 -right-4 hidden md:block"
             >
-              <div className="rounded-2xl border border-border bg-card shadow-xl p-3">
-                <p className="text-xs text-muted-foreground mb-0.5">Avg rating</p>
+              <div className="rounded-lg border border-border bg-card shadow-xl p-3">
+                <p className="text-xs text-muted-foreground mb-0.5">
+                  Live Learning
+                </p>
+
                 <p className="font-heading font-bold text-foreground text-xl">
-                  4.9 ⭐
+                  100% Practical
                 </p>
               </div>
             </motion.div>
@@ -112,30 +131,37 @@ export function Instructor() {
             variants={stagger}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
           >
-            <motion.div variants={fadeUp} className="mb-6">
+            {/* <motion.div variants={fadeUp} className="mb-6">
               <Badge variant="default">Your Instructor</Badge>
-            </motion.div>
+            </motion.div> */}
 
             <motion.h2
               variants={clipReveal}
               className="font-heading font-bold leading-[1.05] tracking-tight mb-6"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
             >
-              Taught by a marketer
+              Learn from an industry expert
               <br />
-              <span className="text-primary">who has done it.</span>
+              <span className="text-primary">
+                who practices what he teaches.
+              </span>
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               className="text-muted-foreground text-lg leading-relaxed mb-8"
             >
-              Arjun has spent 8 years running high-budget digital campaigns for
-              brands across India. He teaches with real campaign data, live case
-              studies and the same AI tools used by the world&apos;s top
-              marketers — straight from Jabalpur to the world.
+              Vipin Tiwari is the Founder of Vipprow Academy and an experienced
+              Digital Marketing Strategist with over 7 years of helping
+              businesses grow through SEO, Google Ads, Performance Marketing,
+              Branding, and AI-powered marketing solutions. Rather than teaching
+              outdated theory, he focuses on real client projects, live
+              campaigns, practical strategies, and the latest AI tools used by
+              modern marketing professionals. Every lesson is designed to
+              prepare students for real careers in agencies, startups, and
+              businesses.
             </motion.p>
 
             <motion.dl variants={stagger} className="space-y-4 mb-8">

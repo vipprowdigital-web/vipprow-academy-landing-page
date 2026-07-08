@@ -15,8 +15,7 @@ export default function PerformanceMarketingAnimation({
     <div
       className={`relative w-full h-full overflow-hidden flex items-center justify-center ${className}`}
       style={{
-        background:
-          "radial-gradient(ellipse at 60% 40%, #0d1f4d 0%, #040d24 45%, #000000 100%)",
+        background: "var(--gradient-scene)",
       }}
     >
       {/* Heading text, sits behind the animation */}
@@ -181,13 +180,13 @@ export default function PerformanceMarketingAnimation({
       </motion.div>
 
       {/* Pulse rings from the card, signalling "conversions" */}
-      {!prefersReducedMotion && (
-        <motion.div
-          className="absolute z-0 w-[320px] h-80 rounded-2xl border border-button/40"
-          animate={{ scale: [1, 1.15], opacity: [0.35, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
-        />
-      )}
+      <motion.div
+        className="absolute z-0 w-[320px] h-80 rounded-2xl border border-button/40"
+        animate={
+          prefersReducedMotion ? undefined : { scale: [1, 1.15], opacity: [0.35, 0] }
+        }
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+      />
     </div>
   );
 }

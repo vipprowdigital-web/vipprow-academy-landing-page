@@ -146,7 +146,7 @@ export default function CourseSection({
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden bg-[#05070d] md:flex"
+      className="relative h-screen w-full overflow-hidden bg-scene-background md:flex"
     >
       {/* <div
         ref={imageWrapRef}

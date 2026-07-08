@@ -11,18 +11,18 @@ import Image from "next/image";
 const PILLARS = [
   {
     icon: Layers,
-    title: "Industry-led Curriculum",
-    desc: "Built with senior engineers from top product companies. Updated every quarter to reflect what actually gets hired.",
+    title: "Industry-Focused Curriculum",
+    desc: "Master Digital Marketing, Performance Marketing, SEO, Social Media, Meta Ads, Google Ads, Email Marketing, and AI tools with a curriculum designed around current industry demands.",
   },
   {
     icon: Zap,
-    title: "Learn by Doing",
-    desc: "No death by slides. Every concept is applied immediately through projects that mirror real engineering challenges.",
+    title: "Hands-On Practical Learning",
+    desc: "Work on live campaigns, real business case studies, ad account setups, and AI-powered marketing workflows instead of just watching recorded lectures.",
   },
   {
     icon: Users,
-    title: "Cohort-based Learning",
-    desc: "Work alongside high-intent peers. Build your network before you graduate. The cohort becomes your career advantage.",
+    title: "Mentorship & Career Support",
+    desc: "Learn directly from experienced marketers, receive personalized guidance, build an impressive portfolio, and prepare for interviews, freelancing, or your own agency.",
   },
 ];
 
@@ -106,7 +106,7 @@ export function AboutProgram() {
         WITH
       </ScrollReveal> */}
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 sm:px-0">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Left: editorial copy */}
           <motion.div
@@ -115,36 +115,39 @@ export function AboutProgram() {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            <motion.div variants={fadeUp} className="mb-6">
+            {/* <motion.div variants={fadeUp} className="mb-6">
               <Badge variant="default">About the Program</Badge>
-            </motion.div>
+            </motion.div> */}
 
             <motion.h2
               variants={clipReveal}
               className="font-heading font-bold leading-[1.05] tracking-tight mb-8"
-              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
+              style={{ fontSize: "clamp(2.25rem, 5vw, 3rem)" }}
             >
-              Not a course.
+              More than a course.
               <br />
-              <span className="text-primary">An experience.</span>
+              <span className="text-primary">A career transformation.</span>
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
               className="text-muted-foreground text-lg leading-relaxed mb-10"
             >
-              Vipprow Academy is built around the belief that the best way to
-              learn engineering is to engineer. We combine live instruction,
-              structured mentorship and real-world projects to give you a
-              complete, context-rich education — not just a certificate.
+              Vipprow Academy prepares you for today&apos;s digital-first world
+              with practical training in Digital Marketing, Performance
+              Marketing, and AI-powered marketing tools. Learn through live
+              sessions, real client projects, and hands-on campaigns that build
+              the confidence and skills employers and businesses are looking
+              for.
             </motion.p>
 
             <motion.ul variants={stagger} className="space-y-4">
               {[
-                "Live sessions with senior engineers — not recorded lectures",
-                "Weekly 1:1 mentor check-ins on your actual code",
-                "Build 6+ portfolio projects before you graduate",
-                "Placement support until you land your first role",
+                "Live classes with experienced Digital Marketing professionals",
+                "Master Google Ads, Meta Ads, SEO & Social Media Marketing",
+                "Learn AI tools like ChatGPT, Gemini, Canva AI & marketing automation",
+                "Work on real campaigns and build an industry-ready portfolio",
+                "Placement assistance, freelancing guidance & agency-building support",
               ].map((item) => (
                 <motion.li
                   key={item}

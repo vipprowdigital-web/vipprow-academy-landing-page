@@ -1,40 +1,56 @@
-'use client';
-import { motion } from 'framer-motion';
-import { TrendingUp, Building2, Award, Users } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
-import { fadeUp, stagger } from '@/lib/animations';
+"use client";
+import { motion } from "framer-motion";
+import { TrendingUp, Award, Users, Briefcase } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
+import { fadeUp, stagger } from "@/lib/animations";
 
 const PARTNER_COMPANIES = [
-  'Google', 'Microsoft', 'Amazon', 'Flipkart', 'Razorpay',
-  'CRED', 'Zomato', 'Swiggy', 'PhonePe', 'Meesho',
-  'Atlassian', 'Freshworks', 'Paytm', 'Ola', 'Byju\'s',
-  'InMobi', 'Myntra', 'Snapdeal', 'PolicyBazaar', 'Zepto',
+  "Google",
+  "Microsoft",
+  "Amazon",
+  "Flipkart",
+  "Razorpay",
+  "CRED",
+  "Zomato",
+  "Swiggy",
+  "PhonePe",
+  "Meesho",
+  "Atlassian",
+  "Freshworks",
+  "Paytm",
+  "Ola",
+  "Byju's",
+  "InMobi",
+  "Myntra",
+  "Snapdeal",
+  "PolicyBazaar",
+  "Zepto",
 ];
 
 const HIGHLIGHTS = [
   {
-    icon: TrendingUp,
-    stat: '₹18.5L',
-    label: 'Average annual CTC',
-    sub: 'Across all 2025 batches',
+    icon: Briefcase,
+    stat: "100%",
+    label: "Placement Assistance",
+    sub: "Dedicated career guidance for every student",
   },
   {
     icon: Award,
-    stat: '96%',
-    label: 'Placement rate',
-    sub: 'Within 90 days of graduation',
+    stat: "1:1",
+    label: "Interview Preparation",
+    sub: "Mock interviews & resume reviews",
   },
   {
-    icon: Building2,
-    stat: '50+',
-    label: 'Hiring partners',
-    sub: 'From startups to MNCs',
+    icon: TrendingUp,
+    stat: "Live",
+    label: "Industry Projects",
+    sub: "Build a portfolio with real campaigns",
   },
   {
     icon: Users,
-    stat: '2,400+',
-    label: 'Alumni placed',
-    sub: 'Since 2020',
+    stat: "Career",
+    label: "Mentorship",
+    sub: "Expert guidance until you're job-ready",
   },
 ];
 
@@ -46,7 +62,7 @@ export function Placement() {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-16"
         >
           <motion.div variants={fadeUp} className="mb-4 flex justify-center">
@@ -55,18 +71,23 @@ export function Placement() {
           <motion.h2
             variants={fadeUp}
             className="font-heading font-bold leading-tight tracking-tight mb-4"
-            style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
           >
-            We don&apos;t stop until
+            Learn the skills.
             <br />
-            <span className="text-primary">you get placed.</span>
+            <span className="text-primary">
+              We&apos;ll help you land the opportunity.
+            </span>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="text-muted-foreground text-lg max-w-xl mx-auto"
           >
-            Our placement team works alongside you from week one. Resume
-            building, mock interviews, warm referrals — everything it takes.
+            At Vipprow Academy, learning doesn&apos;t end with the classroom. We
+            provide 100% placement assistance through resume building, LinkedIn
+            optimization, mock interviews, portfolio development, internship
+            opportunities, and career guidance to help you secure your first
+            role in digital marketing.
           </motion.p>
         </motion.div>
 
@@ -77,8 +98,12 @@ export function Placement() {
               key={h.label}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{
+                duration: 0.75,
+                ease: [0.16, 1, 0.3, 1],
+                delay: i * 0.08,
+              }}
               className="group p-6 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
@@ -96,7 +121,7 @@ export function Placement() {
         </div>
 
         {/* Partner companies */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -111,7 +136,7 @@ export function Placement() {
                 key={company}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-40px' }}
+                viewport={{ once: true, margin: "-40px" }}
                 transition={{
                   duration: 0.5,
                   ease: [0.16, 1, 0.3, 1],
@@ -123,7 +148,7 @@ export function Placement() {
               </motion.span>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

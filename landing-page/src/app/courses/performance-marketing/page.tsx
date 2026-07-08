@@ -7,6 +7,7 @@ import InsightsSection from "@/components/sections/InsightsSection";
 import type { CardData } from "@/components/sections/InsightsSection";
 import CourseSection from "@/components/sections/CourseSection";
 import Image from "next/image";
+import { getAppConfig } from "@/lib/appConfig";
 
 export const metadata: Metadata = {
   title: "Performance Marketing | Vipprow Academy",
@@ -19,62 +20,82 @@ const PM_CARDS: CardData[] = [
     category: "Module 01",
     title: "Performance Marketing Fundamentals",
     description:
-      "Learn the difference between paid and organic, how conversion funnels work, and how to architect campaigns built for measurable ROI.",
+      "Understand campaign objectives, marketing funnels, customer journeys, KPIs, and how performance marketing drives measurable business growth.",
     imageUrl:
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=600",
   },
   {
     category: "Module 02",
-    title: "Google Ads — Search & Display",
+    title: "Google Ads Mastery",
     description:
-      "Master keyword bidding, match types, ad copywriting and Quality Score to win clicks that actually convert on Search and Display.",
+      "Learn Search, Display, Performance Max, Shopping, YouTube Ads, keyword research, bidding strategies, and campaign optimization.",
     imageUrl:
       "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?q=80&w=600",
   },
   {
     category: "Module 03",
-    title: "Meta Ads — Facebook & Instagram",
+    title: "Meta Ads Mastery",
     description:
-      "Build profitable Meta funnels using advanced audience targeting, retargeting, lookalikes and scroll-stopping creative strategy.",
+      "Launch high-converting Facebook and Instagram campaigns using audience targeting, retargeting, lookalike audiences, creatives, and campaign scaling.",
     imageUrl:
       "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=600",
   },
   {
     category: "Module 04",
-    title: "Landing Pages & CRO",
+    title: "Conversion Tracking & Analytics",
     description:
-      "Design pages that convert visitors into leads and customers, then run A/B tests that compound your results month over month.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=600",
-  },
-  {
-    category: "Module 05",
-    title: "Analytics & Attribution",
-    description:
-      "Track every touchpoint with GA4, UTM parameters and multi-touch attribution models so you know exactly what's driving revenue.",
+      "Master Google Analytics 4, Google Tag Manager, Meta Pixel, conversion APIs, UTM tracking, and performance reporting.",
     imageUrl:
       "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=600",
   },
   {
-    category: "Module 06",
-    title: "Scaling & Automation",
+    category: "Module 05",
+    title: "Landing Pages & CRO",
     description:
-      "Scale your best-performing campaigns confidently using smart bidding, automated rules and proven budget scaling frameworks.",
+      "Create landing pages that convert, optimize user experience, run A/B tests, and improve lead generation with data-driven decisions.",
     imageUrl:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=600",
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=600",
+  },
+  {
+    category: "Module 06",
+    title: "AI & Campaign Automation",
+    description:
+      "Use ChatGPT, Gemini, AI-powered ad creatives, automation workflows, smart bidding, and reporting tools to improve campaign performance.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600",
+  },
+  {
+    category: "Module 07",
+    title: "E-commerce & Lead Generation",
+    description:
+      "Run campaigns for Shopify, local businesses, service industries, and e-commerce brands while optimizing ROAS and CPL.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600",
+  },
+  {
+    category: "Module 08",
+    title: "Client Projects & Career Preparation",
+    description:
+      "Build a professional portfolio, present campaign reports, prepare for interviews, and learn how to acquire freelance and agency clients.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600",
   },
 ];
 
 const OUTCOMES = [
-  "Run profitable Google Ads campaigns from scratch",
-  "Build high-converting Meta Ads funnels",
-  "Write ad copy that stops the scroll and drives clicks",
-  "Optimise landing pages to maximise conversion rates",
-  "Track and attribute performance across every channel",
-  "Scale campaigns while maintaining positive ROAS",
+  "Launch and optimize Google Ads campaigns",
+  "Create profitable Meta Ads campaigns",
+  "Implement GA4, GTM, Meta Pixel & conversion tracking",
+  "Improve landing page conversion rates using CRO",
+  "Use AI tools to create and optimize ad campaigns",
+  "Generate leads and sales for businesses and e-commerce brands",
+  "Analyze campaign performance with professional reports",
+  "Build an industry-ready portfolio through live projects",
+  "Prepare for agency jobs, freelancing, or your own business",
 ];
 
-export default function PerformanceMarketingPage() {
+export default async function PerformanceMarketingPage() {
+  const appConfig = await getAppConfig();
   return (
     <div className="section-light min-h-screen">
       {/* Hero */}
@@ -118,12 +139,12 @@ export default function PerformanceMarketingPage() {
         </section> */}
       <CourseSection
         imageSrc="/images/image-1.jpg"
-        imageAlt="Learner working through a Vipprow Academy course"
-        eyebrow="Vipprow Academy"
-        heading="Learn skills that move as fast as the internet does"
-        description="Practical digital marketing and AI courses built for the Indian market — taught by people who ship, not just teach."
-        ctaLabel="Explore courses"
-        ctaHref="/courses"
+        imageAlt="Learner working through Vipprow Academy's Performance Marketing course"
+        eyebrow="Performance Marketing"
+        heading="Master paid advertising that pays for itself."
+        description="Master Google Ads, Meta Ads, Google Tag Manager, Analytics, AI-powered optimization, and conversion-focused strategies through live campaigns and real-world projects."
+        ctaLabel="Enroll in this Course"
+        ctaHref="/enroll"
         variant="performance-marketing"
       />
 
@@ -170,9 +191,12 @@ export default function PerformanceMarketingPage() {
                 What you&apos;ll be able to do
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Graduate as a performance marketer who doesn&apos;t guess —
-                you&apos;ll make every campaign decision based on data and
-                proven frameworks.
+                By the end of this program, you&apos;ll confidently create,
+                manage, optimize, and scale high-performing advertising
+                campaigns using Google Ads, Meta Ads, analytics, AI tools, and
+                conversion tracking—equipping you for agency roles, in-house
+                marketing teams, freelancing, or launching your own performance
+                marketing business.
               </p>
             </div>
             <ul className="space-y-3">
@@ -191,7 +215,7 @@ export default function PerformanceMarketingPage() {
         </div>
       </section>
 
-      <FinalCTA />
+      <FinalCTA appConfig={appConfig} />
     </div>
   );
 }

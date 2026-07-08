@@ -73,8 +73,16 @@ export function Footer({ appConfig }: { appConfig: AppConfig | null }) {
     );
 
   return (
-    <footer className="border-t border-border bg-linear-to-tr from-black to-primary">
-      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+    <footer className="relative overflow-hidden border-t border-border bg-linear-to-tr from-black to-primary">
+      <Image
+        src="/logos/brand_outline.svg"
+        alt=""
+        width={1568}
+        height={500}
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-3xl opacity-10"
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-20">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -89,7 +97,7 @@ export function Footer({ appConfig }: { appConfig: AppConfig | null }) {
               className="inline-block font-heading font-bold text-xl tracking-tight text-foreground mb-4"
             >
               <Image
-                src="/logos/vipprow_logo.svg"
+                src="/logos/vipprow-academy-logo-2.png"
                 alt=""
                 width={150}
                 height={20}
