@@ -443,7 +443,7 @@ function CourseDetails({
             {COURSES[activeIndex].subtitle}
           </p>
 
-          <div className="flex items-center gap-4 text-xs text-muted-foreground mb-6">
+          <div className="flex md:flex-row flex-wrap justify- sm:justify-start items-center gap-4 text-xs text-muted-foreground mb-6">
             <span className="flex items-center gap-1.5">
               <Clock size={13} />
               {COURSES[activeIndex].duration}
@@ -566,15 +566,6 @@ export function Courses() {
           <CourseDetails activeIndex={index} onSelect={goTo} />
           <div className="relative self-start w-full">
             <CourseStage activeIndex={index} rotateY={rotateY} />
-            <div className="hidden sm:block absolute bottom-full right-4 md:right-8 mb-2 w-14 md:w-16 lg:w-20 pointer-events-none z-10">
-              <Image
-                src="/images/robot-peeking.png"
-                alt="Robot cute peeking"
-                width={1024}
-                height={1536}
-                className="w-full h-auto"
-              />
-            </div>
           </div>
         </motion.div>
       </div>

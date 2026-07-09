@@ -3,16 +3,10 @@ import { TrustedBy } from "@/components/sections/TrustedBy";
 import { AboutProgram } from "@/components/sections/AboutProgram";
 import { Features } from "@/components/sections/Features";
 import { Courses } from "@/components/sections/Courses";
-import { Roadmap } from "@/components/sections/Roadmap";
 import { Placement } from "@/components/sections/Placement";
-import { Instructor } from "@/components/sections/Instructor";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
-import { FinalCTA } from "@/components/sections/FinalCTA";
 import Hero from "@/components/hero/Hero";
 import { ScrollSection } from "@/components/ScrollSection";
-import CourseSection from "@/components/sections/CourseSection";
-import { Marquee3D } from "@/components/ui/marquee-3d";
 
 export default function Home() {
   return (
@@ -32,7 +26,7 @@ export default function Home() {
           <Features />
         </ScrollSection>
         <Placement />
-        <Testimonials />
+        {/* <Testimonials /> */}
         {/* <CourseSection
           imageSrc="/images/image-1.jpg"
           imageAlt="Learner working through a Vipprow Academy course"
@@ -46,8 +40,8 @@ export default function Home() {
         {/* <Placement />
         <Instructor />
         
-        <FAQ />
         <FinalCTA /> */}
+        <FAQ />
       </main>
     </>
   );

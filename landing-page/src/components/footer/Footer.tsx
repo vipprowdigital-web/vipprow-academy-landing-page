@@ -9,28 +9,19 @@ import type { ComponentType } from "react";
 
 const FOOTER_LINKS = {
   Programs: [
-    { label: "Digital Marketing Mastery", href: "/courses" },
-    { label: "AI & Machine Learning", href: "/courses" },
-    { label: "Corporate Training", href: "/courses" },
-    { label: "Free Webinars", href: "#" },
+    { label: "Digital Marketing", href: "/courses/digital-marketing" },
+    { label: "Performance Marketing", href: "/courses/performance-marketing" },
   ],
   Company: [
-    { label: "About Us", href: "/about" },
-    { label: "Academy", href: "/" },
-    { label: "Careers", href: "https://vipprow.com/careers" },
-    { label: "Blog", href: "https://vipprow.com/articles" },
+    { label: "About Academy", href: "/about" },
+    { label: "Our Courses", href: "/courses" },
+    { label: "Demo Class", href: "/demo-class" },
+    { label: "Admission", href: "/enroll" },
   ],
   Support: [
-    { label: "Placement Guarantee", href: "/#placement" },
-    { label: "Admissions", href: "#" },
-    { label: "EMI & Financing", href: "#" },
-    { label: "Contact Us", href: "#" },
-  ],
-  Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Refund Policy", href: "#" },
-    { label: "Cookie Policy", href: "#" },
+    { label: "100% Placement Assistance", href: "/#placement" },
+    { label: "Admissions", href: "/enroll" },
+    { label: "FAQ", href: "/faq" },
   ],
 };
 
@@ -56,7 +47,7 @@ const SOCIAL_LABELS: Record<string, string> = {
   whatsAppLink: "WhatsApp",
 };
 
-const DEFAULT_EMAIL = "vipprowdigital@gmail.com";
+const DEFAULT_EMAIL = "vipprowacademy@gmail.com";
 const DEFAULT_PHONE = "9669932121";
 
 export function Footer({ appConfig }: { appConfig: AppConfig | null }) {
@@ -104,8 +95,9 @@ export function Footer({ appConfig }: { appConfig: AppConfig | null }) {
               />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
-              Jabalpur&apos;s most immersive digital education platform. We
-              build marketers and AI practitioners, not certificate holders.
+              Learn industry-ready Digital Marketing, Performance Marketing and
+              AI skills through practical projects, expert mentorship and
+              career-focused training.
             </p>
             <div className="flex flex-col gap-2 mb-6">
               <a
@@ -180,8 +172,7 @@ export function Footer({ appConfig }: { appConfig: AppConfig | null }) {
           className="pt-8 border-t border-border/60 flex flex-col md:flex-row items-center justify-center gap-4"
         >
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Vipprow Digital Marketing Academy. All
-            rights reserved.
+            © {new Date().getFullYear()} Vipprow Academy. All rights reserved.
           </p>
           {/* <p className="text-xs text-muted-foreground">
             Developed by <span className="text-button">Vipprow</span>

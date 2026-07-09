@@ -56,7 +56,7 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 grid grid-cols-3 items-center">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between md:grid md:grid-cols-3 md:items-center">
           <Link
             href="/"
             className="justify-self-start font-heading font-bold text-lg tracking-tight text-foreground"
@@ -144,7 +144,7 @@ export function Navbar() {
                 <Button
                   variant="primary"
                   size="sm"
-                  className="bg-linear-to-r from-primary to-button"
+                  className="bg-linear-to-r from-white/10 to-white/10"
                 >
                   Book a Demo Class
                 </Button>
@@ -153,7 +153,7 @@ export function Navbar() {
                 <Button
                   variant="primary"
                   size="sm"
-                  className="bg-linear-to-r from-primary to-button"
+                  className="bg-linear-to-r from-white/10 to-white/10"
                 >
                   Enroll Now
                 </Button>
@@ -261,7 +261,7 @@ export function Navbar() {
                   <Button
                     variant="primary"
                     size="md"
-                    className="w-full bg-linear-to-r from-primary to-button"
+                    className="w-full bg-linear-to-r from-white/10 to-white/10"
                   >
                     Book a Demo Class
                   </Button>
@@ -270,7 +270,7 @@ export function Navbar() {
                   <Button
                     variant="primary"
                     size="md"
-                    className="w-full bg-linear-to-r from-primary to-button"
+                    className="w-full bg-linear-to-r from-white/10 to-white/10"
                   >
                     Enroll Now
                   </Button>

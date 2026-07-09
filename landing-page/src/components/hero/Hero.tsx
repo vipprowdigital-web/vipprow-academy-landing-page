@@ -303,13 +303,13 @@
 // components/Hero.tsx
 "use client";
 import { useRef, useState } from "react";
-// import HeroPaintIn from "./HeroPaintIn";
-// 1. Import your newly updated ScrollReveal component
 import ScrollReveal from "@/components/animations/ScrollReveal";
 import { TypingAnimation } from "../ui/typing-animation";
 import Image from "next/image";
 import RobotHeroVisual from "./RobotHeroVisual";
 import { Button } from "../ui/Button";
+import HeroTextAnimation from "./HeroTextAnimation";
+import LightRays from "../animations/LightRays";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -323,24 +323,70 @@ export default function Hero() {
         background: "var(--gradient-scene)",
       }}
     >
-      {/* Paints in, then stays as the Hero's background — bounded to this section */}
-      {/* <HeroPaintIn onComplete={() => setPainted(true)} /> */}
+      <div className="absolute inset-0 flex flex-col items-start justify-center z-20 pointer-events-none">
+        <HeroTextAnimation />
+      </div>
 
-      {/* Real hero content sits above the panel, fades in once it's painted */}
-      <div
+      <div className="absolute inset-0 flex flex-col items-start justify-center z-20 pointer-events-none">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#ffffff"
+          raysSpeed={1}
+          lightSpread={0.5}
+          rayLength={3}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0}
+          distortion={0}
+          className="custom-rays"
+          pulsating={false}
+          fadeDistance={1}
+          saturation={1}
+        />
+      </div>
+
+      {/* <ScrollReveal
+        scrollContainerRef={heroRef}
+        baseOpacity={1}
+        enableBlur={false}
+        startY={80}
+        blurStrength={1}
+        animationEnd="bottom center"
+        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-4xl sm:text-6xl lg:text-[6rem]"
+      >
+        LEARNING
+      </ScrollReveal> */}
+    </section>
+  );
+}
+
+{
+  /* Paints in, then stays as the Hero's background — bounded to this section */
+}
+{
+  /* <HeroPaintIn onComplete={() => setPainted(true)} /> */
+}
+
+{
+  /* Real hero content sits above the panel, fades in once it's painted */
+}
+{
+  /* <div
         className={`relative transition-opacity duration-500 ${
           painted ? "opacity-100 z-10" : "opacity-0"
         }`}
-      >
-        {/* ...your existing headline, CTAs, Card3DHero, stats, etc... */}
-      </div>
-      {/* <div className="absolute inset-0 flex flex-col items-start justify-center z-20 pointer-events-none px-10 font-medium sm:text-5xl text-2xl lg:text-7xl tracking-tighter space-y-10 bg-linear-to-r from-white via-secondary to-secondary bg-clip-text text-transparent">
+      ></div> */
+}
+{
+  /* <div className="absolute inset-0 flex flex-col items-start justify-center z-20 pointer-events-none px-10 font-medium sm:text-5xl text-2xl lg:text-7xl tracking-tighter space-y-10 bg-linear-to-r from-white via-secondary to-secondary bg-clip-text text-transparent">
         <TypingAnimation loop> Vipprow</TypingAnimation>
         <TypingAnimation loop>Digital Marketing </TypingAnimation>
         <TypingAnimation loop>Academy</TypingAnimation>
-      </div> */}
-      <div className="absolute inset-0 flex flex-col items-end justify-center z-20 pointer-events-none px-10 text-white text-right">
-        {/* <div className="space-y-3">
+      </div> */
+}
+{
+  /* <div className="absolute inset-0 flex flex-col items-end justify-center z-20 pointer-events-none px-10 text-white text-right">
+        <div className="space-y-3">
           <h1 className="text-4xl sm:text-3xl lg:text-5xl font-bold tracking-tight mb-6">
             Master Digital Marketing Skills with{" "}
             <span className="font-bold">Vipprow Digital Marketing Academy</span>
@@ -353,53 +399,14 @@ export default function Hero() {
           <button className="bg-linear-to-r from-primary to-button px-5 py-2 text-md text-white font-bold rounded-xl">
             Get Started
           </button>
-        </div> */}
-        {/* <div className="pointer-events-auto">
-          <RobotHeroVisual />
-        </div> */}
-        {/* <span className="inline-block px-4 py-2 rounded-full bg-primary/20 border border-primary/40 text-sm mb-5">
-          🚀 Admissions Open
-        </span> */}
-      </div>
+        </div>
+      </div> */
+}
 
-      <div className="absolute bottom-10 left-10 flex justify-center pointer-events-none z-10">
+{
+  /* <div className="absolute bottom-10 left-10 flex justify-center pointer-events-none z-10">
         <div className="pointer-events-auto">
           <RobotHeroVisual />
         </div>
-        {/* <Image
-          src="/logos/brand_outline.svg"
-          alt="Vipprow Brand Outline"
-          width={500}
-          height={100}
-        /> */}
-        {/* <div className="space-y-3"> */}
-        {/* <h1 className="text-4xl sm:text-3xl lg:text-3xl font-bold tracking-tight mb-6">
-            Master Digital Marketing Skills with{" "}
-            <span className="font-bold">Vipprow Digital Marketing Academy</span>
-          </h1> */}
-        {/* <p className="">
-            A 12-week, hands-on program covering SEO, Social Media, Content,
-            Email and Analytics — everything you need to launch and scale
-            campaigns with real ROI.
-          </p> */}
-        {/* <button className="bg-linear-to-r from-primary to-button px-5 py-2 text-md text-white font-bold rounded-xl">
-            Get Started
-          </button> */}
-        {/* </div> */}
-      </div>
-
-      {/* 2. Call ScrollReveal here instead of or alongside SectionTypography */}
-      <ScrollReveal
-        scrollContainerRef={heroRef}
-        baseOpacity={1} // Subtle background watermark opacity
-        enableBlur={false}
-        startY={80}
-        blurStrength={1} // Slightly stronger blur for the entry splash
-        animationEnd="bottom center" // Completes its path right as the Hero leaves the screen
-        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-4xl sm:text-6xl lg:text-[6rem]" // Using your utility styling color match
-      >
-        LEARNING
-      </ScrollReveal>
-    </section>
-  );
+      </div> */
 }

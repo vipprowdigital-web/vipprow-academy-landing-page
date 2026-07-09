@@ -106,7 +106,7 @@ export function AboutProgram() {
         WITH
       </ScrollReveal> */}
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-0">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Left: editorial copy */}
           <motion.div

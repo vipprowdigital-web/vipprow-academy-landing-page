@@ -12,13 +12,7 @@ const TOOLS = [
   "ChatGPT",
   "Gemini",
   "Canva AI",
-  "WordPress",
-  "Shopify",
-  "Looker Studio",
-  "Semrush",
   "Ahrefs",
-  "HubSpot",
-  "Mailchimp",
 ];
 
 const METRICS = [

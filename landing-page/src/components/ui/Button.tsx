@@ -20,7 +20,7 @@ export function Button({
       whileTap={{ scale: 0.975 }}
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "relative inline-flex items-center justify-center gap-2 font-medium rounded-sm cursor-pointer select-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "relative inline-flex items-center justify-center gap-2 font-medium rounded-[5px] cursor-pointer select-none transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         variant === "primary" &&
           "bg-primary text-white shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:shadow-xl",
         variant === "secondary" &&

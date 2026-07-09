@@ -1,7 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Footer } from "@/components/footer/Footer";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import InsightsSection from "@/components/sections/InsightsSection";
 import type { CardData } from "@/components/sections/InsightsSection";
