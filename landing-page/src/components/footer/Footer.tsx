@@ -21,7 +21,7 @@ const FOOTER_LINKS = {
   Support: [
     { label: "100% Placement Assistance", href: "/#placement" },
     { label: "Admissions", href: "/enroll" },
-    { label: "FAQ", href: "/faq" },
+    { label: "FAQ", href: "/#faq" },
   ],
 };
 
