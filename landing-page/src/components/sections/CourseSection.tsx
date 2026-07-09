@@ -4,8 +4,16 @@ import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import DigitalMarketingAnimation from "../animations/DigitalMarketingAnimation";
-import PerformanceMarketingAnimation from "../animations/PerformanceMarketingAnimation";
+import dynamic from "next/dynamic";
+
+const DigitalMarketingAnimation = dynamic(
+  () => import("../animations/DigitalMarketingAnimation"),
+  { ssr: false }
+);
+const PerformanceMarketingAnimation = dynamic(
+  () => import("../animations/PerformanceMarketingAnimation"),
+  { ssr: false }
+);
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);

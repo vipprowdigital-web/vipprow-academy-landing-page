@@ -51,8 +51,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import DigitalMarketingAnimation from "@/components/animations/DigitalMarketingAnimation";
-import PerformanceMarketingAnimation from "@/components/animations/PerformanceMarketingAnimation";
 import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);

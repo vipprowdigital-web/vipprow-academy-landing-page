@@ -142,6 +142,9 @@ export default function PageLoadShutter() {
   useEffect(() => {
     // CRITICAL: If it has already played, instantly let the Hero know to animate
     if (!visible) {
+      if (typeof window !== "undefined") {
+        (window as any).__shutterComplete = true;
+      }
       window.dispatchEvent(new Event("shutter-complete"));
       return;
     }
@@ -167,6 +170,9 @@ export default function PageLoadShutter() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
           // FIRES WHEN FADE OUT ENDS
           onAnimationComplete={() => {
+            if (typeof window !== "undefined") {
+              (window as any).__shutterComplete = true;
+            }
             window.dispatchEvent(new Event("shutter-complete"));
           }}
           aria-hidden="true"
