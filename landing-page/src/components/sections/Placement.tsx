@@ -1,31 +1,30 @@
 "use client";
 import { motion } from "framer-motion";
 import { TrendingUp, Award, Users, Briefcase } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
 import { fadeUp, stagger } from "@/lib/animations";
 
-const PARTNER_COMPANIES = [
-  "Google",
-  "Microsoft",
-  "Amazon",
-  "Flipkart",
-  "Razorpay",
-  "CRED",
-  "Zomato",
-  "Swiggy",
-  "PhonePe",
-  "Meesho",
-  "Atlassian",
-  "Freshworks",
-  "Paytm",
-  "Ola",
-  "Byju's",
-  "InMobi",
-  "Myntra",
-  "Snapdeal",
-  "PolicyBazaar",
-  "Zepto",
-];
+// const PARTNER_COMPANIES = [
+//   "Google",
+//   "Microsoft",
+//   "Amazon",
+//   "Flipkart",
+//   "Razorpay",
+//   "CRED",
+//   "Zomato",
+//   "Swiggy",
+//   "PhonePe",
+//   "Meesho",
+//   "Atlassian",
+//   "Freshworks",
+//   "Paytm",
+//   "Ola",
+//   "Byju's",
+//   "InMobi",
+//   "Myntra",
+//   "Snapdeal",
+//   "PolicyBazaar",
+//   "Zepto",
+// ];
 
 const HIGHLIGHTS = [
   {

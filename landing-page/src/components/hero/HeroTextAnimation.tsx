@@ -341,7 +341,6 @@
 "use client";
 
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 // Extend the Window interface for the global shutter flag
@@ -351,27 +350,27 @@ declare global {
   }
 }
 
-const AISparkIcon = () => (
-  <svg
-    className="w-6 h-6 sm:w-10 sm:h-10 text-white/80"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    aria-hidden="true"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M12 3c.6 3.2 1.6 4.9 3.5 6.5C17.4 11 19.1 12 22 12.6 19.1 13.2 17.4 14.2 15.5 15.7 13.6 17.2 12.6 18.9 12 22 11.4 18.9 10.4 17.2 8.5 15.7 6.6 14.2 4.9 13.2 2 12.6 4.9 12 6.6 11 8.5 9.5 10.4 8 11.4 6.2 12 3Z"
-    />
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M19 3.5c.3 1.1.8 1.7 1.9 2-1.1.3-1.6.9-1.9 2-.3-1.1-.8-1.7-1.9-2 1.1-.3 1.6-.9 1.9-2Z"
-    />
-  </svg>
-);
+// const AISparkIcon = () => (
+//   <svg
+//     className="w-6 h-6 sm:w-10 sm:h-10 text-white/80"
+//     viewBox="0 0 24 24"
+//     fill="none"
+//     stroke="currentColor"
+//     strokeWidth="1.5"
+//     aria-hidden="true"
+//   >
+//     <path
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
+//       d="M12 3c.6 3.2 1.6 4.9 3.5 6.5C17.4 11 19.1 12 22 12.6 19.1 13.2 17.4 14.2 15.5 15.7 13.6 17.2 12.6 18.9 12 22 11.4 18.9 10.4 17.2 8.5 15.7 6.6 14.2 4.9 13.2 2 12.6 4.9 12 6.6 11 8.5 9.5 10.4 8 11.4 6.2 12 3Z"
+//     />
+//     <path
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
+//       d="M19 3.5c.3 1.1.8 1.7 1.9 2-1.1.3-1.6.9-1.9 2-.3-1.1-.8-1.7-1.9-2 1.1-.3 1.6-.9 1.9-2Z"
+//     />
+//   </svg>
+// );
 
 const TargetIcon = () => (
   <svg

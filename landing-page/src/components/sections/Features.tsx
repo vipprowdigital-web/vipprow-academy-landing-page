@@ -10,7 +10,6 @@ import {
   Briefcase,
   Rocket,
 } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
 import { fadeUp, stagger } from "@/lib/animations";
 import ScrollReveal from "../animations/ScrollReveal";
 

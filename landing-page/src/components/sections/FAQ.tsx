@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
 import { fadeUp, stagger } from "@/lib/animations";
 import { cn } from "@/lib/cn";
 

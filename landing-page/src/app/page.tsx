@@ -1,5 +1,3 @@
-import { Navbar } from "@/components/navbar/Navbar";
-import { TrustedBy } from "@/components/sections/TrustedBy";
 import { AboutProgram } from "@/components/sections/AboutProgram";
 import { Features } from "@/components/sections/Features";
 import { Courses } from "@/components/sections/Courses";

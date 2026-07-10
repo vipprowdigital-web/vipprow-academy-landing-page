@@ -302,18 +302,13 @@
 
 // components/Hero.tsx
 "use client";
-import { useRef, useState } from "react";
-import ScrollReveal from "@/components/animations/ScrollReveal";
-import { TypingAnimation } from "../ui/typing-animation";
-import Image from "next/image";
-import RobotHeroVisual from "./RobotHeroVisual";
-import { Button } from "../ui/Button";
+import { useRef } from "react";
 import HeroTextAnimation from "./HeroTextAnimation";
 import LightRays from "../animations/LightRays";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
-  const [painted, setPainted] = useState(false);
+  // const [painted, setPainted] = useState(false);
 
   return (
     <section

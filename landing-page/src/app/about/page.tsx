@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { AboutProgram } from "@/components/sections/AboutProgram";
 import { Instructor } from "@/components/sections/Instructor";
-import { Placement } from "@/components/sections/Placement";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { getAppConfig } from "@/lib/appConfig";
 

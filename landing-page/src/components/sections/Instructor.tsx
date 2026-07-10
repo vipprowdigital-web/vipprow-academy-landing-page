@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ExternalLink, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { fadeUp, stagger, clipReveal, slideLeft } from "@/lib/animations";
 import Image from "next/image";
 

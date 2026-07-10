@@ -2,7 +2,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle2, Layers, Zap, Users } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
 import { fadeUp, stagger, clipReveal } from "@/lib/animations";
 import ScrollReveal from "../animations/ScrollReveal";
 import Image from "next/image";

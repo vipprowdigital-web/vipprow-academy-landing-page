@@ -7,9 +7,7 @@ import {
   animate,
 } from "framer-motion";
 import ScrollReveal from "../animations/ScrollReveal";
-import Image from "next/image";
 import {
-  ArrowRight,
   Clock,
   BarChart2,
   Layers,
@@ -22,7 +20,6 @@ import {
   Check,
 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { fadeUp, stagger } from "@/lib/animations";
 
 // ── Course data ───────────────────────────────────────────────────────
