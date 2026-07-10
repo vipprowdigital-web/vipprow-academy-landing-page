@@ -38,7 +38,8 @@ export function FinalCTA({ appConfig }: { appConfig?: AppConfig | null }) {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(135deg, oklch(0.16 0.04 270) 0%, oklch(0.14 0.06 260) 50%, oklch(0.18 0.08 280) 100%)",
+                "linear-gradient(135deg, oklch(0.2 0.09 276.35) 0%, oklch(0.2 0.09 276.35) 50%, oklch(0.2 0.09 276.35) 100%)",
+              // "linear-gradient(135deg, oklch(0.16 0.04 270) 0%, oklch(0.14 0.06 260) 50%, oklch(0.18 0.08 280) 100%)",
             }}
           />
 
@@ -117,9 +118,9 @@ export function FinalCTA({ appConfig }: { appConfig?: AppConfig | null }) {
               className="flex flex-wrap items-center justify-center gap-4"
             >
               <Button
-                variant="primary"
+                variant="secondary"
                 size="lg"
-                className="min-w-48"
+                className="min-w-48 bg-white text-black"
                 onClick={() => router.push("/demo-class")}
               >
                 Book a Free Demo Class
@@ -131,6 +132,7 @@ export function FinalCTA({ appConfig }: { appConfig?: AppConfig | null }) {
                 onClick={() => {
                   window.location.href = `tel:+91${phone}`;
                 }}
+                className="bg-gray-300/30"
               >
                 Talk to a Counselor
               </Button>

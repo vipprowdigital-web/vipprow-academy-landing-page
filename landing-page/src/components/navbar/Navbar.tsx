@@ -141,20 +141,12 @@ export function Navbar() {
           <div className="justify-self-end flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
               <Link href="/demo-class">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="bg-linear-to-r from-white/10 to-white/10"
-                >
+                <Button variant="primary" size="sm" className="bg-gray-300/20">
                   Book a Demo Class
                 </Button>
               </Link>
               <Link href="/enroll">
-                <Button
-                  variant="primary"
-                  size="sm"
-                  className="bg-linear-to-r from-white/10 to-white/10"
-                >
+                <Button variant="primary" size="sm" className="bg-gray-300/20">
                   Enroll Now
                 </Button>
               </Link>
@@ -179,7 +171,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed top-16 left-0 right-0 z-40 bg-background/95 backdrop-blur-xl border-b border-border"
+            className="fixed top-16 left-0 right-0 z-40 bg-background/70 backdrop-blur-xl border-b border-border"
           >
             <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-1">
               <motion.div
@@ -261,7 +253,7 @@ export function Navbar() {
                   <Button
                     variant="primary"
                     size="md"
-                    className="w-full bg-linear-to-r from-white/10 to-white/10"
+                    className="w-full bg-primary"
                   >
                     Book a Demo Class
                   </Button>
@@ -270,7 +262,7 @@ export function Navbar() {
                   <Button
                     variant="primary"
                     size="md"
-                    className="w-full bg-linear-to-r from-white/10 to-white/10"
+                    className="w-full bg-primary"
                   >
                     Enroll Now
                   </Button>

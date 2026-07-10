@@ -70,7 +70,7 @@ export function Features() {
         startY={10}
         // animationStart="top top"
         animationEnd="bottom center"
-        bottomOffset={0}
+        bottomOffset={10}
       >
         <Image
           src="/images/vipprow-brand-black-blue-gradient-2.png"

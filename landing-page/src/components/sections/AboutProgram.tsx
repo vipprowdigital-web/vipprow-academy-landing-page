@@ -62,11 +62,11 @@ export function AboutProgram() {
         animationEnd="bottom center"
       >
         <Image
-          src="/images/cute-robot.gif"
+          src="/images/cute-robot-without-bg.png"
           alt="Decorative robot"
-          width={350}
-          height={350}
-          className="object-contain opacity-100 z-50 w-40 sm:w-87.5"
+          width={500}
+          height={500}
+          className="object-contain opacity-100 w-30 sm:w-50.5"
         />
       </ScrollReveal>
       {/* <SectionTypography
@@ -105,7 +105,7 @@ export function AboutProgram() {
         WITH
       </ScrollReveal> */}
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 z-100">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* Left: editorial copy */}
           <motion.div
@@ -177,7 +177,7 @@ export function AboutProgram() {
                   delay: i * 0.15,
                 }}
                 whileHover={{ x: 6 }}
-                className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card/40 backdrop-blur-sm transition-colors duration-300 hover:border-primary/30 group"
+                className="flex sm:flex-row flex-col items-start gap-4 p-5 rounded-2xl border border-border bg-card/40 backdrop-blur-sm transition-colors duration-300 hover:border-primary/30 group"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors duration-300">
                   <pillar.icon size={18} className="text-primary" />

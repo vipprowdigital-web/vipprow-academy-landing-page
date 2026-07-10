@@ -343,7 +343,7 @@ function CourseStage({
 
         {/* Satellite icons */}
         {[
-          { Icon: Sat1, x: -130, y: -90, delay: 0 },
+          // { Icon: Sat1, x: -130, y: -50, delay: 0 },
           { Icon: Sat2, x: 130, y: -100, delay: 0.3 },
           { Icon: Sat3, x: -110, y: 110, delay: 0.6 },
         ].map(({ Icon: SatIcon, x, y, delay }, i) => (
@@ -530,7 +530,9 @@ export function Courses() {
         enableBlur={false}
         blurStrength={1} // Slightly stronger blur for the entry splash
         animationEnd="bottom center" // Completes its path right as the Hero leaves the screen
-        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-4xl sm:text-6xl lg:text-[6rem]" // Using your utility styling color match
+        startY={5}
+        contentClassName="var(--primary, rgba(0,0,0,0.05)) font-heading font-black tracking-tight text-right will-change-transform text-2xl sm:text-6xl lg:text-[6rem] sm:p-0 px-5 py-1 rounded-full bg-linear-to-tr from-primary to-secondary sm:bg-none sm:text-black text-white"
+        bottomOffset={5}
       >
         WITH
       </ScrollReveal>

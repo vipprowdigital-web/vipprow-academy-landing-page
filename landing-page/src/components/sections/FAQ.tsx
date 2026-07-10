@@ -112,9 +112,9 @@ export function FAQ() {
   const toggle = (i: number) => setOpen(open === i ? null : i);
 
   return (
-    <section id="faq" className="section-light py-24 md:py-36">
+    <section id="faq" className="section-light py-10 md:py-36">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-[1fr_1.5fr] gap-16 md:gap-24">
+        <div className="grid md:grid-cols-[1fr_1.5fr] gap-5 sm:gap-16 md:gap-24">
           {/* Left sticky header */}
           <motion.div
             variants={stagger}

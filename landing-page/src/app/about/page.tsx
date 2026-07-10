@@ -45,7 +45,7 @@ export default async function AboutPage() {
         <TrustedBy />
         <AboutProgram />
         <Instructor />
-        <Placement />
+        {/* <Placement /> */}
         <FinalCTA appConfig={appConfig} />
       </main>
     </>

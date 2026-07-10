@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import { Link2, AtSign, ExternalLink, MapPin } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
+import { ExternalLink, MapPin } from "lucide-react";
 import { fadeUp, stagger, clipReveal, slideLeft } from "@/lib/animations";
+import Image from "next/image";
 
 const CREDENTIALS = [
   {
     label: "Experience",
-    value: "7+ Years in Digital Marketing & Brand Growth",
+    value: "9+ Years in Digital Marketing & Brand Growth",
   },
   {
     label: "Expertise",
@@ -28,13 +28,17 @@ const CREDENTIALS = [
 ];
 
 const SOCIALS = [
-  { icon: Link2, href: "#", label: "LinkedIn" },
-  { icon: AtSign, href: "#", label: "Twitter / X" },
+  {
+    icon: "/socials/linkedin-logo.svg",
+    href: "https://www.linkedin.com/in/reva-prasad-tiwari-61405517b/",
+    label: "LinkedIn",
+  },
+  // { icon: AtSign, href: "#", label: "Twitter / X" },
 ];
 
 export function Instructor() {
   return (
-    <section id="instructor" className="section-light py-24 md:py-40">
+    <section id="instructor" className="section-light py-10 md:py-40">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
           {/* ── Left: Visual ─────────────────────────────────────── */}
@@ -81,7 +85,7 @@ export function Instructor() {
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="rounded-xl border border-border/40 bg-white/80 backdrop-blur-sm p-4 shadow-sm">
                     <p className="font-heading font-bold text-foreground text-lg">
-                      Rewa Prasad Tiwari
+                      Reva Prasad Tiwari
                     </p>
                     <p className="text-xs text-muted-foreground">
                       Founder, Vipprow Academy Digital Marketing Strategist & AI
@@ -97,9 +101,16 @@ export function Instructor() {
                           key={s.label}
                           href={s.href}
                           aria-label={s.label}
-                          className="w-7 h-7 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
+                          className="p-2 rounded-lg border border-border flex items-center justify-center text-blue-800 hover:text-foreground hover:border-primary/40 transition-colors"
+                          target="_blank"
                         >
-                          <s.icon size={12} />
+                          <Image
+                            src={s.icon}
+                            alt="Social Icon"
+                            width={20}
+                            height={20}
+                            className="text-blue-800"
+                          />
                         </a>
                       ))}
                     </div>
@@ -154,7 +165,7 @@ export function Instructor() {
               className="text-muted-foreground text-lg leading-relaxed mb-8"
             >
               Vipin Tiwari is the Founder of Vipprow Academy and an experienced
-              Digital Marketing Strategist with over 7 years of helping
+              Digital Marketing Strategist with over 9 years of helping
               businesses grow through SEO, Google Ads, Performance Marketing,
               Branding, and AI-powered marketing solutions. Rather than teaching
               outdated theory, he focuses on real client projects, live
@@ -169,7 +180,7 @@ export function Instructor() {
                 <motion.div
                   key={c.label}
                   variants={fadeUp}
-                  className="flex items-start gap-4 py-3 border-b border-border/50 last:border-0"
+                  className="flex items-start sm:gap-4 py-3 border-b border-border/50 last:border-0"
                 >
                   <dt className="text-xs uppercase tracking-widest text-muted-foreground font-heading font-semibold w-36 shrink-0 pt-0.5">
                     {c.label}
@@ -181,14 +192,14 @@ export function Instructor() {
               ))}
             </motion.dl>
 
-            <motion.a
+            {/* <motion.a
               variants={fadeUp}
               href="#"
               className="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:gap-3 transition-all duration-200"
             >
               View full profile
               <ExternalLink size={13} />
-            </motion.a>
+            </motion.a> */}
           </motion.div>
         </div>
       </div>

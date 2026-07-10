@@ -11,7 +11,7 @@ import { ScrollSection } from "@/components/ScrollSection";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main>
         <Hero />
         {/* <TrustedBy /> */}

@@ -64,14 +64,14 @@ export function Footer({ appConfig }: { appConfig: AppConfig | null }) {
     );
 
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-linear-to-tr from-black to-primary">
+    <footer className="relative overflow-hidden border-t border-border bg-linear-to-tr from-primary to-primary/50">
       <Image
         src="/logos/brand_outline.svg"
         alt=""
         width={1568}
         height={500}
         aria-hidden="true"
-        className="pointer-events-none select-none absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-3xl opacity-10"
+        className="pointer-events-none select-none absolute bottom-28 left-1/2 -translate-x-1/2 w-full max-w-3xl opacity-10"
       />
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-20">
         <motion.div

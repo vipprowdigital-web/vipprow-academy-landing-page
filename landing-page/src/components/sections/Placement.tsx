@@ -56,7 +56,7 @@ const HIGHLIGHTS = [
 
 export function Placement() {
   return (
-    <section id="placement" className="section-light py-24 md:py-36">
+    <section id="placement" className="section-light py-10 md:py-20">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           variants={stagger}
@@ -65,9 +65,9 @@ export function Placement() {
           viewport={{ once: true, margin: "-80px" }}
           className="text-center mb-16"
         >
-          <motion.div variants={fadeUp} className="mb-4 flex justify-center">
+          {/* <motion.div variants={fadeUp} className="mb-4 flex justify-center">
             <Badge variant="default">Placement Assistance</Badge>
-          </motion.div>
+          </motion.div> */}
           <motion.h2
             variants={fadeUp}
             className="font-heading font-bold leading-tight tracking-tight mb-4"
@@ -92,7 +92,7 @@ export function Placement() {
         </motion.div>
 
         {/* Stats */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 ">
           {HIGHLIGHTS.map((h, i) => (
             <motion.div
               key={h.label}
