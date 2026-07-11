@@ -176,7 +176,7 @@ export default function PageLoadShutter() {
             window.dispatchEvent(new Event("shutter-complete"));
           }}
           aria-hidden="true"
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-9999 flex flex-col items-center justify-center overflow-hidden"
           style={{
             background: "var(--gradient-scene)",
           }}

@@ -557,7 +557,7 @@ export default function HeroTextAnimation() {
       {step === 0 && <div className="min-h-screen w-full" />}
 
       {step > 0 && step < 3 && (
-        <motion.div className="flex flex-col items-center gap-2 tracking-tight text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-medium leading-none">
+        <motion.div className="flex flex-col items-center gap-2 tracking-tight text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium leading-none">
           {/* Row 1 */}
           <div className="overflow-hidden flex items-center gap-4">
             <motion.span

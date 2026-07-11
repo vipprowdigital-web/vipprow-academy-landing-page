@@ -63,8 +63,8 @@ export function AboutProgram() {
         <Image
           src="/images/cute-robot-without-bg.png"
           alt="Decorative robot"
-          width={500}
-          height={500}
+          width={202}
+          height={252}
           className="object-contain opacity-100 w-30 sm:w-50.5"
         />
       </ScrollReveal>

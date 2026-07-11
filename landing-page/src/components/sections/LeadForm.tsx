@@ -447,7 +447,7 @@ export function LeadForm({
             <label className="block text-sm font-medium text-foreground mb-1.5">
               Tell us about yourself{" "}
               <span className="text-muted-foreground font-normal">
-                (optional)
+                *
               </span>
             </label>
             <textarea

@@ -377,9 +377,7 @@ export function EnrollForm({
             <div>
               <label className="block text-sm font-medium text-foreground mb-1.5">
                 Email Address{" "}
-                <span className="text-muted-foreground font-normal">
-                  (optional)
-                </span>
+                <span className="text-muted-foreground font-normal">*</span>
               </label>
               <input
                 type="email"
