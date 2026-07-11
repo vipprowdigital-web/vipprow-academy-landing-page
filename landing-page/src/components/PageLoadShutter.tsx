@@ -156,7 +156,7 @@ export default function PageLoadShutter() {
       return () => clearTimeout(id);
     }
 
-    const timer = setTimeout(() => setVisible(false), 5000);
+    const timer = setTimeout(() => setVisible(false), 3000);
     return () => clearTimeout(timer);
   }, [visible]);
 
@@ -230,9 +230,10 @@ export default function PageLoadShutter() {
             <div className="font-heading font-bold text-xl tracking-tight text-white">
               <Image
                 src="/logos/vipprow_logo.svg"
-                alt=""
+                alt="Vipprow Logo"
                 width={150}
                 height={20}
+                style={{ width: 150, height: "auto" }}
               />
             </div>
             <p className="text-white/40 text-xs tracking-[0.18em] uppercase">
@@ -246,7 +247,7 @@ export default function PageLoadShutter() {
               className="h-full bg-indigo-400/70 rounded-full"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 5, ease: "linear" }}
+              transition={{ duration: 3, ease: "linear" }}
             />
           </motion.div>
         </motion.div>

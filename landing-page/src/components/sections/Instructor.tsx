@@ -62,16 +62,23 @@ export function Instructor() {
               {/* Photo placeholder card */}
               <div className="relative rounded-3xl border border-border bg-card overflow-hidden aspect-4/5 shadow-xl">
                 {/* Gradient background */}
-                <div
+                {/* <div
                   className="absolute inset-0"
                   style={{
                     background:
                       "linear-gradient(145deg, oklch(0.92 0.04 275) 0%, oklch(0.85 0.08 270) 100%)",
                   }}
+                /> */}
+
+                <Image
+                  src="https://res.cloudinary.com/dl6fjer3y/image/upload/v1783771818/IMG_1395_ytozyd.png"
+                  alt="Instructor Image"
+                  width={500}
+                  height={400}
                 />
 
                 {/* Silhouette shape */}
-                <div className="absolute inset-0 flex items-end justify-center">
+                {/* <div className="absolute inset-0 flex items-end justify-center">
                   <div
                     className="w-52 h-72 rounded-t-full"
                     style={{
@@ -79,29 +86,29 @@ export function Instructor() {
                         "linear-gradient(180deg, oklch(0.7 0.12 275) 0%, oklch(0.6 0.16 268) 100%)",
                     }}
                   />
-                </div>
+                </div> */}
 
                 {/* Name overlay */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="rounded-xl border border-border/40 bg-white/80 backdrop-blur-sm p-4 shadow-sm">
+                <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4">
+                  <div className="rounded-xl border border-border/40 bg-white/80 backdrop-blur-sm px-2.5 py-2 sm:p-4 shadow-sm">
                     <p className="font-heading font-bold text-foreground text-lg">
                       Reva Prasad Tiwari
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      Founder, Vipprow Academy Digital Marketing Strategist & AI
-                      Mentor
+                      Founder, Vipprow Digital Marketing Academy, Strategist &
+                      AI Mentor
                     </p>
                     <div className="flex items-center gap-1.5 mt-1.5 text-muted-foreground">
                       <MapPin size={10} />
                       <span className="text-[11px]">Jabalpur, MP</span>
                     </div>
-                    <div className="flex items-center gap-2 mt-3">
+                    <div className="flex items-center gap-2 mt-2">
                       {SOCIALS.map((s) => (
                         <a
                           key={s.label}
                           href={s.href}
                           aria-label={s.label}
-                          className="p-2 rounded-lg border border-border flex items-center justify-center text-blue-800 hover:text-foreground hover:border-primary/40 transition-colors"
+                          className="flex items-center justify-center text-blue-800 hover:text-foreground hover:border-primary/40 transition-colors"
                           target="_blank"
                         >
                           <Image

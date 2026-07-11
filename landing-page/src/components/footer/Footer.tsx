@@ -89,9 +89,11 @@ export function Footer({ appConfig }: { appConfig: AppConfig | null }) {
             >
               <Image
                 src="/logos/vipprow-academy-logo-2.png"
-                alt=""
+                alt="Vipprow Academy Logo"
                 width={150}
                 height={20}
+                // style={{ height: "auto" }}
+                className="w-full h-auto"
               />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">

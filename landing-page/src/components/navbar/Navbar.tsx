@@ -67,9 +67,10 @@ export function Navbar() {
             </span> */}
             <Image
               src="/logos/vipprow-academy-logo-2.png"
-              alt=""
+              alt="Vipprow Academy Logo"
               width={150}
               height={20}
+              style={{ height: "auto" }}
             />
           </Link>
 
