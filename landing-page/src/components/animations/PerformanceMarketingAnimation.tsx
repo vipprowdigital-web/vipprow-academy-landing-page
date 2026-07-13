@@ -134,7 +134,7 @@ export default function PerformanceMarketingAnimation({
 
       {/* Target hitting bullseye — floats near the card */}
       <motion.div
-        className="absolute z-10"
+        className="hidden sm:absolute z-10"
         style={{ top: "14%", right: "12%" }}
         animate={prefersReducedMotion ? undefined : { y: [0, -10, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -183,7 +183,9 @@ export default function PerformanceMarketingAnimation({
       <motion.div
         className="absolute z-0 w-[320px] h-80 rounded-2xl border border-button/40"
         animate={
-          prefersReducedMotion ? undefined : { scale: [1, 1.15], opacity: [0.35, 0] }
+          prefersReducedMotion
+            ? undefined
+            : { scale: [1, 1.15], opacity: [0.35, 0] }
         }
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
       />

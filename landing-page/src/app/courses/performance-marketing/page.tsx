@@ -164,11 +164,11 @@ export default async function PerformanceMarketingPage() {
 
         <div className="hidden md:block absolute -right-19 top-30 -translate-y-1/2 -translate-x-1/4 pointer-events-none z-10">
           <Image
-            src="/images/robot-peeking-left-wihout-bg.png"
+            src="/images/robot-peeking-left-without-bg.png"
             alt="Robot cute peeking"
             width={500}
             height={200}
-            className="w-40"
+            className="w-40 h-auto"
           />
         </div>
       </section>

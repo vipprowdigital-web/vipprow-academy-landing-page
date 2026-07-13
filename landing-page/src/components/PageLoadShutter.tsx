@@ -215,7 +215,7 @@ export default function PageLoadShutter() {
               alt="Vipprow Academy loading"
               fill
               unoptimized
-              className="object-contain drop-shadow-[0_0_32px_rgba(99,102,241,0.5)]"
+              className="h-auto object-contain drop-shadow-[0_0_32px_rgba(99,102,241,0.5)]"
               priority
             />
           </motion.div>
@@ -233,7 +233,7 @@ export default function PageLoadShutter() {
                 alt="Vipprow Logo"
                 width={150}
                 height={20}
-                style={{ width: 150, height: "auto" }}
+                className="w-full h-7"
               />
             </div>
             <p className="text-white/40 text-xs tracking-[0.18em] uppercase">
