@@ -39,8 +39,7 @@ export default async function EnrollPage({
               <span className="text-primary">Enroll today.</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
-              Fill out the form below and our admissions team will get in touch
-              within 24 hours.
+              Fill out the form below and our admissions team will get in touch soon.
             </p>
           </div>
         </section>

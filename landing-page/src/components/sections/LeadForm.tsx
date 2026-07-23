@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { MapPin, ExternalLink } from "lucide-react";
+import type { AppConfig } from "@/lib/appConfig";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api/v1";
@@ -19,6 +21,24 @@ const QUALIFICATIONS = [
   { value: "working_professional", label: "Working Professional" },
 ];
 
+const ACADEMY_LOCATIONS = [
+  {
+    address: "Bethel House Near Naveen Vidhya Mandir School Napier Town Jabalpur.",
+    googleMapLocation: "https://maps.google.com/?q=Vipprow+Academy+Jabalpur",
+  },
+];
+
+function formatTime12h(timeStr: string): string {
+  if (!timeStr) return "";
+  const [hoursStr, minutesStr] = timeStr.split(":");
+  let hours = parseInt(hoursStr, 10);
+  const minutes = minutesStr;
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  return `${hours}:${minutes} ${ampm}`;
+}
+
 type Field = {
   name: string;
   email: string;
@@ -28,6 +48,8 @@ type Field = {
   city: string;
   state: string;
   message: string;
+  date: string;
+  timeslot: string;
 };
 
 const INITIAL: Field = {
@@ -39,6 +61,8 @@ const INITIAL: Field = {
   city: "",
   state: "",
   message: "",
+  date: "",
+  timeslot: "",
 };
 
 type DemoClassContext = {
@@ -64,11 +88,13 @@ export function LeadForm({
   leadId,
   urlName,
   urlMobile,
+  appConfig,
 }: {
   branchId?: string;
   leadId?: string;
   urlName?: string;
   urlMobile?: string;
+  appConfig?: AppConfig | null;
 } = {}) {
   const [fields, setFields] = useState<Field>(() => ({
     ...INITIAL,
@@ -167,6 +193,8 @@ export function LeadForm({
       next.qualification = "Please select your qualification.";
     if (!fields.city.trim()) next.city = "City is required.";
     if (!fields.state.trim()) next.state = "State is required.";
+    if (!fields.date) next.date = "Preferred demo date is required.";
+    if (!fields.timeslot) next.timeslot = "Preferred timeslot is required.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -196,6 +224,8 @@ export function LeadForm({
           remarks: fields.message.trim() || undefined,
           branchId: branchId || undefined,
           leadId: leadId || undefined,
+          date: fields.date || undefined,
+          timeslot: fields.timeslot || undefined,
         }),
       });
 
@@ -251,7 +281,9 @@ export function LeadForm({
             </span>
             . Our team will reach out to you at{" "}
             <span className="text-primary">{fields.email}</span>{" "}
-            shortly to confirm your free demo class slot.
+            shortly to confirm your free demo class slot for{" "}
+            <span className="text-foreground font-medium">{fields.date}</span> at{" "}
+            <span className="text-foreground font-medium">{formatTime12h(fields.timeslot)}</span>.
           </p>
         </motion.div>
       </section>
@@ -259,12 +291,12 @@ export function LeadForm({
   }
 
   return (
-    <section className="pb-24 px-6">
+    <section className="pb-24 px-3 sm:px-6">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        className="max-w-2xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm"
+        className="max-w-2xl mx-auto bg-card border border-border rounded-2xl px-4 py-6 sm:p-8 md:p-12 shadow-sm"
       >
         {leadId && contextLoading && (
           <div className="mb-6 rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
@@ -408,6 +440,45 @@ export function LeadForm({
             )}
           </div>
 
+          {/* Preferred Date & Time Slot */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1.5">
+                Preferred Demo Date <span className="text-primary">*</span>
+              </label>
+              <input
+                type="date"
+                min={new Date().toISOString().split("T")[0]}
+                value={fields.date || ""}
+                onChange={(e) => set("date", e.target.value)}
+                className={[
+                  inputClass(!!errors.date),
+                  "cursor-pointer",
+                ].join(" ")}
+              />
+              {errors.date && (
+                <p className="mt-1.5 text-xs text-red-500">{errors.date}</p>
+              )}
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-1.5">
+                Preferred Demo Time <span className="text-primary">*</span>
+              </label>
+              <input
+                type="time"
+                value={fields.timeslot || ""}
+                onChange={(e) => set("timeslot", e.target.value)}
+                className={[
+                  inputClass(!!errors.timeslot),
+                  "cursor-pointer",
+                ].join(" ")}
+              />
+              {errors.timeslot && (
+                <p className="mt-1.5 text-xs text-red-500">{errors.timeslot}</p>
+              )}
+            </div>
+          </div>
+
           {/* City + State row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
@@ -506,6 +577,59 @@ export function LeadForm({
             team to schedule your demo class.
           </p>
         </form>
+      </motion.div>
+
+      {/* ── Location Section ──────────────────────────────────────── */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        className="max-w-2xl mx-auto mt-6"
+      >
+        <div className="flex items-center gap-2 mb-4">
+          {/* <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
+            <MapPin size={14} className="text-primary" />
+          </div> */}
+          <p className="text-sm font-semibold text-foreground tracking-tight">
+            Our Location
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-3">
+          {ACADEMY_LOCATIONS.map((loc, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.01, y: -1 }}
+              transition={{ type: "spring", stiffness: 350, damping: 22 }}
+              className="group relative rounded-2xl border border-border bg-card px-5 py-4 shadow-sm overflow-hidden"
+            >
+              {/* Subtle gradient accent on hover */}
+              <span className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+
+              <div className="relative z-10 flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  {/* <div className="mt-0.5 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <MapPin size={14} className="text-primary" />
+                  </div> */}
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {loc.address}
+                  </p>
+                </div>
+                {loc.googleMapLocation && (
+                  <a
+                    href={loc.googleMapLocation}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open in Google Maps"
+                    className="shrink-0 flex items-center gap-1.5 text-xs text-primary font-medium hover:underline mt-0.5"
+                  >
+                    <ExternalLink size={12} />
+                    Map
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </section>
   );

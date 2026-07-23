@@ -249,7 +249,7 @@ export function EnrollForm({
       formData.append(
         "courseName",
         COURSES.find((c) => c.value === fields.courseName)?.label ??
-          fields.courseName,
+        fields.courseName,
       );
       if (documentFile) formData.append("document", documentFile);
       if (branchId) formData.append("branchId", branchId);
@@ -319,12 +319,12 @@ export function EnrollForm({
   }
 
   return (
-    <section className="pb-24 px-6">
+    <section className="pb-24 px-3 sm:px-6">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        className="max-w-2xl mx-auto bg-card border border-border rounded-2xl p-8 md:p-12 shadow-sm"
+        className="max-w-2xl mx-auto bg-card border border-border rounded-2xl px-4 py-6 sm:p-8 md:p-12 shadow-sm"
       >
         {leadId && contextLoading && (
           <div className="mb-6 rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">

@@ -169,7 +169,7 @@ export default async function DigitalMarketingPage() {
             alt="Robot cute peeking"
             width={500}
             height={200}
-            className="w-40"
+            className="w-40 h-auto"
           />
         </div>
       </section>

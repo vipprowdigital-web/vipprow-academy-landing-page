@@ -215,7 +215,7 @@ export default function PageLoadShutter() {
               alt="Vipprow Academy loading"
               fill
               unoptimized
-              className="h-auto object-contain drop-shadow-[0_0_32px_rgba(99,102,241,0.5)]"
+              className="object-contain drop-shadow-[0_0_32px_rgba(99,102,241,0.5)]"
               priority
             />
           </motion.div>

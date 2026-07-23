@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LeadForm } from "@/components/sections/LeadForm";
+import { getAppConfig } from "@/lib/appConfig";
 
 export const metadata: Metadata = {
   title: "Book a Demo Class | Vipprow Academy",
@@ -16,7 +17,10 @@ export default async function DemoClassPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const params = await searchParams;
+  const [params, appConfig] = await Promise.all([
+    searchParams,
+    getAppConfig(),
+  ]);
   const branchId = firstValue(params.branchId);
   const leadId = firstValue(params.leadId);
   const name = firstValue(params.name);
@@ -39,8 +43,7 @@ export default async function DemoClassPage({
               <span className="text-primary">Book a free demo class.</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
-              Fill out the form below and our team will reach out within 24
-              hours to schedule your free, no-obligation demo class.
+              Fill out the form below and our team will reach out soon to schedule your free, no-obligation demo class.
             </p>
           </div>
         </section>
@@ -49,6 +52,7 @@ export default async function DemoClassPage({
           leadId={leadId}
           urlName={name}
           urlMobile={mobile}
+          appConfig={appConfig}
         />
       </main>
     </>

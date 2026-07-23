@@ -72,6 +72,7 @@ export function Navbar() {
               height={20}
               className="w-full h-auto"
               // style={{ height: "auto" }}
+              priority
             />
           </Link>
 
