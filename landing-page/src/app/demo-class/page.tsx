@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LeadForm } from "@/components/sections/LeadForm";
 import { getAppConfig } from "@/lib/appConfig";
+import AddressBanner from "@/components/sections/AddressBanner";
 
 export const metadata: Metadata = {
   title: "Book a Demo Class | Vipprow Academy",
@@ -53,6 +54,13 @@ export default async function DemoClassPage({
           urlName={name}
           urlMobile={mobile}
           appConfig={appConfig}
+        />
+        <AddressBanner
+          addressLines={["Bethel House Near Naveen Vidhya Mandir School Napier Town Jabalpur, Madhya Pradesh"]}
+          phone="+91 96699 32121"
+        // mapHref="https://maps.google.com/?q=<your academy on Google Maps>"
+        // lat="<latitude>"
+        // lng="<longitude>"
         />
       </main>
     </>

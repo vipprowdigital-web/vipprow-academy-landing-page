@@ -60,7 +60,7 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
         aria-hidden="true"
         className="pointer-events-none select-none absolute bottom-28 left-1/2 -translate-x-1/2 w-full max-w-3xl opacity-10 h-auto"
       />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-7 sm:py-16 md:py-20">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -146,31 +146,25 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
               </ul>
             </motion.div>
           ))}
-        </motion.div>
 
-        {/* ── Social Links Section ─────────────────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12 flex flex-col items-center gap-6"
-        >
-          <p className="text-xs uppercase tracking-[0.2em] font-heading font-semibold text-white/50">
-            Follow Us
-          </p>
-          <div className="flex items-center gap-4">
-            {HARDCODED_SOCIALS.map((s) => (
-              <SocialPill
-                key={s.label}
-                href={s.href}
-                label={s.label}
-                iconSrc={s.iconSrc}
-                color={s.color}
-                glow={s.glow}
-              />
-            ))}
-          </div>
+          {/* Follow Us column */}
+          <motion.div variants={fadeUp} className="col-span-1">
+            <p className="text-xs uppercase tracking-[0.15em] font-heading font-semibold text-muted-foreground mb-4">
+              Follow Us
+            </p>
+            <div className="flex items-center gap-3 flex-wrap">
+              {HARDCODED_SOCIALS.map((s) => (
+                <SocialPill
+                  key={s.label}
+                  href={s.href}
+                  label={s.label}
+                  iconSrc={s.iconSrc}
+                  color={s.color}
+                  glow={s.glow}
+                />
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Bottom bar */}
@@ -182,7 +176,7 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
           className="pt-8 border-t border-border/60 flex flex-col md:flex-row items-center justify-center gap-4"
         >
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Vipprow Academy. All rights reserved.
+            &copy; {new Date().getFullYear()} Vipprow Academy. All rights reserved.
           </p>
           {/* <p className="text-xs text-muted-foreground">
             Developed by <span className="text-button">Vipprow</span>
@@ -219,7 +213,7 @@ function SocialPill({
       whileHover={{ scale: 1.08, y: -2 }}
       whileTap={{ scale: 0.96 }}
       transition={{ type: "spring", stiffness: 400, damping: 18 }}
-      className="relative flex items-center gap-3 px-2 py-2 rounded-2xl overflow-hidden cursor-pointer select-none"
+      className="relative flex items-center gap-3 sm:px-2 px-1 py-1 sm:py-2 rounded-2xl overflow-hidden cursor-pointer select-none"
       style={{
         boxShadow: hovered ? `0 0 28px 4px ${glow}` : "0 0 0px transparent",
         transition: "box-shadow 0.3s ease",
@@ -249,7 +243,7 @@ function SocialPill({
         alt={label}
         width={20}
         height={20}
-        className="relative z-10 w-7 h-7 brightness-0 invert"
+        className="relative z-10 w-6 sm:w-7 h-6 sm:h-7 brightness-0 invert"
       />
 
       {/* Label */}

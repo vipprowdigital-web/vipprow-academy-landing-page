@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EnrollForm } from "@/components/sections/EnrollForm";
+import AddressBanner from "@/components/sections/AddressBanner";
 
 export const metadata: Metadata = {
   title: "Enroll Now | Vipprow Academy",
@@ -25,6 +26,7 @@ export default async function EnrollPage({
   return (
     <>
       <main className="section-light min-h-screen">
+
         <section className="pt-32 pb-8 md:pt-40 md:pb-12">
           <div className="max-w-7xl mx-auto px-6 text-center">
             <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary font-heading font-semibold mb-4">
@@ -48,6 +50,13 @@ export default async function EnrollPage({
           leadId={leadId}
           urlName={name}
           urlMobile={mobile}
+        />
+        <AddressBanner
+          addressLines={["Bethel House Near Naveen Vidhya Mandir School Napier Town Jabalpur, Madhya Pradesh"]}
+          phone="+91 96699 32121"
+        // mapHref="https://maps.google.com/?q=<your academy on Google Maps>"
+        // lat="<latitude>"
+        // lng="<longitude>"
         />
       </main>
     </>

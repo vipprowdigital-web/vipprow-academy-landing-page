@@ -579,58 +579,6 @@ export function LeadForm({
         </form>
       </motion.div>
 
-      {/* ── Location Section ──────────────────────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-        className="max-w-2xl mx-auto mt-6"
-      >
-        <div className="flex items-center gap-2 mb-4">
-          {/* <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
-            <MapPin size={14} className="text-primary" />
-          </div> */}
-          <p className="text-sm font-semibold text-foreground tracking-tight">
-            Our Location
-          </p>
-        </div>
-        <div className="grid grid-cols-1 gap-3">
-          {ACADEMY_LOCATIONS.map((loc, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.01, y: -1 }}
-              transition={{ type: "spring", stiffness: 350, damping: 22 }}
-              className="group relative rounded-2xl border border-border bg-card px-5 py-4 shadow-sm overflow-hidden"
-            >
-              {/* Subtle gradient accent on hover */}
-              <span className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
-
-              <div className="relative z-10 flex items-start justify-between gap-4">
-                <div className="flex items-start gap-3">
-                  {/* <div className="mt-0.5 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <MapPin size={14} className="text-primary" />
-                  </div> */}
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {loc.address}
-                  </p>
-                </div>
-                {loc.googleMapLocation && (
-                  <a
-                    href={loc.googleMapLocation}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open in Google Maps"
-                    className="shrink-0 flex items-center gap-1.5 text-xs text-primary font-medium hover:underline mt-0.5"
-                  >
-                    <ExternalLink size={12} />
-                    Map
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }
