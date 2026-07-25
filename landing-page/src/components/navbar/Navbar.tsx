@@ -139,6 +139,14 @@ export function Navbar() {
               About
               <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
             </Link>
+
+            <Link
+              href="/download-brochure"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+            >
+              Brochure
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+            </Link>
           </nav>
 
           <div className="justify-self-end flex items-center gap-3">
@@ -248,6 +256,20 @@ export function Navbar() {
                   onClick={() => setMenuOpen(false)}
                 >
                   About
+                </Link>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.15, duration: 0.3 }}
+              >
+                <Link
+                  href="/download-brochure"
+                  className="block py-3 text-base text-muted-foreground hover:text-foreground border-b border-border/40 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Download Brochure
                 </Link>
               </motion.div>
 

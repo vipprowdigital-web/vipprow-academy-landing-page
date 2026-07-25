@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
+import { isValidGmail, isValidPhone } from "@/lib/validation";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api/v1";
@@ -206,16 +207,15 @@ export function EnrollForm({
   function validate(): boolean {
     const next: Partial<Record<keyof Field | "document", string>> = {};
     if (!fields.studentName.trim()) next.studentName = "Full name is required.";
-    if (
-      fields.email.trim() &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)
-    ) {
-      next.email = "Enter a valid email address.";
+    if (!fields.email.trim()) {
+      next.email = "Email address is required.";
+    } else if (!isValidGmail(fields.email)) {
+      next.email = "Must be a valid Gmail address (e.g. name@gmail.com).";
     }
     if (!fields.mobile.trim()) {
       next.mobile = "Phone number is required.";
-    } else if (!/^[6-9]\d{9}$/.test(fields.mobile.replace(/\s+/g, ""))) {
-      next.mobile = "Enter a valid 10-digit Indian mobile number.";
+    } else if (!isValidPhone(fields.mobile)) {
+      next.mobile = "Phone number must be a valid 10-digit mobile number.";
     }
     if (!fields.dateOfBirth) next.dateOfBirth = "Date of birth is required.";
     if (!fields.courseName) next.courseName = "Please select a course.";
@@ -376,8 +376,7 @@ export function EnrollForm({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-foreground mb-1.5">
-                Email Address{" "}
-                <span className="text-muted-foreground font-normal">*</span>
+                Email Address <span className="text-primary">*</span>
               </label>
               <input
                 type="email"

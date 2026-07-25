@@ -29,16 +29,16 @@ const DM_CARDS: CardData[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=600",
   },
+  // {
+  // category: "Module 03",
+  //   title: "Performance Marketing",
+  //   description:
+  //     "Create and optimize Google Ads and Meta Ads campaigns, understand conversion tracking, ROAS, and audience targeting.",
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
+  // },
   {
     category: "Module 03",
-    title: "Performance Marketing",
-    description:
-      "Create and optimize Google Ads and Meta Ads campaigns, understand conversion tracking, ROAS, and audience targeting.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
-  },
-  {
-    category: "Module 04",
     title: "Social Media & Content Marketing",
     description:
       "Plan content calendars, create engaging posts and Reels, build communities, and grow brands across major social platforms.",
@@ -46,7 +46,7 @@ const DM_CARDS: CardData[] = [
       "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600",
   },
   {
-    category: "Module 05",
+    category: "Module 04",
     title: "AI Tools for Marketers",
     description:
       "Master ChatGPT, Gemini, Canva AI, AI automation, prompt engineering, and productivity tools used by modern marketers.",
@@ -54,7 +54,7 @@ const DM_CARDS: CardData[] = [
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600",
   },
   {
-    category: "Module 06",
+    category: "Module 05",
     title: "Analytics & Conversion Tracking",
     description:
       "Use GA4, Google Tag Manager, Looker Studio, and reporting dashboards to measure campaign performance.",
@@ -62,7 +62,7 @@ const DM_CARDS: CardData[] = [
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
   },
   {
-    category: "Module 07",
+    category: "Module 06",
     title: "WordPress & Landing Pages",
     description:
       "Build professional websites and high-converting landing pages without coding using WordPress and modern tools.",
@@ -70,7 +70,7 @@ const DM_CARDS: CardData[] = [
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600",
   },
   {
-    category: "Module 08",
+    category: "Module 07",
     title: "Career, Freelancing & Portfolio",
     description:
       "Build your portfolio, optimize LinkedIn, prepare for interviews, find freelance clients, and launch your digital marketing career.",

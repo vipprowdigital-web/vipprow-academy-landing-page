@@ -16,6 +16,7 @@ const FOOTER_LINKS = {
   Company: [
     { label: "About Academy", href: "/about" },
     { label: "Our Courses", href: "/courses" },
+    { label: "Download Brochure", href: "/download-brochure" },
     { label: "Demo Class", href: "/demo-class" },
     { label: "Admission", href: "/enroll" },
   ],

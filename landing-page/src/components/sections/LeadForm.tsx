@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { MapPin, ExternalLink } from "lucide-react";
 import type { AppConfig } from "@/lib/appConfig";
+import { isValidGmail, isValidPhone } from "@/lib/validation";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api/v1";
@@ -179,14 +180,14 @@ export function LeadForm({
     const next: Partial<Field> = {};
     if (!fields.name.trim()) next.name = "Full name is required.";
     if (!fields.email.trim()) {
-      next.email = "Email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
-      next.email = "Enter a valid email address.";
+      next.email = "Email address is required.";
+    } else if (!isValidGmail(fields.email)) {
+      next.email = "Must be a valid Gmail address (e.g. name@gmail.com).";
     }
     if (!fields.phone.trim()) {
       next.phone = "Phone number is required.";
-    } else if (!/^[6-9]\d{9}$/.test(fields.phone.replace(/\s+/g, ""))) {
-      next.phone = "Enter a valid 10-digit Indian mobile number.";
+    } else if (!isValidPhone(fields.phone)) {
+      next.phone = "Phone number must be a valid 10-digit mobile number.";
     }
     if (!fields.course) next.course = "Please select a course.";
     if (!fields.qualification)

@@ -16,8 +16,8 @@ type AddressBannerProps = {
 export default function AddressBanner({
     eyebrow = "VISIT THE ACADEMY",
     heading = "Find us on campus.",
-    addressLines = ["123 MG Road, Andheri West", "Mumbai, Maharashtra 400058"],
-    phone = "+91 99887 76655",
+    addressLines = ["Bethel House Near Naveen Vidhya Mandir School Napier Town", "Jabalpur, Madhya Pradesh"],
+    phone = "+91 96699 32121",
     mapHref,
     lat,
     lng,
