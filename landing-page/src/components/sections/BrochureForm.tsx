@@ -179,8 +179,8 @@ export function BrochureForm({
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
 
               <div className="mb-8 text-center sm:text-left">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 mb-3">
-                  <Download size={14} /> Official Digital Marketing Brochure
+                <span className="inline-flex justify-start sm:justify-center sm:items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 mb-3">
+                  <Download size={14} className="sm:block hidden" /> Official Digital Marketing Brochure
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground tracking-tight">
                   Download Digital Marketing Course Brochure

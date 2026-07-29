@@ -61,7 +61,7 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
         aria-hidden="true"
         className="pointer-events-none select-none absolute bottom-28 left-1/2 -translate-x-1/2 w-full max-w-3xl opacity-10 h-auto"
       />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-7 sm:py-16 md:py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-7 sm:py-10 md:pt-20">
         <motion.div
           variants={stagger}
           initial="hidden"

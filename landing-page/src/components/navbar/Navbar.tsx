@@ -269,7 +269,7 @@ export function Navbar() {
                   className="block py-3 text-base text-muted-foreground hover:text-foreground border-b border-border/40 transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Download Brochure
+                  Brochure
                 </Link>
               </motion.div>
 
