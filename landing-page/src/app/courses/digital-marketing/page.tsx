@@ -15,65 +15,113 @@ export const metadata: Metadata = {
 const DM_CARDS: CardData[] = [
   {
     category: "Module 01",
-    title: "Digital Marketing Fundamentals",
+    title: "Introduction to Digital Marketing",
     description:
-      "Understand digital marketing, customer journeys, sales funnels, branding, and the complete digital ecosystem.",
+      "What is Digital Marketing, Importance & Benefits, Digital Marketing Channels Overview, How Digital Marketing Works, Career Opportunities in Digital Marketing, and Tools & Resources Overview.",
     imageUrl:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
   },
   {
     category: "Module 02",
-    title: "SEO & Local SEO",
+    title: "Website Planning & Development",
     description:
-      "Learn keyword research, on-page SEO, technical SEO, Google Search Console, local SEO, and ranking strategies.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=600",
-  },
-  // {
-  // category: "Module 03",
-  //   title: "Performance Marketing",
-  //   description:
-  //     "Create and optimize Google Ads and Meta Ads campaigns, understand conversion tracking, ROAS, and audience targeting.",
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
-  // },
-  {
-    category: "Module 03",
-    title: "Social Media & Content Marketing",
-    description:
-      "Plan content calendars, create engaging posts and Reels, build communities, and grow brands across major social platforms.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600",
-  },
-  {
-    category: "Module 04",
-    title: "AI Tools for Marketers",
-    description:
-      "Master ChatGPT, Gemini, Canva AI, AI automation, prompt engineering, and productivity tools used by modern marketers.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600",
-  },
-  {
-    category: "Module 05",
-    title: "Analytics & Conversion Tracking",
-    description:
-      "Use GA4, Google Tag Manager, Looker Studio, and reporting dashboards to measure campaign performance.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
-  },
-  {
-    category: "Module 06",
-    title: "WordPress & Landing Pages",
-    description:
-      "Build professional websites and high-converting landing pages without coding using WordPress and modern tools.",
+      "Domain & Hosting Basics, Website Planning & Structure, WordPress Installation, Theme & Plugin Setup, Pages, Posts & Menus Management, Introduction to Landing Pages, and Basic On-Page Setup.",
     imageUrl:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600",
   },
   {
-    category: "Module 07",
-    title: "Career, Freelancing & Portfolio",
+    category: "Module 03",
+    title: "Search Engine Optimization (SEO)",
     description:
-      "Build your portfolio, optimize LinkedIn, prepare for interviews, find freelance clients, and launch your digital marketing career.",
+      "SEO Basics & How Search Engines Work, Keyword Research & Analysis, On-Page SEO (Title, Meta, Headings, Content), URL Structure & Internal Linking, Technical SEO Basics, Off-Page SEO (Backlinks Overview), and SEO Tools Introduction.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=600",
+  },
+  {
+    category: "Module 04",
+    title: "Search Engine Marketing (SEM)",
+    description:
+      "Google Ads Fundamentals, Search Campaigns, Display Advertising, Keyword Planning, and Budget & Bidding Strategies.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
+  },
+  {
+    category: "Module 05",
+    title: "Social Media Marketing (SMM)",
+    description:
+      "Facebook Marketing, Instagram Marketing, LinkedIn Marketing, YouTube Marketing, and Social Media Strategy.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600",
+  },
+  {
+    category: "Module 06",
+    title: "Content Marketing",
+    description:
+      "Content Strategy, Copywriting, Blogging, Video Content, and Brand Storytelling.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600",
+  },
+  {
+    category: "Module 07",
+    title: "Email Marketing",
+    description:
+      "Email Marketing Basics, Building Email Lists, Email Campaigns, Automation & Workflows, and Email Design & Best Practices.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=600",
+  },
+  {
+    category: "Module 08",
+    title: "Web Analytics",
+    description:
+      "Introduction to Web Analytics, Google Analytics Overview, Traffic Sources Analysis, User Behavior & Reports, and Goals, Events & Conversions.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
+  },
+  {
+    category: "Module 09",
+    title: "E-Commerce Marketing",
+    description:
+      "E-Commerce Marketing Basics, Product Research & Positioning, Marketing Strategies, Conversion Rate Optimization, and Customer Retention & Loyalty.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1556742049-0a67568d049f?q=80&w=600",
+  },
+  {
+    category: "Module 10",
+    title: "Artificial Intelligence (AI) for Digital Marketing",
+    description:
+      "Introduction to AI in Marketing, ChatGPT & AI Productivity, AI Content Creation, AI Image Generation, AI Video Creation, AI for SEO & Blogging, AI-Powered Social Media Marketing, AI Email Marketing, and AI Research & Prompt Engineering.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600",
+  },
+  {
+    category: "Module 11",
+    title: "Advanced AI & Automation",
+    description:
+      "AI Workflow Automation, Marketing Automation Tools, AI Chatbots, No-Code AI Automation, AI CRM & Lead Management, AI Data Analysis, AI Sales Funnel Automation, AI Business Productivity, and Future AI Trends.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600",
+  },
+  {
+    category: "Module 12",
+    title: "Advanced Digital Marketing Techniques",
+    description:
+      "Conversion Rate Optimization (CRO), Marketing Funnels & Customer Journey, Advanced SEO Techniques, Paid Advertising Strategies (Google Ads, Meta Ads), Retargeting & Remarketing Strategies, Growth Hacking & Performance Marketing, A/B Testing & Data-Driven Marketing, and Multichannel Marketing Strategies.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
+  },
+  {
+    category: "Module 13",
+    title: "Practical Assignments & Live Projects",
+    description:
+      "Real-World Project Implementation, Industry-Based Case Studies, Campaign Planning & Execution, Performance Analysis & Reporting, Client Handling & Communication, Team Collaboration & Project Management, Live Project Presentation & Evaluation, and Portfolio Building.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600",
+  },
+  {
+    category: "Module 14",
+    title: "Career Guidance & Certification",
+    description:
+      "Career Path in Digital Marketing, Resume Building & LinkedIn Optimization, Interview Preparation & Mock Sessions, Personal Branding & Freelancing, Job Opportunities & Placement Support, Internship Assistance, Industry Recognized Certification, and Lifetime Learning & Growth Support.",
     imageUrl:
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600",
   },
@@ -145,6 +193,115 @@ export default async function DigitalMarketingPage() {
         ctaHref="/enroll"
         variant="digital-marketing"
       />
+
+      {/* Course Overview */}
+      <section className="py-16 md:py-20 border-t border-border/60">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Intro */}
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mb-12 leading-relaxed">
+            A comprehensive digital marketing program designed to build your skills, enhance your knowledge, and{" "}
+            <span className="text-primary font-semibold">accelerate your career growth.</span>
+          </p>
+
+          {/* Info cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+            {/* Duration */}
+            <div className="rounded-2xl border border-border/60 bg-muted/30 p-6 flex flex-col items-center text-center gap-3">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest text-primary font-heading font-bold">Duration</span>
+              <p className="font-heading font-black text-5xl text-foreground leading-none">3</p>
+              <p className="font-heading font-bold text-lg text-foreground">MONTHS</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">Intensive structured learning with practical hands-on training.</p>
+            </div>
+
+            {/* Learning Mode */}
+            <div className="rounded-2xl border border-border/60 bg-muted/30 p-6 flex flex-col gap-3">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest text-primary font-heading font-bold text-center">Learning Mode</span>
+              <p className="font-heading font-bold text-base text-foreground text-center">OFFLINE</p>
+              <ul className="space-y-1.5 text-xs text-muted-foreground">
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Live Interactive Classes</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Monday to Thursday</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>1.5 Hours Per Day</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Practical Assignments</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>24/7 Access to Study Materials</li>
+              </ul>
+            </div>
+
+            {/* Certification */}
+            <div className="rounded-2xl border border-border/60 bg-muted/30 p-6 flex flex-col items-center text-center gap-3">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest text-primary font-heading font-bold">Certification</span>
+              <p className="font-heading font-bold text-base text-foreground uppercase leading-tight">Industry Recognized Certification</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">Earn a globally recognized certification and boost your professional credibility.</p>
+            </div>
+
+            {/* Career Support */}
+            <div className="rounded-2xl border border-border/60 bg-muted/30 p-6 flex flex-col gap-3">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest text-primary font-heading font-bold text-center">Career Support</span>
+              <p className="font-heading font-bold text-sm text-foreground text-center uppercase leading-tight">100% Support for Your Career Growth</p>
+              <ul className="space-y-1.5 text-xs text-muted-foreground">
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Resume Building</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Interview Preparation</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Job Assistance</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Freelance Guidance</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Career Counseling</li>
+              </ul>
+            </div>
+
+            {/* Course Features */}
+            <div className="rounded-2xl border border-border/60 bg-muted/30 p-6 flex flex-col gap-3">
+              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest text-primary font-heading font-bold text-center">Course Features</span>
+              <ul className="space-y-1.5 text-xs text-muted-foreground">
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>14 Comprehensive Modules</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Practical &amp; Hands-on Training</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Live Projects &amp; Case Studies</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>AI-Powered Learning</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Industry Expert Mentorship</li>
+                <li className="flex items-start gap-2"><span className="text-primary mt-0.5">●</span>Updated Curriculum as per Industry Trends</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Our Promise */}
+          <div className="rounded-2xl border border-primary/20 bg-primary/5 p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
+            <div className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+              <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="font-heading font-bold text-xl text-primary mb-2 tracking-wide uppercase">Our Promise</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                At VIPPROW Academy, we are committed to providing quality education, practical exposure, and continuous support to help you achieve your{" "}
+                <span className="text-primary font-semibold">career goals</span> in the digital marketing industry.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* What you'll learn — HoverCards */}
       <section className="relative py-16 md:py-24 border-t border-border/60 overflow-hidden">

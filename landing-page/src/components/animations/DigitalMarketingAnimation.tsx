@@ -233,6 +233,7 @@ export default function DigitalMarketingAnimation({
             alt="Vipprow Logo"
             width={70}
             height={70}
+            priority
           />
         </motion.div>
       </div>

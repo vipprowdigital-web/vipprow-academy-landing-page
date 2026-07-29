@@ -132,7 +132,7 @@ export function FinalCTA({ appConfig }: { appConfig?: AppConfig | null }) {
                 onClick={() => {
                   window.location.href = `tel:+91${phone}`;
                 }}
-                className="bg-gray-300/30"
+                className="bg-white"
               >
                 Talk to a Counselor
               </Button>

@@ -81,10 +81,10 @@ export function HoverCard({
           </p>
 
           {/* Optional Accenture Style Expand CTA */}
-          <div className="mt-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-white">
+          {/* <div className="mt-4 flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-white">
             <span>Expand</span>
             <span className="text-[10px]">→</span>
-          </div>
+          </div> */}
         </motion.div>
         {/* </div> */}
       </div>
