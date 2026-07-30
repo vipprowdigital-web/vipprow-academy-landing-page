@@ -70,7 +70,7 @@ export function Navbar() {
               alt="Vipprow Academy Logo"
               width={150}
               height={20}
-              className="w-full h-auto"
+              className="w-40 h-auto"
               // style={{ height: "auto" }}
               priority
             />

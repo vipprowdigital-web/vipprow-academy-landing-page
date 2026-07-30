@@ -81,7 +81,7 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
                 width={150}
                 height={20}
                 style={{ width: "auto", height: "auto" }}
-              // className="w-full h-auto"
+                // className="w-full h-auto"
               />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
@@ -177,7 +177,8 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
           className="pt-8 border-t border-border/60 flex flex-col md:flex-row items-center justify-center gap-4"
         >
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Vipprow Academy. All rights reserved.
+            &copy; {new Date().getFullYear()} Vipprow Academy. All rights
+            reserved.
           </p>
           {/* <p className="text-xs text-muted-foreground">
             Developed by <span className="text-button">Vipprow</span>

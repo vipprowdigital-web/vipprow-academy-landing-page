@@ -30,33 +30,6 @@ interface HeroScrollSplitProps {
   variant: "digital-marketing" | "performance-marketing";
 }
 
-/**
- * Full-bleed hero image that starts pinned at 100vw, then on scroll
- * genuinely shrinks in size and settles into the left column of a 2-col
- * grid, while an eyebrow / heading / copy / CTA "emerges" from inside the
- * screen on the right — starts small, pushed back in 3D depth and
- * invisible, then scales and moves toward the viewer as it fades in.
- *
- * Pattern notes (matches SectionTypography.tsx conventions):
- * - pin: true + pinSpacing manufactures real scroll distance since the
- *   section itself is only min-h-screen (no natural scroll range).
- * - The image wrapper's `width` is the one layout-affecting property we
- *   animate. That's normally something to avoid on scrub timelines, but
- *   here it's a single element (not a list), and it's the only way to get
- *   a genuine size change rather than a crop illusion. next/image's `fill`
- *   + `object-cover` recrops automatically as the parent narrows, so there
- *   is no stretching.
- * - The text panel's "emerge from the screen" effect uses real 3D:
- *   transformPerspective + z (depth) + scale, not just opacity/x. Each
- *   child (eyebrow, heading, copy, CTA) staggers slightly so the block
- *   assembles rather than popping in as one flat unit.
- * - Pin/split/emerge behaviour is desktop-only (matchMedia >= 768px).
- *   Mobile gets a static stacked layout — scroll-jacking a 50/50 split
- *   with 3D transforms is not worth the jank budget on mid-range Android.
- * - If this section shares a scroll container with Lenis, no extra wiring
- *   is needed as long as Lenis is calling ScrollTrigger.update() on its
- *   'scroll' event (standard Lenis + GSAP integration) elsewhere in the app.
- */
 export default function CourseSection({
   imageSrc,
   imageAlt,
