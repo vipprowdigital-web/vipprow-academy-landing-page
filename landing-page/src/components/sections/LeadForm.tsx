@@ -2,17 +2,13 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { MapPin, ExternalLink } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import type { AppConfig } from "@/lib/appConfig";
 import { isValidGmail, isValidPhone } from "@/lib/validation";
+import { usePublicCourses } from "@/hooks/usePublicCourses";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api/v1";
-
-const COURSES = [
-  { value: "digital-marketing", label: "Digital Marketing" },
-  { value: "performance-marketing", label: "Performance Marketing" },
-];
 
 const QUALIFICATIONS = [
   { value: "high_school", label: "High School (10th / 12th)" },
@@ -111,6 +107,22 @@ export function LeadForm({
   const [contextLoading, setContextLoading] = useState(!!leadId);
   const [contextError, setContextError] = useState<string | null>(null);
 
+  const {
+    courses,
+    loading: coursesLoading,
+    fromApi: coursesFromApi,
+  } = usePublicCourses(branchId);
+  const [leadCourseName, setLeadCourseName] = useState("");
+
+  // The user's pick wins; otherwise pre-select the course a known lead wanted
+  const selectedCourse =
+    fields.course ||
+    (leadCourseName
+      ? (courses.find(
+          (c) => c.label.toLowerCase() === leadCourseName.toLowerCase(),
+        )?.value ?? "")
+      : "");
+
   useEffect(() => {
     if (!leadId) return;
 
@@ -148,13 +160,8 @@ export function LeadForm({
             name: data.lead.name || prev.name,
             email: data.lead.email || prev.email,
             phone: data.lead.mobile || prev.phone,
-            course:
-              COURSES.find(
-                (c) =>
-                  c.label.toLowerCase() ===
-                  String(data.lead.courseInterested ?? "").toLowerCase(),
-              )?.value ?? prev.course,
           }));
+          setLeadCourseName(String(data.lead.courseInterested ?? ""));
         }
       } catch {
         if (!cancelled) {
@@ -189,7 +196,7 @@ export function LeadForm({
     } else if (!isValidPhone(fields.phone)) {
       next.phone = "Phone number must be a valid 10-digit mobile number.";
     }
-    if (!fields.course) next.course = "Please select a course.";
+    if (!selectedCourse) next.course = "Please select a course.";
     if (!fields.qualification)
       next.qualification = "Please select your qualification.";
     if (!fields.city.trim()) next.city = "City is required.";
@@ -217,16 +224,20 @@ export function LeadForm({
           email: fields.email.trim() || undefined,
           city: fields.city.trim() || undefined,
           state: fields.state.trim() || undefined,
-          courseInterested:
-            COURSES.find((c) => c.value === fields.course)?.label ??
-            fields.course,
+          ...(coursesFromApi
+            ? { courseId: selectedCourse }
+            : {
+                courseInterested:
+                  courses.find((c) => c.value === selectedCourse)?.label ??
+                  selectedCourse,
+              }),
           respondentType: fields.qualification || undefined,
           source: "demo_class",
           remarks: fields.message.trim() || undefined,
           branchId: branchId || undefined,
           leadId: leadId || undefined,
           date: fields.date || undefined,
-          timeslot: fields.timeslot || undefined,
+          timeslot: formatTime12h(fields.timeslot) || undefined,
         }),
       });
 
@@ -385,27 +396,30 @@ export function LeadForm({
             <label className="block text-sm font-medium text-foreground mb-1.5">
               Course Interest <span className="text-primary">*</span>
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {COURSES.map((c) => (
-                <button
-                  key={c.value}
-                  type="button"
-                  onClick={() => set("course", c.value)}
-                  className={[
-                    "rounded-xl border px-4 py-3.5 text-sm text-left transition-all duration-200 cursor-pointer",
-                    fields.course === c.value
-                      ? "border-primary bg-primary/8 text-foreground font-medium"
-                      : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
-                    errors.course && fields.course !== c.value
-                      ? "border-red-400"
-                      : "",
-                  ].join(" ")}
-                >
-                  <span className="block font-medium text-[13px]">
-                    {c.label}
-                  </span>
-                </button>
-              ))}
+            <div className="relative">
+              <select
+                value={selectedCourse}
+                onChange={(e) => set("course", e.target.value)}
+                disabled={coursesLoading}
+                className={[
+                  inputClass(!!errors.course),
+                  "appearance-none cursor-pointer pr-10",
+                ].join(" ")}
+              >
+                <option value="" disabled>
+                  {coursesLoading ? "Loading courses…" : "Select a course"}
+                </option>
+                {courses.map((c) => (
+                  <option key={c.value} value={c.value}>
+                    {c.duration ? `${c.label} (${c.duration})` : c.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                size={16}
+                aria-hidden="true"
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+              />
             </div>
             {errors.course && (
               <p className="mt-1.5 text-xs text-red-500">{errors.course}</p>
@@ -417,12 +431,13 @@ export function LeadForm({
             <label className="block text-sm font-medium text-foreground mb-1.5">
               Current Qualification <span className="text-primary">*</span>
             </label>
+            <div className="relative">
             <select
               value={fields.qualification}
               onChange={(e) => set("qualification", e.target.value)}
               className={[
                 inputClass(!!errors.qualification),
-                "appearance-none cursor-pointer",
+                "appearance-none cursor-pointer pr-10",
               ].join(" ")}
             >
               <option value="" disabled>
@@ -434,6 +449,12 @@ export function LeadForm({
                 </option>
               ))}
             </select>
+            <ChevronDown
+              size={16}
+              aria-hidden="true"
+              className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+            />
+            </div>
             {errors.qualification && (
               <p className="mt-1.5 text-xs text-red-500">
                 {errors.qualification}

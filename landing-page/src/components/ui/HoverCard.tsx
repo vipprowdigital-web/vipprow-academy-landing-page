@@ -1,22 +1,20 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 interface HoverCardProps {
   category: string;
   title: string;
   description: string;
-  imageUrl: string;
 }
 
 export function HoverCard({
   category,
   title,
   description,
-  imageUrl,
 }: HoverCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const moduleNumber = category.match(/\d+/)?.[0];
 
   return (
     <div
@@ -24,22 +22,24 @@ export function HoverCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* ── Background Image Zone ────────────────────────────────────── */}
+      {/* ── Resting Gradient Zone ────────────────────────────────────── */}
       <motion.div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full overflow-hidden bg-linear-to-br from-neutral-950 via-neutral-900 to-primary/70"
         animate={{
           opacity: isHovered ? 0 : 1,
         }}
         transition={{ duration: 0.45, ease: [0.25, 1, 0.5, 1] }}
+        aria-hidden="true"
       >
-        <Image
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover"
-          width={200}
-          height={400}
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+        {/* Soft glow */}
+        <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-primary/40 blur-3xl" />
+        {/* Module number watermark */}
+        {moduleNumber && (
+          <span className="absolute -bottom-6 -right-2 font-heading font-black text-[9rem] leading-none text-white/[0.06] select-none">
+            {moduleNumber}
+          </span>
+        )}
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
       </motion.div>
 
       {/* ── Hover Gradient ───────────────────────────────────────────── */}

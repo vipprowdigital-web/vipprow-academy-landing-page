@@ -23,6 +23,11 @@ const FOOTER_LINKS = {
   Support: [
     { label: "100% Placement Assistance", href: "/#placement" },
     { label: "Admissions", href: "/enroll" },
+    {
+      label: "Student Login",
+      href: "https://software.vipprow.com/student-login",
+      external: true,
+    },
     { label: "FAQ", href: "/#faq" },
   ],
 };
@@ -136,12 +141,23 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
+                    {"external" in link && link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

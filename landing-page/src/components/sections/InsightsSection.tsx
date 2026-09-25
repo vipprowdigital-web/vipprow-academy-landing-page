@@ -7,7 +7,6 @@ export interface CardData {
   category: string;
   title: string;
   description: string;
-  imageUrl: string;
 }
 
 interface InsightsSectionProps {

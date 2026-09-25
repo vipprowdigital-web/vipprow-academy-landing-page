@@ -18,112 +18,84 @@ const DM_CARDS: CardData[] = [
     title: "Introduction to Digital Marketing",
     description:
       "What is Digital Marketing, Importance & Benefits, Digital Marketing Channels Overview, How Digital Marketing Works, Career Opportunities in Digital Marketing, and Tools & Resources Overview.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
   },
   {
     category: "Module 02",
     title: "Website Planning & Development",
     description:
       "Domain & Hosting Basics, Website Planning & Structure, WordPress Installation, Theme & Plugin Setup, Pages, Posts & Menus Management, Introduction to Landing Pages, and Basic On-Page Setup.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600",
   },
   {
     category: "Module 03",
     title: "Search Engine Optimization (SEO)",
     description:
       "SEO Basics & How Search Engines Work, Keyword Research & Analysis, On-Page SEO (Title, Meta, Headings, Content), URL Structure & Internal Linking, Technical SEO Basics, Off-Page SEO (Backlinks Overview), and SEO Tools Introduction.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=600",
   },
   {
     category: "Module 04",
     title: "Search Engine Marketing (SEM)",
     description:
       "Google Ads Fundamentals, Search Campaigns, Display Advertising, Keyword Planning, and Budget & Bidding Strategies.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
   },
   {
     category: "Module 05",
     title: "Social Media Marketing (SMM)",
     description:
       "Facebook Marketing, Instagram Marketing, LinkedIn Marketing, YouTube Marketing, and Social Media Strategy.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600",
   },
   {
     category: "Module 06",
     title: "Content Marketing",
     description:
       "Content Strategy, Copywriting, Blogging, Video Content, and Brand Storytelling.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600",
   },
   {
     category: "Module 07",
     title: "Email Marketing",
     description:
       "Email Marketing Basics, Building Email Lists, Email Campaigns, Automation & Workflows, and Email Design & Best Practices.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=600",
   },
   {
     category: "Module 08",
     title: "Web Analytics",
     description:
       "Introduction to Web Analytics, Google Analytics Overview, Traffic Sources Analysis, User Behavior & Reports, and Goals, Events & Conversions.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600",
   },
   {
     category: "Module 09",
     title: "E-Commerce Marketing",
     description:
       "E-Commerce Marketing Basics, Product Research & Positioning, Marketing Strategies, Conversion Rate Optimization, and Customer Retention & Loyalty.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1556742049-0a67568d049f?q=80&w=600",
   },
   {
     category: "Module 10",
     title: "Artificial Intelligence (AI) for Digital Marketing",
     description:
       "Introduction to AI in Marketing, ChatGPT & AI Productivity, AI Content Creation, AI Image Generation, AI Video Creation, AI for SEO & Blogging, AI-Powered Social Media Marketing, AI Email Marketing, and AI Research & Prompt Engineering.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600",
   },
   {
     category: "Module 11",
     title: "Advanced AI & Automation",
     description:
       "AI Workflow Automation, Marketing Automation Tools, AI Chatbots, No-Code AI Automation, AI CRM & Lead Management, AI Data Analysis, AI Sales Funnel Automation, AI Business Productivity, and Future AI Trends.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600",
   },
   {
     category: "Module 12",
     title: "Advanced Digital Marketing Techniques",
     description:
       "Conversion Rate Optimization (CRO), Marketing Funnels & Customer Journey, Advanced SEO Techniques, Paid Advertising Strategies (Google Ads, Meta Ads), Retargeting & Remarketing Strategies, Growth Hacking & Performance Marketing, A/B Testing & Data-Driven Marketing, and Multichannel Marketing Strategies.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
   },
   {
     category: "Module 13",
     title: "Practical Assignments & Live Projects",
     description:
       "Real-World Project Implementation, Industry-Based Case Studies, Campaign Planning & Execution, Performance Analysis & Reporting, Client Handling & Communication, Team Collaboration & Project Management, Live Project Presentation & Evaluation, and Portfolio Building.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600",
   },
   {
     category: "Module 14",
     title: "Career Guidance & Certification",
     description:
       "Career Path in Digital Marketing, Resume Building & LinkedIn Optimization, Interview Preparation & Mock Sessions, Personal Branding & Freelancing, Job Opportunities & Placement Support, Internship Assistance, Industry Recognized Certification, and Lifetime Learning & Growth Support.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=600",
   },
 ];
 

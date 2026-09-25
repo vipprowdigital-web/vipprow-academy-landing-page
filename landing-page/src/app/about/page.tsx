@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { AboutProgram } from "@/components/sections/AboutProgram";
 import { Instructor } from "@/components/sections/Instructor";
+import { AcademyLocation } from "@/components/sections/AcademyLocation";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { getAppConfig } from "@/lib/appConfig";
 
@@ -44,6 +45,7 @@ export default async function AboutPage() {
         <TrustedBy />
         <AboutProgram />
         <Instructor />
+        <AcademyLocation />
         {/* <Placement /> */}
         <FinalCTA appConfig={appConfig} />
       </main>

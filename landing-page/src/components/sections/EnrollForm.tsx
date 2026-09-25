@@ -1,16 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { isValidGmail, isValidPhone } from "@/lib/validation";
+import { usePublicCourses } from "@/hooks/usePublicCourses";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api/v1";
-
-const COURSES = [
-  { value: "digital-marketing", label: "Digital Marketing" },
-  { value: "performance-marketing", label: "Performance Marketing" },
-];
 
 const QUALIFICATIONS = [
   { value: "high_school", label: "High School (10th / 12th)" },
@@ -101,6 +98,22 @@ export function EnrollForm({
   const [contextLoading, setContextLoading] = useState(!!leadId);
   const [contextError, setContextError] = useState<string | null>(null);
 
+  const {
+    courses,
+    loading: coursesLoading,
+    fromApi: coursesFromApi,
+  } = usePublicCourses(branchId);
+  const [leadCourseName, setLeadCourseName] = useState("");
+
+  // The user's pick wins; otherwise pre-select the course a known lead wanted
+  const selectedCourse =
+    fields.courseName ||
+    (leadCourseName
+      ? (courses.find(
+          (c) => c.label.toLowerCase() === leadCourseName.toLowerCase(),
+        )?.value ?? "")
+      : "");
+
   useEffect(() => {
     if (!leadId) return;
 
@@ -138,13 +151,8 @@ export function EnrollForm({
             studentName: data.lead.name || prev.studentName,
             email: data.lead.email || prev.email,
             mobile: data.lead.mobile || prev.mobile,
-            courseName:
-              COURSES.find(
-                (c) =>
-                  c.label.toLowerCase() ===
-                  String(data.lead.courseInterested ?? "").toLowerCase(),
-              )?.value ?? prev.courseName,
           }));
+          setLeadCourseName(String(data.lead.courseInterested ?? ""));
         }
       } catch {
         if (!cancelled) {
@@ -218,7 +226,7 @@ export function EnrollForm({
       next.mobile = "Phone number must be a valid 10-digit mobile number.";
     }
     if (!fields.dateOfBirth) next.dateOfBirth = "Date of birth is required.";
-    if (!fields.courseName) next.courseName = "Please select a course.";
+    if (!selectedCourse) next.courseName = "Please select a course.";
     if (!fields.respondentType)
       next.respondentType = "Please select your qualification.";
     if (!fields.city.trim()) next.city = "City is required.";
@@ -246,11 +254,16 @@ export function EnrollForm({
       formData.append("city", fields.city.trim());
       formData.append("state", fields.state.trim());
       formData.append("respondentType", fields.respondentType);
-      formData.append(
-        "courseName",
-        COURSES.find((c) => c.value === fields.courseName)?.label ??
-        fields.courseName,
-      );
+      if (coursesFromApi) {
+        formData.append("courseId", selectedCourse);
+      } else {
+        formData.append(
+          "courseName",
+          courses.find((c) => c.value === selectedCourse)?.label ??
+            selectedCourse,
+        );
+      }
+      formData.append("source", "website");
       if (documentFile) formData.append("document", documentFile);
       if (branchId) formData.append("branchId", branchId);
       if (leadId) formData.append("leadId", leadId);
@@ -436,27 +449,30 @@ export function EnrollForm({
             <label className="block text-sm font-medium text-foreground mb-1.5">
               Course Interest <span className="text-primary">*</span>
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {COURSES.map((c) => (
-                <button
-                  key={c.value}
-                  type="button"
-                  onClick={() => set("courseName", c.value)}
-                  className={[
-                    "rounded-xl border px-4 py-3.5 text-sm text-left transition-all duration-200 cursor-pointer",
-                    fields.courseName === c.value
-                      ? "border-primary bg-primary/8 text-foreground font-medium"
-                      : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
-                    errors.courseName && fields.courseName !== c.value
-                      ? "border-red-400"
-                      : "",
-                  ].join(" ")}
-                >
-                  <span className="block font-medium text-[13px]">
-                    {c.label}
-                  </span>
-                </button>
-              ))}
+            <div className="relative">
+              <select
+                value={selectedCourse}
+                onChange={(e) => set("courseName", e.target.value)}
+                disabled={coursesLoading}
+                className={[
+                  inputClass(!!errors.courseName),
+                  "appearance-none cursor-pointer pr-10",
+                ].join(" ")}
+              >
+                <option value="" disabled>
+                  {coursesLoading ? "Loading courses…" : "Select a course"}
+                </option>
+                {courses.map((c) => (
+                  <option key={c.value} value={c.value}>
+                    {c.duration ? `${c.label} (${c.duration})` : c.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                size={16}
+                aria-hidden="true"
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+              />
             </div>
             {errors.courseName && (
               <p className="mt-1.5 text-xs text-red-500">{errors.courseName}</p>
@@ -468,23 +484,30 @@ export function EnrollForm({
             <label className="block text-sm font-medium text-foreground mb-1.5">
               Current Qualification <span className="text-primary">*</span>
             </label>
-            <select
-              value={fields.respondentType}
-              onChange={(e) => set("respondentType", e.target.value)}
-              className={[
-                inputClass(!!errors.respondentType),
-                "appearance-none cursor-pointer",
-              ].join(" ")}
-            >
-              <option value="" disabled>
-                Select your qualification
-              </option>
-              {QUALIFICATIONS.map((q) => (
-                <option key={q.value} value={q.value}>
-                  {q.label}
+            <div className="relative">
+              <select
+                value={fields.respondentType}
+                onChange={(e) => set("respondentType", e.target.value)}
+                className={[
+                  inputClass(!!errors.respondentType),
+                  "appearance-none cursor-pointer pr-10",
+                ].join(" ")}
+              >
+                <option value="" disabled>
+                  Select your qualification
                 </option>
-              ))}
-            </select>
+                {QUALIFICATIONS.map((q) => (
+                  <option key={q.value} value={q.value}>
+                    {q.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown
+                size={16}
+                aria-hidden="true"
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+              />
+            </div>
             {errors.respondentType && (
               <p className="mt-1.5 text-xs text-red-500">
                 {errors.respondentType}
