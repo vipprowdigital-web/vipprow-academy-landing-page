@@ -24,7 +24,7 @@ export function HoverCard({
     >
       {/* ── Resting Gradient Zone ────────────────────────────────────── */}
       <motion.div
-        className="absolute inset-0 w-full h-full overflow-hidden bg-linear-to-br from-neutral-950 via-neutral-900 to-primary/70"
+        className="absolute inset-0 w-full h-full overflow-hidden bg-linear-to-br from-primary via-ring to-black"
         animate={{
           opacity: isHovered ? 0 : 1,
         }}
@@ -32,14 +32,14 @@ export function HoverCard({
         aria-hidden="true"
       >
         {/* Soft glow */}
-        <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-primary/40 blur-3xl" />
+        <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/30 blur-3xl" />
         {/* Module number watermark */}
         {moduleNumber && (
-          <span className="absolute -bottom-6 -right-2 font-heading font-black text-[9rem] leading-none text-white/[0.06] select-none">
+          <span className="absolute -bottom-6 -right-2 font-heading font-black text-[9rem] leading-none text-white/15 select-none">
             {moduleNumber}
           </span>
         )}
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/30 via-black/10 to-transparent" />
       </motion.div>
 
       {/* ── Hover Gradient ───────────────────────────────────────────── */}

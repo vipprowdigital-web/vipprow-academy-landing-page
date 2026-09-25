@@ -239,7 +239,7 @@ function SocialPill({
     >
       {/* Gradient background */}
       <span
-        className={`absolute inset-0 bg-gradient-to-r ${color} opacity-90`}
+        className={`absolute inset-0 bg-linear-to-r ${color} opacity-90`}
       />
       {/* Shimmer overlay on hover */}
       <AnimatePresence>
@@ -250,7 +250,7 @@ function SocialPill({
             animate={{ x: "200%", opacity: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent"
           />
         )}
       </AnimatePresence>
