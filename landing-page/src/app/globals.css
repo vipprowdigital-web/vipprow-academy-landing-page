@@ -51,9 +51,9 @@
      primary/ring so the brand color reads as the accent, not the gray. */
 
   --background: oklch(0.98 0.012 276.35);
-  --foreground: oklch(0.16 0.03 276.35);
+  --foreground: #0a0c1a;
 
-  --primary: oklch(0.145 0.09 276.35);
+  --primary: #06002e;
   /* --primary: #06002e; */
 
   --primary-foreground: oklch(0.98 0 0);

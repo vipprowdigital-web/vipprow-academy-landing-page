@@ -43,34 +43,42 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${bricolage.variable} dark h-full antialiased`}>
       <head>
-        {/* Google Tag Manager */}
-        <Script id="gtm-script" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-5KKSMN7L');`}
-        </Script>
-      </head>
-      <body className="min-h-full flex flex-col bg-background">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5KKSMN7L"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-
-        {/* Google Tag Manager */}
-        {/* <Script id="gtm" strategy="afterInteractive">
+        {/* Google Tag Manager — beforeInteractive so it's in the initial
+            server-rendered <head>, exactly where GTM expects it, and fires
+            before hydration instead of being injected afterwards. */}
+        {/* <Script id="gtm-script" strategy="beforeInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-5KKSMN7L');`}
         </Script> */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJKTX87Z');`}
+        </Script>
+      </head>
+      <body className="min-h-full flex flex-col bg-background">
+        {/* Google Tag Manager (noscript) — must be right after <body> opens */}
+        {/* <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5KKSMN7L"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript> */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NJKTX87Z"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
 
         <PageLoadShutter />
 
