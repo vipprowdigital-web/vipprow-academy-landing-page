@@ -4,6 +4,7 @@ import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import PageLoadShutter from "@/components/PageLoadShutter";
+import LazyMetaPixel from "@/components/LazyMetaPixel";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { getAppConfig } from "@/lib/appConfig";
@@ -60,6 +61,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NJKTX87Z');`}
         </Script>
+
+        {/* Meta Pixel — loads lazily on first interaction (or after 5s idle) */}
+        <LazyMetaPixel />
       </head>
       <body className="min-h-full flex flex-col bg-background">
         {/* Google Tag Manager (noscript) — must be right after <body> opens */}
@@ -78,6 +82,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
+        </noscript>
+
+        {/* Meta Pixel (noscript) — the script itself loads lazily via LazyMetaPixel */}
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+            src="https://www.facebook.com/tr?id=1118179970941898&ev=PageView&noscript=1"
+          />
         </noscript>
 
         <PageLoadShutter />
