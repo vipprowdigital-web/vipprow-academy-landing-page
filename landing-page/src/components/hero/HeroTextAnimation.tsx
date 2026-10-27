@@ -554,10 +554,11 @@ export default function HeroTextAnimation() {
       ref={containerRef}
       className="w-full max-w-5xl mx-auto sm:px-6 font-sans text-white select-none"
     >
+      <h1 className="sr-only">Control your mind. Manifest your learning.</h1>
       {step === 0 && <div className="min-h-screen w-full" />}
 
       {step > 0 && step < 3 && (
-        <motion.div className="flex flex-col items-center gap-2 tracking-tight text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium leading-none">
+        <motion.div aria-hidden="true" className="flex flex-col items-center gap-2 tracking-tight text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium leading-none">
           {/* Row 1 */}
           <div className="overflow-hidden flex items-center gap-4">
             <motion.span
@@ -665,7 +666,7 @@ export default function HeroTextAnimation() {
           <div className="flex justify-start md:justify-end items-center w-full">
             <motion.div
               style={{ x: badgeX, y: badgeY }}
-              className="flex items-center gap-4 border border-white/20 rounded-full py-3 px-10 bg-white/5 backdrop-blur-md"
+              className="flex items-center gap-4 border border-white/20 rounded-full py-3 px-10 bg-white/10"
             >
               <span className="font-heading font-black tracking-tight text-right text-4xl sm:text-6xl lg:text-[5rem]">
                 Learning

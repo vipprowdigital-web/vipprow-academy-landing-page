@@ -1,12 +1,10 @@
-"use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone } from "lucide-react";
-import { fadeUp, stagger } from "@/lib/animations";
 import type { AppConfig } from "@/lib/appConfig";
-import type { ComponentType } from "react";
+import { Lines } from "@/components/motion/Lines";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { FooterMotion } from "./FooterMotion";
 
 const FOOTER_LINKS = {
   Programs: [
@@ -37,237 +35,153 @@ const HARDCODED_SOCIALS = [
     label: "Facebook",
     href: "https://www.facebook.com/profile.php?id=61591783972812",
     iconSrc: "/socials/facebook-logo.svg",
-    color: "from-[#1877F2] to-[#0C5DC7]",
-    glow: "rgba(24,119,242,0.45)",
+    hover: "hover:bg-[#1877F2]",
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/vipprowacademy/",
     iconSrc: "/socials/instagram-logo.svg",
-    color: "from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]",
-    glow: "rgba(238,42,123,0.45)",
+    hover: "hover:bg-[#ee2a7b]",
   },
 ];
 
 const DEFAULT_EMAIL = "vipprowacademy@gmail.com";
 const DEFAULT_PHONE = "9669932121";
 
+const linkClass =
+  "text-[0.95rem] text-white/65 transition-colors duration-200 hover:text-white focus-visible:text-white focus-visible:outline-none";
+
 export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
   const email = appConfig?.email || DEFAULT_EMAIL;
   const phone = appConfig?.phoneNumber || DEFAULT_PHONE;
 
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-linear-to-tr from-primary to-primary/50">
-      <Image
-        src="/logos/brand_outline.svg"
-        alt=""
-        width={1568}
-        height={500}
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute bottom-28 left-1/2 -translate-x-1/2 w-full max-w-3xl opacity-10 h-auto"
-      />
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-7 sm:py-10 md:pt-20">
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr_1fr] gap-10 mb-16"
-        >
-          {/* Brand column */}
-          <motion.div variants={fadeUp} className="col-span-2 md:col-span-1">
-            <Link
-              href="/"
-              className="inline-block font-heading font-bold text-xl tracking-tight text-foreground mb-4"
-            >
-              <Image
-                src="/logos/vipprow-academy-logo-2.png"
-                alt="Vipprow Academy Logo"
-                width={150}
-                height={20}
-                style={{ width: "auto", height: "auto" }}
-                // className="w-full h-auto"
-              />
-            </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
-              Learn industry-ready Digital Marketing, Performance Marketing and
-              AI skills through practical projects, expert mentorship and
-              career-focused training.
-            </p>
-            <div className="flex flex-col gap-2 mb-6">
-              <a
-                href={`mailto:${email}`}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                <Mail size={14} />
-                {email}
-              </a>
-              <a
-                href={`tel:+91${phone}`}
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-              >
-                <Phone size={14} />
-                +91 {phone}
-              </a>
+    <footer className="relative overflow-hidden bg-navy text-white">
+      <FooterMotion className="relative z-10">
+        {/* Closing call to action */}
+        <div className="mx-auto max-w-7xl px-6 pt-24 pb-20 md:pt-32">
+          <div>
+            <Lines
+              lines={["Ready to build your", "career in digital marketing?"]}
+              className="font-heading text-[clamp(1.75rem,3.6vw,3.25rem)] font-semibold leading-[1.04] tracking-[-0.035em]"
+            />
+            <div data-reveal className="mt-10 flex flex-wrap gap-3">
+              <ButtonLink href="/demo-class" size="lg" arrow>
+                Book a Demo Class
+              </ButtonLink>
+              <ButtonLink href="/enroll" variant="outline" size="lg">
+                Enroll Now
+              </ButtonLink>
             </div>
-            {/* <div className="flex items-center gap-3">
-              {HARDCODED_SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="w-8 h-8 rounded-lg border border-border flex items-center justify-center text-foreground opacity-70 hover:opacity-100 hover:border-primary/40 transition-all duration-200"
-                >
-                  <Image
-                    src={s.iconSrc}
-                    alt={s.label}
-                    width={14}
-                    height={14}
-                    className="w-3.5 h-3.5 brightness-0 invert"
-                  />
-                </a>
-              ))}
-            </div> */}
-          </motion.div>
+          </div>
+        </div>
 
-          {/* Link columns */}
-          {Object.entries(FOOTER_LINKS).map(([category, links]) => (
-            <motion.div key={category} variants={fadeUp}>
-              <p className="text-xs uppercase tracking-[0.15em] font-heading font-semibold text-muted-foreground mb-4">
-                {category}
-              </p>
-              <ul className="space-y-2.5">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    {"external" in link && link.external ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-                      >
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link
-                        href={link.href}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-                      >
-                        {link.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-
-          {/* Follow Us column */}
-          <motion.div variants={fadeUp} className="col-span-1">
-            <p className="text-xs uppercase tracking-[0.15em] font-heading font-semibold text-muted-foreground mb-4">
-              Follow Us
-            </p>
-            <div className="flex items-center gap-3 flex-wrap">
-              {HARDCODED_SOCIALS.map((s) => (
-                <SocialPill
-                  key={s.label}
-                  href={s.href}
-                  label={s.label}
-                  iconSrc={s.iconSrc}
-                  color={s.color}
-                  glow={s.glow}
+        {/* Links */}
+        <div className="mx-auto max-w-7xl px-6 pb-16">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-[2fr_1fr_1fr_1fr_1fr]">
+            <div data-reveal className="col-span-2 md:col-span-1">
+              <Link href="/" className="mb-5 inline-block">
+                <Image
+                  src="/logos/vipprow-academy-logo-2.png"
+                  alt="Vipprow Academy Logo"
+                  width={150}
+                  height={20}
+                  style={{ width: "auto", height: "auto" }}
                 />
-              ))}
+              </Link>
+              <p className="mb-6 max-w-xs text-[0.95rem] leading-relaxed text-white/65">
+                Learn industry-ready Digital Marketing, Performance Marketing
+                and AI skills through practical projects, expert mentorship and
+                career-focused training.
+              </p>
+              <div className="flex flex-col gap-2.5">
+                <a href={`mailto:${email}`} className={`${linkClass} flex items-center gap-2`}>
+                  <Mail size={15} aria-hidden="true" />
+                  {email}
+                </a>
+                <a href={`tel:+91${phone}`} className={`${linkClass} flex items-center gap-2`}>
+                  <Phone size={15} aria-hidden="true" />
+                  +91 {phone}
+                </a>
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
 
-        {/* Bottom bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="pt-8 border-t border-border/60 flex flex-col md:flex-row items-center justify-center gap-4"
+            {Object.entries(FOOTER_LINKS).map(([category, links]) => (
+              <div key={category} data-reveal>
+                <p className="mb-5 text-sm font-semibold text-white">
+                  {category}
+                </p>
+                <ul className="space-y-3">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      {"external" in link && link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={linkClass}
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link href={link.href} className={linkClass}>
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <div data-reveal>
+              <p className="mb-5 text-sm font-semibold text-white">Follow Us</p>
+              <div className="flex items-center gap-3">
+                {HARDCODED_SOCIALS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className={`flex size-11 items-center justify-center rounded-full bg-white/10 transition-[background-color,transform] duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${s.hover}`}
+                  >
+                    <Image
+                      src={s.iconSrc}
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="size-5 brightness-0 invert"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Name returns at full width — rises into place on scroll */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none select-none overflow-hidden px-6"
         >
-          <p className="text-xs text-muted-foreground">
+          <Image
+            data-wordmark
+            src="/logos/brand_outline.svg"
+            alt=""
+            width={1568}
+            height={500}
+            className="mx-auto h-auto w-full max-w-5xl opacity-10"
+          />
+        </div>
+
+        <div className="mx-auto max-w-7xl px-6 pt-6 pb-8">
+          <p className="text-center text-xs text-white/55">
             &copy; {new Date().getFullYear()} Vipprow Academy. All rights
             reserved.
           </p>
-          {/* <p className="text-xs text-muted-foreground">
-            Developed by <span className="text-button">Vipprow</span>
-          </p> */}
-        </motion.div>
-      </div>
+        </div>
+      </FooterMotion>
     </footer>
-  );
-}
-
-function SocialPill({
-  href,
-  label,
-  iconSrc,
-  color,
-  glow,
-}: {
-  href: string;
-  label: string;
-  iconSrc: string;
-  color: string;
-  glow: string;
-}) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      whileHover={{ scale: 1.08, y: -2 }}
-      whileTap={{ scale: 0.96 }}
-      transition={{ type: "spring", stiffness: 400, damping: 18 }}
-      className="relative flex items-center gap-3 sm:px-2 px-1 py-1 sm:py-2 rounded-2xl overflow-hidden cursor-pointer select-none"
-      style={{
-        boxShadow: hovered ? `0 0 28px 4px ${glow}` : "0 0 0px transparent",
-        transition: "box-shadow 0.3s ease",
-      }}
-    >
-      {/* Gradient background */}
-      <span
-        className={`absolute inset-0 bg-linear-to-r ${color} opacity-90`}
-      />
-      {/* Shimmer overlay on hover */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.span
-            key="shimmer"
-            initial={{ x: "-100%", opacity: 0.5 }}
-            animate={{ x: "200%", opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            className="absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Icon */}
-      <Image
-        src={iconSrc}
-        alt={label}
-        width={20}
-        height={20}
-        className="relative z-10 w-6 sm:w-7 h-6 sm:h-7 brightness-0 invert"
-      />
-
-      {/* Label */}
-      {/* <span className="relative z-10 text-sm font-semibold text-white tracking-wide">
-        {label}
-      </span> */}
-    </motion.a>
   );
 }

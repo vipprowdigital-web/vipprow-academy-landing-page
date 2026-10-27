@@ -66,6 +66,15 @@ const getAnchorAndDir = (
   }
 };
 
+// The rays are soft, low-frequency light: rendering them at full device
+// resolution is wasted GPU work (the fragment shader runs per pixel). Cap the
+// backing-store scale and let CSS upscale the canvas.
+const getDpr = () =>
+  Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 0.75 : 1);
+
+// 30fps is plenty for slow-moving rays and halves the GPU load.
+const FRAME_MS = 1000 / 30;
+
 type Vec2 = [number, number];
 type Vec3 = [number, number, number];
 
@@ -150,8 +159,10 @@ const LightRays: React.FC<LightRaysProps> = ({
       if (!containerRef.current) return;
 
       const renderer = new Renderer({
-        dpr: Math.min(window.devicePixelRatio, 2),
+        dpr: getDpr(),
         alpha: true,
+        antialias: false,
+        powerPreference: "low-power",
       });
       rendererRef.current = renderer;
 
@@ -299,7 +310,7 @@ void main() {
       const updatePlacement = () => {
         if (!containerRef.current || !renderer) return;
 
-        renderer.dpr = Math.min(window.devicePixelRatio, 2);
+        renderer.dpr = getDpr();
 
         const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
         renderer.setSize(wCSS, hCSS);
@@ -315,10 +326,22 @@ void main() {
         uniforms.rayDir.value = dir;
       };
 
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      let lastFrame = 0;
+
       const loop = (t: number) => {
         if (!rendererRef.current || !uniformsRef.current || !meshRef.current) {
           return;
         }
+
+        // Skip frames above the cap without touching the GPU.
+        if (t - lastFrame < FRAME_MS) {
+          animationIdRef.current = requestAnimationFrame(loop);
+          return;
+        }
+        lastFrame = t;
 
         uniforms.iTime.value = t * 0.001;
 
@@ -340,7 +363,10 @@ void main() {
 
         try {
           renderer.render({ scene: mesh });
-          animationIdRef.current = requestAnimationFrame(loop);
+          // Reduced motion: paint one still frame and stop.
+          if (!reduceMotion) {
+            animationIdRef.current = requestAnimationFrame(loop);
+          }
         } catch (error) {
           console.warn("WebGL rendering error:", error);
           return;

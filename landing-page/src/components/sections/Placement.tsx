@@ -1,52 +1,27 @@
 "use client";
-import { motion } from "framer-motion";
-import { TrendingUp, Award, Users, Briefcase } from "lucide-react";
-import { fadeUp, stagger } from "@/lib/animations";
-
-// const PARTNER_COMPANIES = [
-//   "Google",
-//   "Microsoft",
-//   "Amazon",
-//   "Flipkart",
-//   "Razorpay",
-//   "CRED",
-//   "Zomato",
-//   "Swiggy",
-//   "PhonePe",
-//   "Meesho",
-//   "Atlassian",
-//   "Freshworks",
-//   "Paytm",
-//   "Ola",
-//   "Byju's",
-//   "InMobi",
-//   "Myntra",
-//   "Snapdeal",
-//   "PolicyBazaar",
-//   "Zepto",
-// ];
+import { Lines } from "@/components/motion/Lines";
+import { useGsapScope } from "@/hooks/useGsapScope";
+import { gsap } from "@/lib/gsap";
+import { revealBatch, revealLines } from "@/lib/reveal";
 
 const HIGHLIGHTS = [
   {
-    icon: Briefcase,
     stat: "100%",
+    count: 100,
     label: "Placement Assistance",
     sub: "Dedicated career guidance for every student",
   },
   {
-    icon: Award,
     stat: "1:1",
     label: "Interview Preparation",
     sub: "Mock interviews & resume reviews",
   },
   {
-    icon: TrendingUp,
     stat: "Live",
     label: "Industry Projects",
     sub: "Build a portfolio with real campaigns",
   },
   {
-    icon: Users,
     stat: "Career",
     label: "Mentorship",
     sub: "Expert guidance until you're job-ready",
@@ -54,100 +29,76 @@ const HIGHLIGHTS = [
 ];
 
 export function Placement() {
+  const ref = useGsapScope<HTMLElement>(({ mm, root }) => {
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      revealLines(root);
+      revealBatch(root);
+
+      // Headline figure counts up once as it enters.
+      root.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+        const target = Number(el.dataset.count);
+        const counter = { v: 0 };
+        el.textContent = "0%";
+        gsap.to(counter, {
+          v: target,
+          duration: 1.8,
+          ease: "power2.out",
+          onUpdate: () => {
+            el.textContent = `${Math.round(counter.v)}%`;
+          },
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+        });
+      });
+    });
+  });
+
   return (
-    <section id="placement" className="section-light py-10 md:py-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="text-center mb-16"
-        >
-          {/* <motion.div variants={fadeUp} className="mb-4 flex justify-center">
-            <Badge variant="default">Placement Assistance</Badge>
-          </motion.div> */}
-          <motion.h2
-            variants={fadeUp}
-            className="font-heading font-bold leading-tight tracking-tight mb-4"
-            style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
-          >
-            Learn the skills.
-            <br />
-            <span className="text-primary">
-              We&apos;ll help you land the opportunity.
-            </span>
-          </motion.h2>
-          <motion.p
-            variants={fadeUp}
-            className="text-muted-foreground text-lg max-w-xl mx-auto"
+    <section
+      id="placement"
+      ref={ref}
+      className="relative w-full overflow-hidden bg-navy py-10 sm:py-24 text-white md:py-36"
+    >
+      <div className="mx-auto max-w-7xl px-3 sm:px-6">
+        <div>
+          <Lines
+            lines={[
+              "Learn the skills.",
+              <span key="b" className="text-white/55">
+                We&apos;ll help you land the opportunity.
+              </span>,
+            ]}
+            className="font-heading text-[clamp(1.9rem,3.8vw,3.25rem)] leading-[1.04] font-semibold tracking-[-0.035em]"
+          />
+          <p
+            data-reveal
+            className="mt-8 max-w-2xl text-lg leading-relaxed text-white/70"
           >
             At Vipprow Academy, learning doesn&apos;t end with the classroom. We
             provide 100% placement assistance through resume building, LinkedIn
             optimization, mock interviews, portfolio development, internship
             opportunities, and career guidance to help you secure your first
             role in digital marketing.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
+      </div>
 
-        {/* Stats */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 ">
-          {HIGHLIGHTS.map((h, i) => (
-            <motion.div
-              key={h.label}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{
-                duration: 0.75,
-                ease: [0.16, 1, 0.3, 1],
-                delay: i * 0.08,
-              }}
-              className="group p-6 rounded-2xl border border-border bg-card/60 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
-            >
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-                <h.icon size={18} className="text-primary" />
-              </div>
-              <p className="font-heading font-bold text-foreground text-2xl mb-1">
+      <div className="mx-auto mt-16 max-w-7xl px-6 md:mt-24">
+        <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          {HIGHLIGHTS.map((h) => (
+            <li key={h.label} data-reveal>
+              <p
+                {...("count" in h ? { "data-count": h.count } : {})}
+                className="font-heading text-[clamp(2.25rem,4vw,3.5rem)] leading-none font-semibold tracking-[-0.04em] text-white"
+              >
                 {h.stat}
               </p>
-              <p className="font-medium text-foreground text-sm mb-0.5">
-                {h.label}
+              <p className="mt-5 text-lg font-semibold">{h.label}</p>
+              <p className="mt-1.5 text-[0.95rem] leading-relaxed text-white/65">
+                {h.sub}
               </p>
-              <p className="text-xs text-muted-foreground">{h.sub}</p>
-            </motion.div>
+            </li>
           ))}
-        </div>
-
-        {/* Partner companies */}
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground font-heading font-semibold mb-8">
-            Our hiring partners
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {PARTNER_COMPANIES.map((company, i) => (
-              <motion.span
-                key={company}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.16, 1, 0.3, 1],
-                  delay: i * 0.04,
-                }}
-                className="px-4 py-2 rounded-xl border border-border bg-card/40 text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/30 transition-all duration-200 cursor-default"
-              >
-                {company}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div> */}
+        </ul>
       </div>
     </section>
   );

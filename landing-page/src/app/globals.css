@@ -27,6 +27,8 @@
 
   --color-button: var(--button);
   --color-scene-background: var(--scene-background);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
 
   --font-sans: var(--font-bricolage);
   --font-heading: var(--font-bricolage);
@@ -70,6 +72,10 @@
   --button: #40a1ff;
   --border: oklch(0.9 0.012 276.35);
   --ring: oklch(0.55 0.09 276.35);
+
+  /* Brand navy fields (hero, placement, footer) — fixed, never re-themed. */
+  --navy: #06002e;
+  --navy-2: #0b0738;
 
   /* Fixed-dark scene surfaces (hero/course backdrops) — intentionally
      not re-themed in .dark or .section-light, since these panels stay
@@ -153,6 +159,27 @@
   }
 }
 
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes pulse-glow {
   0%,
   100% {
@@ -180,6 +207,14 @@
 
   .animate-pulse-glow {
     animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float-y 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .text-balance {

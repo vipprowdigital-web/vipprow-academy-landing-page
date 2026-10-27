@@ -220,8 +220,7 @@
 
 import type { Metadata } from "next";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import Link from "next/link";
-import Image from "next/image";
+import { CourseHero } from "@/components/hero/CourseHero";
 import { getAppConfig } from "@/lib/appConfig";
 
 export const metadata: Metadata = {
@@ -235,58 +234,24 @@ export default async function PerformanceMarketingPage() {
 
   return (
     <div className="section-light min-h-screen">
-      <section className="relative pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <span className="inline-block text-xs uppercase tracking-[0.2em] text-primary font-heading font-semibold mb-4">
-            Performance Marketing
-          </span>
-
-          <h1
-            className="font-heading font-bold tracking-tight leading-[1.05] mb-6"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
-          >
-            Something big is
-            <br />
-            <span className="text-primary">coming soon.</span>
-          </h1>
-
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            We&apos;re putting the finishing touches on our Performance
-            Marketing course — Google Ads, Meta Ads, conversion tracking, CRO,
-            and AI-powered campaign optimization. Be the first to know when it
-            goes live.
-          </p>
-
-          {/* <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-10">
-            <span className="px-4 py-2 rounded-full border border-border bg-muted/40">
-              ⏱ 10 Weeks
-            </span>
-            <span className="px-4 py-2 rounded-full border border-border bg-muted/40">
-              Beginner → Advanced
-            </span>
-            <span className="px-4 py-2 rounded-full border border-border bg-muted/40">
-              8 Modules
-            </span>
-          </div> */}
-
-          <Link
-            href="/"
-            className="text-sm font-heading font-semibold text-primary hover:opacity-80 transition-opacity"
-          >
-            ← Back to Home
-          </Link>
-        </div>
-
-        <div className="hidden md:block absolute -right-16 top-24 pointer-events-none z-0">
-          <Image
-            src="/images/robot-peeking-left-without-bg.png"
-            alt="Robot cute peeking"
-            width={500}
-            height={200}
-            className="w-40 h-auto opacity-90"
-          />
-        </div>
-      </section>
+      <CourseHero
+        title={["Something big is", "coming soon."]}
+        description="We're putting the finishing touches on our Performance Marketing course — Google Ads, Meta Ads, conversion tracking, CRO, and AI-powered campaign optimization. Be the first to know when it goes live."
+        primary={{
+          label: "Explore Digital Marketing",
+          href: "/courses/digital-marketing",
+        }}
+        secondary={{ label: "Back to Home", href: "/" }}
+        panelTitle="What's coming"
+        panelMeta="Launching soon"
+        panelItems={[
+          "Google Ads",
+          "Meta Ads",
+          "Conversion tracking",
+          "Conversion rate optimization (CRO)",
+          "AI-powered campaign optimization",
+        ]}
+      />
 
       <FinalCTA appConfig={appConfig} />
     </div>

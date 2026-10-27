@@ -134,6 +134,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+type ShutterWindow = Window & { __shutterComplete?: boolean };
+
 let hasPlayed = false;
 
 export default function PageLoadShutter() {
@@ -143,7 +145,7 @@ export default function PageLoadShutter() {
     // CRITICAL: If it has already played, instantly let the Hero know to animate
     if (!visible) {
       if (typeof window !== "undefined") {
-        (window as any).__shutterComplete = true;
+        (window as ShutterWindow).__shutterComplete = true;
       }
       window.dispatchEvent(new Event("shutter-complete"));
       return;
@@ -171,7 +173,7 @@ export default function PageLoadShutter() {
           // FIRES WHEN FADE OUT ENDS
           onAnimationComplete={() => {
             if (typeof window !== "undefined") {
-              (window as any).__shutterComplete = true;
+              (window as ShutterWindow).__shutterComplete = true;
             }
             window.dispatchEvent(new Event("shutter-complete"));
           }}
@@ -214,9 +216,11 @@ export default function PageLoadShutter() {
               src="/images/cute-robot-without-bg.png"
               alt="Vipprow Academy loading"
               fill
-              unoptimized
+              sizes="(min-width: 640px) 224px, 176px"
+              preload
+              fetchPriority="high"
+              loading="eager"
               className="object-contain drop-shadow-[0_0_32px_rgba(99,102,241,0.5)]"
-              priority
             />
           </motion.div>
 

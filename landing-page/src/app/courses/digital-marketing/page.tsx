@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import InsightsSection from "@/components/sections/InsightsSection";
 import type { CardData } from "@/components/sections/InsightsSection";
-import CourseSection from "@/components/sections/CourseSection";
+import { CourseHero } from "@/components/hero/CourseHero";
 import Image from "next/image";
 import { getAppConfig } from "@/lib/appConfig";
 
@@ -155,15 +155,14 @@ export default async function DigitalMarketingPage() {
           </div>
         </section> */}
 
-      <CourseSection
-        imageSrc="/images/image-1.jpg"
-        imageAlt="Learner working through Vipprow Academy's Digital Marketing course"
-        eyebrow="Digital Marketing"
-        heading="Master digital marketing, from strategy to execution."
+      <CourseHero
+        title={["Master digital marketing,", "from strategy to execution."]}
         description="A practical, industry-focused program covering Digital Marketing, Performance Marketing, SEO, Google Ads, Meta Ads, AI tools, Analytics, and real-world projects to prepare you for jobs, freelancing, or building your own agency."
-        ctaLabel="Enroll in this Course"
-        ctaHref="/enroll"
-        variant="digital-marketing"
+        primary={{ label: "Enroll in this Course", href: "/enroll" }}
+        secondary={{ label: "Download Brochure", href: "/download-brochure" }}
+        panelTitle="What you'll learn"
+        panelMeta={`${DM_CARDS.length} modules`}
+        panelItems={DM_CARDS.map((c) => c.title)}
       />
 
       {/* Course Overview */}

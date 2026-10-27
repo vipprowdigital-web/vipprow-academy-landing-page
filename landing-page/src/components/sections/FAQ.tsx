@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
-import { fadeUp, stagger } from "@/lib/animations";
+import { Plus } from "lucide-react";
+import { Lines } from "@/components/motion/Lines";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { useGsapScope } from "@/hooks/useGsapScope";
+import { revealBatch, revealLines } from "@/lib/reveal";
 import { cn } from "@/lib/cn";
 
 const FAQS = [
@@ -41,66 +43,71 @@ const FAQS = [
 ];
 
 function FAQItem({
+  id,
   q,
   a,
   isOpen,
   onToggle,
 }: {
+  id: string;
   q: string;
   a: string;
   isOpen: boolean;
   onToggle: () => void;
 }) {
   return (
-    <div
-      className={cn(
-        "border-b border-border/60 transition-colors duration-300",
-        isOpen && "border-primary/20",
-      )}
-    >
-      <button
-        onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-        aria-expanded={isOpen}
-      >
-        <span
-          className={cn(
-            "font-heading font-semibold text-base transition-colors duration-200",
-            isOpen
-              ? "text-primary"
-              : "text-foreground group-hover:text-primary",
-          )}
+    <div data-reveal className="group">
+      <h3>
+        <button
+          type="button"
+          id={`${id}-q`}
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-controls={`${id}-a`}
+          className="flex w-full items-center justify-between gap-6 rounded-2xl py-6 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
-          {q}
-        </span>
-        <span
-          className={cn(
-            "shrink-0 w-6 h-6 rounded-full border flex items-center justify-center transition-all duration-300",
-            isOpen
-              ? "bg-primary border-primary text-primary-foreground rotate-0"
-              : "border-border text-muted-foreground group-hover:border-primary/40",
-          )}
-        >
-          {isOpen ? <Minus size={12} /> : <Plus size={12} />}
-        </span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="answer"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            style={{ overflow: "hidden" }}
+          <span
+            className={cn(
+              "font-heading text-xl font-semibold tracking-tight transition-[color,transform] duration-300 md:text-xl",
+              isOpen
+                ? "translate-x-0 text-primary"
+                : "text-foreground group-hover:translate-x-1",
+            )}
           >
-            <p className="text-muted-foreground text-sm leading-relaxed pb-5 pr-10">
-              {a}
-            </p>
-          </motion.div>
+            {q}
+          </span>
+          <span
+            aria-hidden="true"
+            className={cn(
+              "flex size-10 shrink-0 items-center justify-center rounded-full transition-[background-color,color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              isOpen
+                ? "rotate-135 bg-primary text-primary-foreground"
+                : "bg-primary/8 text-primary group-hover:bg-primary/15",
+            )}
+          >
+            <Plus size={18} />
+          </span>
+        </button>
+      </h3>
+
+      {/* Answer stays in the DOM (readable by search engines); height animates
+          via grid rows, no JS measurement. */}
+      <div
+        id={`${id}-a`}
+        role="region"
+        aria-labelledby={`${id}-q`}
+        inert={!isOpen}
+        className={cn(
+          "grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
         )}
-      </AnimatePresence>
+      >
+        <div className="overflow-hidden">
+          <p className="max-w-2xl pr-14 pb-7 text-lg leading-relaxed text-muted-foreground">
+            {a}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -110,61 +117,59 @@ export function FAQ() {
 
   const toggle = (i: number) => setOpen(open === i ? null : i);
 
+  const ref = useGsapScope<HTMLElement>(({ mm, root }) => {
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      revealLines(root);
+      revealBatch(root);
+    });
+  });
+
   return (
-    <section id="faq" className="section-light py-10 md:py-36">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-[1fr_1.5fr] gap-5 sm:gap-16 md:gap-24">
+    <section
+      id="faq"
+      ref={ref}
+      className="section-light relative w-full bg-white! py-10 sm:py-24 md:py-36"
+    >
+      <div className="mx-auto max-w-7xl px-3 sm:px-6">
+        <div className="grid gap-12 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:gap-20">
           {/* Left sticky header */}
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="md:sticky md:top-24 md:self-start"
-          >
-            {/* <motion.div variants={fadeUp} className="mb-6">
-              <Badge variant="subtle">FAQ</Badge>
-            </motion.div> */}
-            <motion.h2
-              variants={fadeUp}
-              className="font-heading font-bold leading-tight tracking-tight mb-4"
-              style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
-            >
-              Questions,
-              <br />
-              answered.
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="text-muted-foreground text-base leading-relaxed"
+          <div className="md:sticky md:top-32 md:self-start">
+            <Lines
+              lines={["Questions,", "answered."]}
+              className="font-heading text-[clamp(2rem,4vw,3.4rem)] leading-[1.02] font-semibold tracking-[-0.035em]"
+            />
+            <p
+              data-reveal
+              className="mt-7 max-w-sm text-lg leading-relaxed text-muted-foreground"
             >
               Can&apos;t find what you&apos;re looking for? Reach us at{" "}
               <a
                 href="mailto:vipprowacademy@gmail.com"
-                className="text-primary hover:underline"
+                className="font-medium text-primary underline underline-offset-4 decoration-primary/30 transition-colors hover:decoration-primary"
               >
                 vipprowacademy@gmail.com
               </a>
-            </motion.p>
-          </motion.div>
+            </p>
+            <div data-reveal className="mt-8">
+              <ButtonLink href="/demo-class" variant="solid" arrow>
+                Book a Demo Class
+              </ButtonLink>
+            </div>
+          </div>
 
           {/* Right: accordion */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="divide-y divide-border/70">
             {FAQS.map((item, i) => (
               <FAQItem
                 key={i}
+                id={`faq-${i}`}
                 q={item.q}
                 a={item.a}
                 isOpen={open === i}
                 onToggle={() => toggle(i)}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
