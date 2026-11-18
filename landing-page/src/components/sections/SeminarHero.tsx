@@ -1,6 +1,9 @@
 import Image from "next/image";
-import { ArrowDown, MapPin } from "lucide-react";
+import { PiArrowDown, PiMapPin, PiPhone } from "react-icons/pi";
+import { TOOLS, ToolLogo } from "@/components/seminar/brand-icons";
+import { CONTACT_PHONE, CONTACT_TEL } from "@/components/seminar/contact";
 import {
+  formatSeminarDate,
   formatSeminarTimeRange,
   formatSeminarTime,
   seminarDateParts,
@@ -57,16 +60,29 @@ export function SeminarHero({ seminar }: { seminar: Seminar }) {
         }}
       />
 
-      <div className="mx-auto max-w-5xl px-5 pt-28 sm:px-6 md:pt-36">
-        <p className="mx-auto flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] backdrop-blur">
-          <span className="size-1.5 animate-pulse rounded-full bg-white" aria-hidden="true" />
-          {soldOut
-            ? "Live seminar · Sold out"
-            : `Live seminar · ${seminar.seatsLeft} ${seminar.seatsLeft === 1 ? "seat" : "seats"} left`}
-        </p>
+      <div className="mx-auto max-w-5xl px-5 pt-16 sm:px-6 sm:pt-20 md:pt-25">
+        <ul className="mx-auto hidden w-fit max-w-full sm:flex flex-wrap items-center justify-center gap-x-5 gap-y-1 rounded-2xl bg-white/10 px-5 py-2.5 text-sm font-medium">
+          <li>
+            {formatSeminarDate(seminar.startsAt)} · {date.weekday} ·{" "}
+            {formatSeminarTime(seminar.startsAt)}
+          </li>
+          {seminar.venue && (
+            <li className="max-w-[16rem] truncate">{seminar.venue}</li>
+          )}
+          <li>Entry only ₹{seminar.feeRupees}</li>
+          <li className="inline-flex items-center gap-2">
+            <span
+              className="size-1.5 animate-pulse rounded-full bg-[#ffd60a]"
+              aria-hidden="true"
+            />
+            {soldOut
+              ? "Sold out"
+              : `${seminar.seatsLeft} ${seminar.seatsLeft === 1 ? "seat" : "seats"} left`}
+          </li>
+        </ul>
 
         {/* Speaker composition */}
-        <div className="relative mx-auto mt-8 h-[22rem] w-full sm:h-[30rem] md:h-[36rem]">
+        <div className="relative mx-auto mt-0 sm:mt-8 h-[22rem] w-full sm:h-[30rem] md:h-[36rem]">
           <EchoPanel side="left" />
           <EchoPanel side="right" />
 
@@ -118,7 +134,7 @@ export function SeminarHero({ seminar }: { seminar: Seminar }) {
         </div>
 
         {/* Date | venue bar */}
-        <div className="mx-auto mt-10 flex max-w-3xl flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-8">
+        <div className="mx-auto mt-10 hidden max-w-3xl flex-col items-center gap-6 sm:flex sm:flex-row sm:justify-center sm:gap-8">
           <div className="text-center sm:text-left">
             <p className="font-heading text-[clamp(3.5rem,9vw,5.5rem)] leading-[0.85] font-extrabold italic">
               {date.day}
@@ -129,7 +145,7 @@ export function SeminarHero({ seminar }: { seminar: Seminar }) {
           </div>
           <div className="hidden h-24 w-px bg-white/50 sm:block" aria-hidden="true" />
           <div className="flex items-center gap-4 text-center sm:text-left">
-            <MapPin size={44} strokeWidth={1.5} className="hidden shrink-0 sm:block" aria-hidden="true" />
+            <PiMapPin className="hidden size-11 shrink-0 sm:block" aria-hidden="true" />
             <div>
               <p className="font-heading text-xl font-semibold uppercase tracking-wide sm:text-2xl">
                 {formatSeminarTimeRange(seminar)}
@@ -148,15 +164,48 @@ export function SeminarHero({ seminar }: { seminar: Seminar }) {
           </div>
         </div>
 
-        {/* CTA pill, like the poster's link bar */}
-        <div className="mx-auto mt-10 flex max-w-xl flex-col items-stretch gap-3 pb-14 sm:flex-row sm:items-center md:pb-20">
+        <div className="mx-auto mt-10 max-w-2xl text-center">
+          <p className="text-lg leading-snug font-medium text-balance sm:text-xl">
+            Running ads but not getting results? Learn AI the way that actually
+            works.
+          </p>
+          <p className="mt-3 font-heading text-xl font-semibold text-[#ffd60a]">
+            Learn AI. Master Marketing. Grow Faster.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-8 flex max-w-xl flex-col items-stretch gap-4 sm:flex-row">
           <a
             href="#register"
-            className="group inline-flex h-14 flex-1 items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-6 font-semibold text-[#06002e] transition-[background-color,color,transform] duration-300 hover:bg-transparent hover:text-white active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-7 py-3.5 sm:px-9 sm:py-4 font-semibold text-[#06002e] transition-[background-color,color,transform] duration-300 hover:bg-transparent hover:text-white active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {soldOut ? "Sold out" : `Register now · ₹${seminar.feeRupees}`}
-            <ArrowDown size={18} className="transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden="true" />
+            <PiArrowDown className="size-4.5 transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden="true" />
           </a>
+          <a
+            href={`tel:${CONTACT_TEL}`}
+            className="inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-full border-2 border-white/40 px-7 py-3.5 sm:px-9 sm:py-4 font-semibold transition-[border-color,background-color,transform] duration-300 hover:border-white hover:bg-white/10 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            <PiPhone className="size-4.5" aria-hidden="true" />
+            Call {CONTACT_PHONE}
+          </a>
+        </div>
+        <p className="mt-5 text-center text-sm text-white/80">
+          A live, practical seminar. The first of its kind in the city.
+        </p>
+
+        <div className="mx-auto mt-8 flex max-w-2xl flex-col items-center gap-4 pb-14 sm:flex-row sm:justify-center md:pb-20">
+          <div className="flex -space-x-2" aria-hidden="true">
+            {TOOLS.map((t) => (
+              <span key={t.name} className="inline-flex shrink-0 rounded-full ring-2 ring-[#06002e]">
+                <ToolLogo tool={t} size="sm" />
+              </span>
+            ))}
+          </div>
+          <p className="text-center text-sm text-white/85 sm:text-left">
+            GPT, Claude, Manus AI, Perplexity, Canva, Figma. All in one
+            seminar.
+          </p>
         </div>
       </div>
     </section>

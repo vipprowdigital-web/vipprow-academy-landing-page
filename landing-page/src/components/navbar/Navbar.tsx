@@ -37,7 +37,8 @@ function Underline({ active }: { active?: boolean }) {
 
 export function Navbar() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  // Pages that open on a dark hero keep the bar transparent until scrolled.
+  const isHome = pathname === "/" || /^\/seminars\/[^/]+/.test(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
