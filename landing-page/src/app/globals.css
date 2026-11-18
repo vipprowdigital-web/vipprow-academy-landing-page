@@ -326,3 +326,61 @@
 }
 
 /* Color code - #06002e */
+
+/* ==========================================
+   Blog article body (sanitized CMS HTML)
+========================================== */
+
+.blog-prose {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--foreground);
+  overflow-wrap: anywhere;
+}
+.blog-prose > * + * { margin-top: 1.25em; }
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-top: 2.2em;
+}
+.blog-prose h2 { font-size: 1.85rem; }
+.blog-prose h3 { font-size: 1.4rem; }
+.blog-prose h4 { font-size: 1.15rem; }
+.blog-prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-prose ul,
+.blog-prose ol { padding-left: 1.4em; }
+.blog-prose ul { list-style: disc; }
+.blog-prose ol { list-style: decimal; }
+.blog-prose li + li { margin-top: 0.4em; }
+.blog-prose blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 1.25em;
+  font-size: 1.15em;
+  color: var(--muted-foreground);
+}
+.blog-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.25rem;
+}
+.blog-prose pre,
+.blog-prose code {
+  background: var(--muted);
+  border-radius: 0.5rem;
+  font-size: 0.9em;
+}
+.blog-prose code { padding: 0.15em 0.4em; }
+.blog-prose pre { padding: 1em 1.25em; overflow-x: auto; }
+.blog-prose pre code { padding: 0; background: none; }
+.blog-prose table { display: block; overflow-x: auto; border-collapse: collapse; }
+.blog-prose th,
+.blog-prose td { border: 1px solid var(--border); padding: 0.6em 0.9em; text-align: left; }
+.blog-prose hr { border: 0; border-top: 1px solid var(--border); }

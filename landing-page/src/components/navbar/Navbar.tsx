@@ -16,6 +16,7 @@ const COURSE_DROPDOWN = [
 const NAV_LINKS = [
   { label: "Academy", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Seminars", href: "/seminars" },
   { label: "Brochure", href: "/download-brochure" },
 ];
 
@@ -117,10 +118,11 @@ export function Navbar() {
             onClick={closeMenu}
           >
             <Image
-              src="/logos/vipprow-academy-logo-2.png"
+              src="/logos/vipprow-academy-logo-2.webp"
               alt="Vipprow Academy Logo"
-              width={150}
-              height={20}
+              width={160}
+              height={63}
+              priority
               className="h-auto w-28 sm:w-40"
             />
           </Link>

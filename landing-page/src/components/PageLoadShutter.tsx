@@ -158,7 +158,7 @@ export default function PageLoadShutter() {
       return () => clearTimeout(id);
     }
 
-    const timer = setTimeout(() => setVisible(false), 3000);
+    const timer = setTimeout(() => setVisible(false), 1100);
     return () => clearTimeout(timer);
   }, [visible]);
 
@@ -169,7 +169,7 @@ export default function PageLoadShutter() {
           key="splash"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
           // FIRES WHEN FADE OUT ENDS
           onAnimationComplete={() => {
             if (typeof window !== "undefined") {
@@ -207,13 +207,13 @@ export default function PageLoadShutter() {
 
           {/* Robot Image */}
           <motion.div
-            initial={{ scale: 0.82, opacity: 0, y: 18 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            initial={{ scale: 0.9, y: 12 }}
+            animate={{ scale: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 w-44 h-44 sm:w-56 sm:h-56"
           >
             <Image
-              src="/images/cute-robot-without-bg.png"
+              src="/images/cute-robot-without-bg.webp"
               alt="Vipprow Academy loading"
               fill
               sizes="(min-width: 640px) 224px, 176px"
@@ -228,7 +228,7 @@ export default function PageLoadShutter() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+            transition={{ duration: 0.4, ease: "easeOut", delay: 0.15 }}
             className="relative z-10 mt-8 flex flex-col items-center gap-2"
           >
             <div className="font-heading font-bold text-xl tracking-tight text-white">
@@ -251,7 +251,7 @@ export default function PageLoadShutter() {
               className="h-full bg-indigo-400/70 rounded-full"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 3, ease: "linear" }}
+              transition={{ duration: 1.1, ease: "linear" }}
             />
           </motion.div>
         </motion.div>

@@ -82,10 +82,10 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
             <div data-reveal className="col-span-2 md:col-span-1">
               <Link href="/" className="mb-5 inline-block">
                 <Image
-                  src="/logos/vipprow-academy-logo-2.png"
+                  src="/logos/vipprow-academy-logo-2.webp"
                   alt="Vipprow Academy Logo"
                   width={150}
-                  height={20}
+                  height={59}
                   style={{ width: "auto", height: "auto" }}
                 />
               </Link>
@@ -171,7 +171,7 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
             alt=""
             width={1568}
             height={500}
-            className="mx-auto h-auto w-full max-w-5xl opacity-10"
+            className="mx-auto h-auto w-full max-w-5xl opacity-10 will-change-transform"
           />
         </div>
 

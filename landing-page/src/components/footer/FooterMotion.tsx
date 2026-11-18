@@ -26,9 +26,11 @@ export function FooterMotion({
         {
           yPercent: 0,
           ease: "none",
+          // Triggered by the wordmark itself (not the page bottom) so it also
+          // plays on short pages such as the 404, where the footer is near.
           scrollTrigger: {
-            trigger: root,
-            start: "bottom bottom+=420",
+            trigger: "[data-wordmark]",
+            start: "top bottom",
             end: "bottom bottom",
             scrub: true,
           },

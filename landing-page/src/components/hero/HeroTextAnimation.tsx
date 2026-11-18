@@ -552,10 +552,11 @@ export default function HeroTextAnimation() {
   return (
     <div
       ref={containerRef}
-      className="w-full max-w-5xl mx-auto sm:px-6 font-sans text-white select-none"
+      // Fixed-height, centered box: swapping between the steps below must not
+      // change this element's size or position (that caused a 0.4 CLS).
+      className="w-full max-w-5xl mx-auto sm:px-6 min-h-screen flex flex-col justify-center font-sans text-white select-none"
     >
       <h1 className="sr-only">Control your mind. Manifest your learning.</h1>
-      {step === 0 && <div className="min-h-screen w-full" />}
 
       {step > 0 && step < 3 && (
         <motion.div aria-hidden="true" className="flex flex-col items-center gap-2 tracking-tight text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-medium leading-none">
