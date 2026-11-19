@@ -82,7 +82,7 @@ export function SeminarHero({ seminar }: { seminar: Seminar }) {
         </ul>
 
         {/* Speaker composition */}
-        <div className="relative mx-auto mt-0 sm:mt-8 h-[22rem] w-full sm:h-[30rem] md:h-[36rem]">
+        <div className="relative mx-auto mt-0 sm:mt-8 h-88 w-full sm:h-120 md:h-144">
           <EchoPanel side="left" />
           <EchoPanel side="right" />
 

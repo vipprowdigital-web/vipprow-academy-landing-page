@@ -18,12 +18,12 @@ const QUALIFICATIONS = [
   { value: "working_professional", label: "Working Professional" },
 ];
 
-const ACADEMY_LOCATIONS = [
-  {
-    address: "Bethel House Near Naveen Vidhya Mandir School Napier Town Jabalpur.",
-    googleMapLocation: "https://maps.google.com/?q=Vipprow+Academy+Jabalpur",
-  },
-];
+// const ACADEMY_LOCATIONS = [
+//   {
+//     address: "Bethel House Near Naveen Vidhya Mandir School Napier Town Jabalpur.",
+//     googleMapLocation: "https://maps.google.com/?q=Vipprow+Academy+Jabalpur",
+//   },
+// ];
 
 function formatTime12h(timeStr: string): string {
   if (!timeStr) return "";
@@ -35,6 +35,12 @@ function formatTime12h(timeStr: string): string {
   hours = hours ? hours : 12; // the hour '0' should be '12'
   return `${hours}:${minutes} ${ampm}`;
 }
+
+/** Demo slots every 30 minutes, 10:00 AM to 6:30 PM (the academy's daytime hours). Values stay "HH:MM". */
+const TIME_SLOTS: string[] = Array.from({ length: 18 }, (_, i) => {
+  const mins = 10 * 60 + i * 30;
+  return `${String(Math.floor(mins / 60)).padStart(2, "0")}:${String(mins % 60).padStart(2, "0")}`;
+});
 
 type Field = {
   name: string;
@@ -486,15 +492,30 @@ export function LeadForm({
               <label className="block text-sm font-medium text-foreground mb-1.5">
                 Preferred Demo Time <span className="text-primary">*</span>
               </label>
-              <input
-                type="time"
-                value={fields.timeslot || ""}
-                onChange={(e) => set("timeslot", e.target.value)}
-                className={[
-                  inputClass(!!errors.timeslot),
-                  "cursor-pointer",
-                ].join(" ")}
-              />
+              <div className="relative">
+                <select
+                  value={fields.timeslot || ""}
+                  onChange={(e) => set("timeslot", e.target.value)}
+                  className={[
+                    inputClass(!!errors.timeslot),
+                    "appearance-none cursor-pointer pr-10",
+                  ].join(" ")}
+                >
+                  <option value="" disabled>
+                    Select a time
+                  </option>
+                  {TIME_SLOTS.map((t) => (
+                    <option key={t} value={t}>
+                      {formatTime12h(t)}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  size={16}
+                  aria-hidden="true"
+                  className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+                />
+              </div>
               {errors.timeslot && (
                 <p className="mt-1.5 text-xs text-red-500">{errors.timeslot}</p>
               )}
