@@ -52,7 +52,7 @@ export function SeminarHero({ seminar }: { seminar: Seminar }) {
       {/* soft grain, like the poster's brushed texture */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.16] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07]"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
@@ -96,7 +96,7 @@ export function SeminarHero({ seminar }: { seminar: Seminar }) {
               fill
               priority
               sizes="(min-width: 640px) 48vw, 86vw"
-              className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+              className="object-contain object-bottom"
             />
           </div>
 

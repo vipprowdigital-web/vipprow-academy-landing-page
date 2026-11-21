@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronDown } from "lucide-react";
 import sanitizeHtml from "sanitize-html";
 import { cleanKeywords, getBlog, getLatestBlogs } from "@/lib/blogs";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -70,6 +70,8 @@ export default async function BlogPage({ params }: Props) {
   const [post, latest] = await Promise.all([getBlog(id), getLatestBlogs(4)]);
   if (!post) notFound();
 
+  // Older articles have no faqs field; ignore empty or half-filled entries.
+  const faqs = (post.faqs ?? []).filter((f) => f?.question?.trim() && f?.answer?.trim());
   const more = latest.filter((b) => b._id !== post._id).slice(0, 3);
 
   return (
@@ -125,6 +127,38 @@ export default async function BlogPage({ params }: Props) {
               className="blog-prose mt-12"
               dangerouslySetInnerHTML={{ __html: cleanHtml(post.description) }}
             />
+          )}
+
+          {faqs.length > 0 && (
+            <section aria-labelledby="faq-heading" className="mt-16">
+              <h2
+                id="faq-heading"
+                className="font-heading text-2xl font-semibold tracking-[-0.03em] sm:text-3xl"
+              >
+                Frequently asked questions
+              </h2>
+              <div className="mt-6">
+                {faqs.map((f, i) => (
+                  <details
+                    key={i}
+                    className="group border-b border-border py-5 [&_summary::-webkit-details-marker]:hidden"
+                  >
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-md font-heading text-lg font-semibold tracking-[-0.01em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+                      {f.question}
+                      <ChevronDown
+                        size={20}
+                        aria-hidden="true"
+                        className="shrink-0 transition-transform duration-300 group-open:rotate-180"
+                      />
+                    </summary>
+                    {/* Plain text from the CMS: rendered as text, never as HTML. */}
+                    <p className="mt-3 whitespace-pre-line text-foreground/80">
+                      {f.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </section>
           )}
         </div>
       </article>

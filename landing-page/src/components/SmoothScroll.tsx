@@ -3,9 +3,14 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { getLenis, setLenis } from "@/lib/lenisStore";
 import { prefersReducedMotion } from "@/lib/reducedMotion";
+
+// Fewer ScrollTrigger callbacks while scrolling, and no full re-measure when a
+// mobile browser's address bar shows or hides (a common source of scroll jank).
+ScrollTrigger.config({ limitCallbacks: true, ignoreMobileResize: true });
 
 export default function SmoothScroll() {
   const pathname = usePathname();

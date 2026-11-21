@@ -12,6 +12,8 @@ export type Blog = {
   createdAt: string;
   /** Full article body (HTML). Only present on the detail endpoint. */
   description?: string;
+  /** Plain-text FAQs. Missing on articles created before the field existed, so treat as []. */
+  faqs?: { question: string; answer: string }[];
   seo?: {
     metaTitle?: string;
     metaDescription?: string;

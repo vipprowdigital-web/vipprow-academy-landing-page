@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import type { AppConfig } from "@/lib/appConfig";
 import { Lines } from "@/components/motion/Lines";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -47,6 +47,11 @@ const HARDCODED_SOCIALS = [
 
 const DEFAULT_EMAIL = "vipprowacademy@gmail.com";
 const DEFAULT_PHONE = "9669932121";
+// Opens the academy's Google Maps listing (the same place the About page embeds), not a bare coordinate.
+const ADDRESS =
+  "Bethel House, near Naveen Vidhya Mandir School, Napier Town, Jabalpur, Madhya Pradesh 482001";
+const DIRECTIONS =
+  "https://www.google.com/maps?cid=11266085051344752552";
 
 const linkClass =
   "text-[0.95rem] text-white/65 transition-colors duration-200 hover:text-white focus-visible:text-white focus-visible:outline-none";
@@ -102,6 +107,15 @@ export function Footer({ appConfig }: { appConfig?: AppConfig | null }) {
                 <a href={`tel:+91${phone}`} className={`${linkClass} flex items-center gap-2`}>
                   <Phone size={15} aria-hidden="true" />
                   +91 {phone}
+                </a>
+                <a
+                  href={DIRECTIONS}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${linkClass} flex max-w-xs items-start gap-2`}
+                >
+                  <MapPin size={15} aria-hidden="true" className="mt-1 shrink-0" />
+                  <span>{ADDRESS}</span>
                 </a>
               </div>
             </div>
