@@ -5,6 +5,7 @@ import "./globals.css";
 import { Providers } from "@/components/Providers";
 import PageLoadShutter from "@/components/PageLoadShutter";
 import LazyMetaPixel from "@/components/LazyMetaPixel";
+import LazyMetaPixel2 from "@/components/LazyMetaPixel2";
 import { Navbar } from "@/components/navbar/Navbar";
 import { Footer } from "@/components/footer/Footer";
 import { getAppConfig } from "@/lib/appConfig";
@@ -64,6 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         {/* Meta Pixel — loads lazily on first interaction (or after 5s idle) */}
         <LazyMetaPixel />
+        <LazyMetaPixel2 />
       </head>
       <body className="min-h-full flex flex-col bg-background">
         {/* Google Tag Manager (noscript) — must be right after <body> opens */}
@@ -93,6 +95,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none" }}
             alt=""
             src="https://www.facebook.com/tr?id=1118179970941898&ev=PageView&noscript=1"
+          />
+        </noscript>
+
+        {/* Second Meta Pixel (noscript) — script loads lazily via LazyMetaPixel2 */}
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            alt=""
+            src="https://www.facebook.com/tr?id=1704843507864359&ev=PageView&noscript=1"
           />
         </noscript>
 
