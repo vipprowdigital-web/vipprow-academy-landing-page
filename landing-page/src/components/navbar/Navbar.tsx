@@ -9,8 +9,7 @@ import { getLenis } from "@/lib/lenisStore";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 
 const COURSE_DROPDOWN = [
-  { label: "Digital Marketing", href: "/courses/digital-marketing" },
-  { label: "Performance Marketing", href: "/courses/performance-marketing" },
+  { label: "AI-Powered Performance Marketing", href: "/courses/digital-marketing" },
 ];
 
 const NAV_LINKS = [

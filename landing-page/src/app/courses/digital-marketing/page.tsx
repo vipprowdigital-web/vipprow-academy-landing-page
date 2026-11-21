@@ -7,7 +7,7 @@ import Image from "next/image";
 import { getAppConfig } from "@/lib/appConfig";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing | Vipprow Academy",
+  title: "AI-Powered Performance Marketing | Vipprow Academy",
   description:
     "Master SEO, Google Ads, Social Media, Content Marketing and Analytics in 12 weeks. Industry-aligned training built for real outcomes.",
 };
@@ -156,8 +156,8 @@ export default async function DigitalMarketingPage() {
         </section> */}
 
       <CourseHero
-        title={["Master digital marketing,", "from strategy to execution."]}
-        description="A practical, industry-focused program covering Digital Marketing, Performance Marketing, SEO, Google Ads, Meta Ads, AI tools, Analytics, and real-world projects to prepare you for jobs, freelancing, or building your own agency."
+        title={["Master AI-powered performance marketing,", "from strategy to execution."]}
+        description="A practical, industry-focused program covering AI-Powered Performance Marketing, SEO, Google Ads, Meta Ads, AI tools, Analytics, and real-world projects to prepare you for jobs, freelancing, or building your own agency."
         primary={{ label: "Enroll in this Course", href: "/enroll" }}
         secondary={{ label: "Download Brochure", href: "/download-brochure" }}
         panelTitle="What you'll learn"

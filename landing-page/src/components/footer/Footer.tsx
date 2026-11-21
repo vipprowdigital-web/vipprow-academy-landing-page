@@ -8,8 +8,7 @@ import { FooterMotion } from "./FooterMotion";
 
 const FOOTER_LINKS = {
   Programs: [
-    { label: "Digital Marketing", href: "/courses/digital-marketing" },
-    { label: "Performance Marketing", href: "/courses/performance-marketing" },
+    { label: "AI-Powered Performance Marketing", href: "/courses/digital-marketing" },
   ],
   Company: [
     { label: "About Academy", href: "/about" },
@@ -17,6 +16,7 @@ const FOOTER_LINKS = {
     { label: "Download Brochure", href: "/download-brochure" },
     { label: "Demo Class", href: "/demo-class" },
     { label: "Admission", href: "/enroll" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
   ],
   Support: [
     { label: "100% Placement Assistance", href: "/#placement" },

@@ -12,8 +12,7 @@ export type Course = {
 
 // Used only when /courses/public can't be reached
 const FALLBACK_COURSES: Course[] = [
-  { value: "digital-marketing", label: "Digital Marketing" },
-  { value: "performance-marketing", label: "Performance Marketing" },
+  { value: "digital-marketing", label: "AI-Powered Performance Marketing" },
 ];
 
 /**

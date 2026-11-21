@@ -6,7 +6,7 @@ import { BookOpen, Award, TrendingUp, Users } from "lucide-react";
 export const metadata: Metadata = {
     title: "Download Course Brochure | Vipprow Academy",
     description:
-        "Download the official course brochure for Digital Marketing Mastery and Performance Marketing at Vipprow Academy. Get syllabus, fee breakdown, and placement stats sent to your email.",
+        "Download the official course brochure for AI-Powered Performance Marketing at Vipprow Academy. Get syllabus, fee breakdown, and placement stats sent to your email.",
 };
 
 function firstValue(value: string | string[] | undefined): string | undefined {

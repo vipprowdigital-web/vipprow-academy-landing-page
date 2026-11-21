@@ -59,18 +59,10 @@ const COURSES = [
   {
     id: "digital-marketing",
     index: "01",
-    title: "Digital Marketing",
+    title: "AI-Powered Performance Marketing",
     description:
-      "SEO, social media, content and email — the complete foundation to plan, launch and grow campaigns that convert.",
+      "AI-driven paid media, funnels and analytics — turn ad spend into measurable, scalable ROI across every channel.",
     // Visual: DigitalMarketingAnimation,
-  },
-  {
-    id: "performance-marketing",
-    index: "02",
-    title: "Performance Marketing",
-    description:
-      "Paid media, funnels and analytics — turn ad spend into measurable, scalable ROI across every channel.",
-    // Visual: PerformanceMarketingAnimation,
   },
 ];
 
@@ -133,8 +125,8 @@ export default function StackingCourseCards() {
         </h1>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
           Whether you&apos;re starting your career, looking to upskill, or
-          planning to grow your own business, our hands-on programs in Digital
-          Marketing, Performance Marketing, SEO, AI Tools, and Branding are
+          planning to grow your own business, our hands-on programs in
+          AI-Powered Performance Marketing, SEO, AI Tools, and Branding are
           designed to make you industry-ready through live projects, expert
           mentorship, and 100% placement assistance.
         </p>

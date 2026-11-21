@@ -13,11 +13,6 @@
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://academy.vipprow.com/courses/performance-marketing</loc>
-       <lastmod>2026-11-20T11:18:37+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-  <url>
        <loc>https://academy.vipprow.com/about</loc>
        <lastmod>2026-11-20T11:18:37+00:00</lastmod>
        <priority>0.8000</priority>
@@ -51,5 +46,10 @@
        <loc>https://academy.vipprow.com/seminars/370ab084-d085-4179-a92b-887f5727a724</loc>
        <lastmod>2026-11-20T11:18:37+00:00</lastmod>
        <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://academy.vipprow.com/privacy-policy</loc>
+       <lastmod>2026-11-21T00:00:00+00:00</lastmod>
+       <priority>0.3000</priority>
   </url>
 </urlset>

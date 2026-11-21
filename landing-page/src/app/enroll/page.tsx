@@ -5,7 +5,7 @@ import AddressBanner from "@/components/sections/AddressBanner";
 export const metadata: Metadata = {
   title: "Enroll Now | Vipprow Academy",
   description:
-    "Take the first step toward your future. Apply for Digital Marketing Mastery or Performance Marketing at Vipprow Academy.",
+    "Take the first step toward your future. Apply for AI-Powered Performance Marketing at Vipprow Academy.",
 };
 
 function firstValue(value: string | string[] | undefined): string | undefined {

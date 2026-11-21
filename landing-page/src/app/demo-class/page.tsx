@@ -6,7 +6,7 @@ import AddressBanner from "@/components/sections/AddressBanner";
 export const metadata: Metadata = {
   title: "Book a Demo Class | Vipprow Academy",
   description:
-    "Experience Vipprow Academy firsthand. Book a free, no-obligation demo class for Digital Marketing Mastery or Performance Marketing.",
+    "Experience Vipprow Academy firsthand. Book a free, no-obligation demo class for AI-Powered Performance Marketing.",
 };
 
 function firstValue(value: string | string[] | undefined): string | undefined {
